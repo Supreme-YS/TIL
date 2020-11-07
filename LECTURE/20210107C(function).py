@@ -15,3 +15,10 @@ def returnType functionName([arg01, arg02]) :
 '''
 def userPrint() :
     print('userPrint')
+
+from python import packageFunction as p
+# from python.packageFunction import printCoins
+# from python.packageFunction import
+
+rtnMsg = p.returnFunc()
+print('call returnFunc() - ', rtnMsg)
