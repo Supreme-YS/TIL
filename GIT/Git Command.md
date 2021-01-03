@@ -21,7 +21,7 @@
 ### 1. config
 
 * `git config --global user.email "myemail@gmail.com"`
-  * email의 경우 깃헙에 올릴경우 잔디가 심어지는 기준이므로 정확하게 입력!
+  * email의 경우 깃헙에 올릴경우 잔디가 심어지는 기준이므로 정확하게 입력해야 한다.
 * `git config --global user.name "myname"`
 * 최초에 한 번만 하면 된다.
 
