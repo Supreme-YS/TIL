@@ -58,7 +58,7 @@
 ### 4. push
 
 * `git push origin master`
-* git아 올려줘 origin으로 master를
+* "git아 올려줘 origin으로 master를"
 * 원격저장소에 로컬 저장소의 데이터를 전송
 
 
