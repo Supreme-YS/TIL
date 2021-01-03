@@ -59,7 +59,7 @@
 
 * `git push origin master`
 * "git아 올려줘 origin으로 master를"
-* 원격저장소에 로컬 저장소의 데이터를 전송
+* 원격저장소에 로컬 저장소의 데이터를 전송한다.
 
 
 
@@ -68,17 +68,17 @@
 ### 1. status
 
 * `git status`
-* 현재 git 상태를 출력
+* 현재 git 상태를 출력한다.
 
 
 
 ### 2. log
 
 * `git log`
-* commit 기록을 전체 출력
+* commit 기록을 전체 출력한다.
 * 옵션
-  * `--oneline`: author, date 같은 정보를 제외하고 한 줄로 출력
-  * `--graph`: Commit들을 점으로 표현하고 그 커밋을 선으로 연결해서 그래프 형태로 출력
+  * `--oneline`: author, date 같은 정보를 제외하고 한 줄로 출력한다.
+  * `--graph`: Commit들을 점으로 표현하고 그 커밋을 선으로 연결해서 그래프 형태로 출력한다.
 
 
 
