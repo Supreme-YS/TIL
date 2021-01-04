@@ -95,3 +95,15 @@ print('%10s' % ('nice', )) # 뒤에부터 자릿수 채우기
 print('%-10s' % ('nice', )) # 앞에부터 자릿수 채우기
 print('%1.8f' % (3.14159213254)) # 정수자리는 1개, 실수자리는 8자리로 제한하겠다.
 print('{:1.8f}'.format(3.14159213254)) # format을 할 때 {} 안에 인덱스를 넣어야 한다. 정수자리는 1개, 실수자리는 8자리로 제한하겠다.
+
+# tuple
+a = tuple()
+print( type(a))
+a = (1, 2, 3)
+print(a[0])
+
+# type casting
+a = ()
+print(type(a))
+a = list(a) # type casting
+print( type(a))
