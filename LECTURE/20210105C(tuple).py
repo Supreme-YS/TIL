@@ -35,5 +35,9 @@ print(range02)
 evenRange = tuple(range(2, 100, 2))
 print(evenRange)
 
-
-
+print(7 in range02)
+print(10 in range02)
+print(range02.index(7)) # 7이라는 값을 갖고있는 인덱스의 번호는 무엇인가요? 라는 의미
+print(range02[2])
+print(range02[2:])
+print(range02[-1])
