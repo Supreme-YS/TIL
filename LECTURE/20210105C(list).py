@@ -51,3 +51,10 @@ idx = movieRank.index('국제수사')
 print('a 국제수사 index : ', idx)
 print('a pop() : ', movieRank.pop(idx))
 print('pop index 5 : ', movieRank)
+
+# 최대값 최소값 총합 평균
+scoreDate = [1, 2, 3, 4, 5, 6, 7]
+print("max", max(scoreDate))
+print("min", min(scoreDate))
+print("sum", sum(scoreDate))
+print("mean", sum(scoreDate) / len(scoreDate))
