@@ -125,3 +125,6 @@ print("sample" in myStr) # 해당 문자열에 특정 문자가 있느냐 있으
 print("sample" not in myStr) # 해당 문자열에 특정 문자가 없느냐 있으면 False 출력
 print("this" in myStr.lower()) # 해당 문자열을 전부 소문자로 두고 특정 문자가 있는지 비교할수도 있다.
 
+# 문자의 빈도 count(), 문자 찾기 find(), 문자의 인덱스 index()
+brandName = 'cocacola'
+print(len(brandName), brandName.count('c'), brandName.find('a'), brandName.index('a'))
