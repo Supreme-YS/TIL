@@ -41,3 +41,30 @@ print('dict03 - ', type(dict03), dict03)
 print('dict_keys - ', dict03.keys(), type(dict03.keys()), type(list(dict03.keys())))
 print('dict_values - ', dict03.values(), type(dict03.values()), type(list(dict03.values())))
 print('dict_items - ', dict03.items(), type(dict03.items()), type(list(dict03.items())))
+
+# looping
+'''
+for(초기식; 조건식; 증감식)
+for item in collection :
+    statement
+'''
+
+for key in dict03.keys() :
+    print('key : {}, value : {}'.format(key, dict03.get(key)))
+
+for value in dict03.values() :
+    print('value : {}'.format(value))
+
+for (key, value) in dict03.items() :
+    print('key : {}, value : {}'.format(key, value))
+
+# 삭제 pop(), del
+print('dict03 - ', type(dict03), dict03)
+del dict03['gender']
+print('dict03 del - ', type(dict03), dict03)
+print('dict03 pop - ', dict03.pop('birth'))
+print('dict03 pop - ', dict03)
+
+# 전체요소를 삭제시키는 함수
+dict03.clear()
+print('dict03 clear - ', dict03)
