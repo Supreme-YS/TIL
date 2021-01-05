@@ -104,3 +104,24 @@ url = "http://www.naver.com"
 urlSplit = url.split('.')
 print(urlSplit, type(urlSplit))
 print('domain : ', urlSplit[-1])
+
+# 문자열에서 공백 제거 함수 : strip(), rstrip(), lstrip()
+# 대문자, 소문자 변환 함수 : upper(), lower()
+companyName = '      samsung      '
+print(companyName.strip(), len(companyName.strip()), type(companyName.strip()))
+print(companyName.rstrip(), len(companyName.rstrip()))
+print(companyName.lstrip(), len(companyName.lstrip()))
+print(companyName.upper())
+
+# endswith()
+
+fileName = 'report.txt'
+isExits  = fileName.endswith(('xls', 'xlsx', 'csv')) # 어떤 확장자로 되어 있는지 확인할 수 있는 함수 bool형식
+print(isExits)
+
+# in , not in -> True | False
+myStr = "This is a sample Text"
+print("sample" in myStr) # 해당 문자열에 특정 문자가 있느냐 있으면 True 출력
+print("sample" not in myStr) # 해당 문자열에 특정 문자가 없느냐 있으면 False 출력
+print("this" in myStr.lower()) # 해당 문자열을 전부 소문자로 두고 특정 문자가 있는지 비교할수도 있다.
+
