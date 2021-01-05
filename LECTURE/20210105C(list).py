@@ -46,3 +46,8 @@ print('insert - 씽 : ', movieRank) # 기존 1번 인덱스에 있던 해리포�
 # 3. 리스트에서 반도를 삭제한다면?
 movieRank.remove('반도')
 print('remove - 반도 : ', movieRank)
+
+idx = movieRank.index('국제수사')
+print('a 국제수사 index : ', idx)
+print('a pop() : ', movieRank.pop(idx))
+print('pop index 5 : ', movieRank)
