@@ -25,7 +25,7 @@ print(a)
 a.reverse() # 내림차순 & 오름차순 왔다갔다.
 print(a)
 
-# pop() : 기존 리스트에서 요소를 가져오고 삭제시킨다.
+# pop() : 기존 리스트에서 요소를 가져오고 삭제시킨다. * last index에서 삭제하는 것. 특정 부분을 삭제할때는 remove() 함수 사용
 print( "a - pop() : ", a.pop())
 print( "a - print() : ", a)
 
@@ -41,6 +41,8 @@ print('append - 배트맨 : ', movieRank)
 
 # 2. 원더우먼과 해리포터 사이에 '씽'을 추가한다면?
 movieRank.insert(1, '씽')
-print('insert - 씽 : ', movieRank)
+print('insert - 씽 : ', movieRank) # 기존 1번 인덱스에 있던 해리포터는 한 칸 밀린다.
 
-#
+# 3. 리스트에서 반도를 삭제한다면?
+movieRank.remove('반도')
+print('remove - 반도 : ', movieRank)

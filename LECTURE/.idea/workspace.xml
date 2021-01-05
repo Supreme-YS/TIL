@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5c3ba2a-b7d1-4402-a15a-e6a50b68f76d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/20210105C(list).py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/TIL.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
@@ -17,6 +16,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/20210105C(list).py" beforeDir="false" afterPath="$PROJECT_DIR$/20210105C(list).py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/20210105C.py" beforeDir="false" afterPath="$PROJECT_DIR$/20210105C.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +53,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1609812206797</updated>
-      <workItem from="1609812215055" duration="4621000" />
+      <workItem from="1609812215055" duration="4830000" />
     </task>
     <servers />
   </component>
