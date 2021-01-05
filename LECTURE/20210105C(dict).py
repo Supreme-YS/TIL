@@ -26,4 +26,16 @@ print('marriage' in dict01) # 키가 존재하면 True, 그렇지 않으면 Fals
 # 데이터 확인
 print('address - ', dict01['address'])
 
-dict02 = dict()
+dict02 = dict([('name', 'youngseok'), ('age', 30), ('address','gimpo-si'), ('birth', 930125), ('gender', 'male')])
+print('dict02 - ', type(dict02), dict02)
+
+dict03 = dict(name = 'youngseok',
+              age=30,
+              address = 'gimpo-si',
+              birth = 930125,
+              gender = 'male')
+
+print('dict03 - ', type(dict03), dict03)
+
+# dict_keys, dict_values, dict_items
+print('dict_keys - ', dict03.keys(), type(dict03.keys()))
