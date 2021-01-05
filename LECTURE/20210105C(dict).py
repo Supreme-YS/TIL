@@ -38,4 +38,6 @@ dict03 = dict(name = 'youngseok',
 print('dict03 - ', type(dict03), dict03)
 
 # dict_keys, dict_values, dict_items
-print('dict_keys - ', dict03.keys(), type(dict03.keys()))
+print('dict_keys - ', dict03.keys(), type(dict03.keys()), type(list(dict03.keys())))
+print('dict_values - ', dict03.values(), type(dict03.values()), type(list(dict03.values())))
+print('dict_items - ', dict03.items(), type(dict03.items()), type(list(dict03.items())))
