@@ -64,6 +64,7 @@ else :
 
 
 # dict 를 이용한 if ~ in
+
 areaKeyDict = {'서울' : 100, '광주' : 200}
 region = '부산'
 if region in areaKeyDict:
@@ -76,3 +77,32 @@ if city :
     print('true - ', city)
 else :
     print('false - ', 'plz enter your city')
+
+# 삼항 연산자
+num = 9
+result = 0
+
+result = num * 2 if num > 5 else num + 2
+print('삼항 연산자 - ', result)
+
+if num > 5 :
+    print(num * 2)
+else :
+    print(num + 2)
+
+# & == and
+'''
+and (논리 연산자, True | False 연산)
+-> x and y 있을 때 x가 False x값을 반환하고
+-> x 가 True y 값을 반환합니다.
+
+& (비교 연산자, bitwise 연산자)
+'''
+
+# 8 -> 1000, 10 -> 1010
+# 1000
+# 1010
+# ---------
+# 1000이 된다.
+print( 8 & 10 )
+print( 8 and 10 )

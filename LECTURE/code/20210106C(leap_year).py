@@ -2,6 +2,7 @@
 year  = int(input('년도를 입력하세요 : '))
 month = int(input('월을 입력하세요(1~12) : '))
 
+# 예외처리
 if month > 12 :
     print("{}월은 없습니다.".format(month))
     exit()
@@ -17,10 +18,10 @@ otherDate = 31
 if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0) :
     print("{}년도는 윤년입니다.".format(year))
 
-    if month == 2:
+    if month == 2 :
         print('{}년도의 {}월의 마지막 일은 {}일 입니다.'.format(year, month, febLeapDate))
 
-    elif month in [1, 3, 5, 7, 8, 10, 12]:
+    elif month in [1, 3, 5, 7, 8, 10, 12] :
         print('{}년도의 {}월의 마지막 일은 {}일 입니다.'.format(year, month, otherDate))
 
     elif month in [4, 6, 9, 11] :

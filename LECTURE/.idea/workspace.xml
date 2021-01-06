@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5c3ba2a-b7d1-4402-a15a-e6a50b68f76d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/20210106C(loop).py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/20210106C(test).py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/20210106C(controlStatement).py" beforeDir="false" afterPath="$PROJECT_DIR$/20210106C(controlStatement).py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/theorem/20210106C(leap_year).py" beforeDir="false" afterPath="$PROJECT_DIR$/theorem/20210106C(leap_year).py" afterDir="false" />
@@ -95,7 +97,7 @@
       <updated>1609812206797</updated>
       <workItem from="1609812215055" duration="12935000" />
       <workItem from="1609831461677" duration="1323000" />
-      <workItem from="1609891571152" duration="14597000" />
+      <workItem from="1609891571152" duration="19332000" />
     </task>
     <servers />
   </component>
