@@ -90,7 +90,7 @@ else:
 # 9
 phoneNumber = input('휴대폰 번호를 입력하세요 : ').split('-')
 
-if phoneNumber[0] == '011' :
+if phoneNumber[0] == '011':
     print('SKT')
 if phoneNumber[0] == '016':
     print('KT')
@@ -99,7 +99,7 @@ if phoneNumber[0] == '019':
 if phoneNumber[0] == '010':
     print('알수없음')
 else :
-    print('잘못된 값을 입력했습니다.')
+    pass
 
 # 10
 idNum = list(input('주민등록번호를 입력하세요 : '))
