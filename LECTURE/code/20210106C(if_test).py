@@ -6,13 +6,12 @@ num = int(input('숫자를 입력하세요(0~255 사이의 값) : '))
 if num > 0 and num < 255 :
     print(num - 20)
 
+else :
     if num < 0 :
         print(0)
 
     elif num > 255 :
         print(255)
-else :
-    print('범위를 초과했습니다.')
 
 # 2
 presentTime = input("현재 시간을 입력하세요 : ")
