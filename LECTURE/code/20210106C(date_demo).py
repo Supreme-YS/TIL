@@ -57,14 +57,3 @@ print("{}".format(today.strftime('%m-%d-%Y')), type(today.strftime('%m-%d-%Y')))
 strDate  = '2021,01,06-11:12:40'
 userDate = datetime.strptime(strDate, '%Y,%m,%d-%H:%M:%S')
 print( type(userDate), userDate)
-
-
-
-
-
-
-
-
-
-
-
