@@ -24,7 +24,6 @@ else :
     print("정각이 아닙니다.")
 
 # 3
-
 fruitName = input("과일을 입력하세요 : ")
 fruit_list = ["사과", "포도", "홍시"]
 
@@ -34,7 +33,6 @@ else :
     print('오답입니다.')
 
 # 4
-
 userInvestment = input('종목명을 입력하세요 : ')
 warnInvestmentList = ["Microsoft", "Google", "Naver", "Kakao", "SAMSUNG", "LG"]
 
@@ -53,7 +51,6 @@ else :
     print('오답입니다.')
 
 # 6
-
 singleWord = input("문자 하나를 입력하세요 : ")
 
 if singleWord == singleWord.upper():
@@ -62,7 +59,6 @@ else :
     print(singleWord.upper())
 
 # 7
-
 userScore = int(input('점수를 입력하세요 : '))
 
 if 100 >= userScore >= 81 :
@@ -79,7 +75,6 @@ else :
     print('범위를 초과했습니다.')
 
 # 8
-
 num1 = int(input('첫 번째 숫자를 입력하세요 : '))
 num2 = int(input('두 번째 숫자를 입력하세요 : '))
 num3 = int(input('세 번째 숫자를 입력하세요 : '))
