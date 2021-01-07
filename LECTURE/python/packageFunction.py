@@ -1,0 +1,2 @@
+def printCoins():
+    print('bitcoin')
