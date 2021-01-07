@@ -22,3 +22,6 @@ from python import packageFunction as p
 
 rtnMsg = p.returnFunc()
 print('call returnFunc() - ', rtnMsg)
+
+echoMsg = p.sayEcho('심영석')
+print('call sayEcho() - ', echoMsg)
