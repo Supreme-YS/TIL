@@ -198,4 +198,27 @@ import random
 ran = random.random() # 0 ~ 1 사이의 난수를 발생시킨다(실수형)
 print('random - ', ran)
 
-ran = random.randint() # 정수형의 난수를 발생시킨다
+ran = random.randint(0, 2) # 정수형의 난수를 발생시킨다
+print('random - ', ran)
+
+'''
+숫자 범위 : 1 ~ 10
+내가 입력한 숫자 > 난수 : 더 작은 수를 입력
+내가 입력한 숫자 < 난수 : 더 큰 수를 입력
+'''
+
+randNum = random.randint(1, 10)
+
+while True :
+    guessNum = int(input('예상 숫자를 입력하세요 : '))
+
+    if randNum == guessNum :
+        print('success')
+        break
+
+    elif randNum > guessNum :
+        print('더 큰 수를 입력하세요')
+
+    else :
+        print('더 작은 수를 입력하세요')
+
