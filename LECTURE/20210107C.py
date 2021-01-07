@@ -86,3 +86,17 @@ for i in word :
         print(i, end=',')
 
 # 주어진 문장에서 모든 문자를 대문자로 출력하세요.
+dummySen = "FlksjdfkwLJKAKkljfwsdkjKJFink"
+
+for i in dummySen :
+    if i.isupper():
+        print(i, end='')
+    else:
+        print(i.upper(), end='')
+
+wordList = ['가', '나', '다', '라']
+for word in wordList [::-1] :
+    print(word)
+
+# break, continue
+numbers = [14, 3, 4, 7, 10, 24, 17, 2, 33, 1, 15, 34, 37, 38]
