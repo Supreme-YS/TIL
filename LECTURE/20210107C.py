@@ -222,3 +222,38 @@ while True :
     else :
         print('더 작은 수를 입력하세요')
 
+'''
+1 ~ 100 사이의 난수를 발생시킨다
+도전 횟수는 20회로 제한
+출력 결과로는
+> 정답 시도 횟수
+> 정답 출력'''
+
+import random as rd
+
+challengeCnt = 1
+randNum = rd.randint(1, 100)
+
+while challengeCnt <= 20 :
+    guessNum = int(input('예상 숫자를 입력하세요 : '))
+
+    if randNum == guessNum :
+        print('성공입니다.')
+        print('도전 횟수 : {} 입니다.'.format(challengeCnt))
+        break
+
+    elif randNum > guessNum :
+        print('더 큰 수를 입력하세요')
+        challengeCnt += 1
+
+    else :
+        print('더 작은 수를 입력하세요')
+        challengeCnt += 1
+
+# random choices() : 훗날 데이터 샘플링을 위한 함수
+dataset = list(range(1, 10001))
+print(dataset)
+
+# 모집단 dataset에서 k개의 데이터를 샘플링하고 싶다면?
+train = random.choices(dataset, k = 10)
+print('sample dataset - ', train)
