@@ -111,6 +111,17 @@ for num in numbers:
     else :
         print('Not Found - ', num)
 
+# for ~ else
+
+search = 17
+numbers = [14, 3, 4, 7, 10, 24, 17, 2, 33, 1, 15, 34, 37, 38]
+for num in numbers:
+    if num == search :
+        print('Found - ', num)
+        break
+else :
+    print('Not Found - ', num)
+
 for i in range(1, 6) :
     print('i -', i)
 
@@ -162,3 +173,21 @@ enumerate
 bookList = ['SQL', 'R', 'TEXT-MINING', 'NLP', 'DATA-MINING', 'PYTHON', 'DJANGO']
 for idx, book in enumerate(bookList) :
     print('index - {}, value - {}'.format(idx, book))
+
+'''
+while <expression> :
+    statement
+    증감식
+'''
+cnt = 5
+while cnt > 0 :
+    print(cnt)
+    cnt = cnt - 1
+    print('cnt - ', cnt)
+
+# list - pop()
+whileList = ['foo', 'bar', 'baz']
+while whileList :
+    print(whileList.pop())
+    print('whileList - ', whileList)
+print('while - end')
