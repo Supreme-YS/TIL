@@ -16,12 +16,20 @@ def returnType functionName([arg01, arg02]) :
 def userPrint() :
     print('userPrint')
 
-from python import packageFunction as p
+from python import packageFunction as f
 # from python.packageFunction import printCoins
 # from python.packageFunction import
 
-rtnMsg = p.returnFunc()
+rtnMsg = f.returnFunc()
 print('call returnFunc() - ', rtnMsg)
 
-echoMsg = p.sayEcho('심영석')
+echoMsg = f.sayEcho('심영석')
 print('call sayEcho() - ', echoMsg)
+
+domain = f.makeUrl('naver')
+print('call makeUrl() - ', domain)
+
+f.badFunc('Supreme-YS')
+
+tupRtn = f.tupleFunc(1, 2, 3, 4, 5, 6, 7, 8, 9)
+print('call tupleFunc() - ', tupRtn)
