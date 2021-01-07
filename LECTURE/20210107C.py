@@ -99,4 +99,25 @@ for word in wordList [::-1] :
     print(word)
 
 # break, continue
+# search = 17
+search = 17
 numbers = [14, 3, 4, 7, 10, 24, 17, 2, 33, 1, 15, 34, 37, 38]
+
+for num in numbers:
+    if num == search :
+        continue
+        print('Found - ', num)
+        #break
+    else :
+        print('Not Found - ', num)
+
+for i in range(1, 6) :
+    print('i -', i)
+
+    for j in range(1, 4) :
+        print('i - {}, j - {}'.format(i, j))
+
+# 구구단
+for i in range(2, 10):
+    for j in range(1, 10) :
+        print('{} X {} = {}'.format(i, j, (i * j)))
