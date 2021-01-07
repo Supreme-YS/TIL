@@ -33,3 +33,23 @@ f.badFunc('Supreme-YS')
 
 tupRtn = f.tupleFunc(1, 2, 3, 4, 5, 6, 7, 8, 9)
 print('call tupleFunc() - ', tupRtn)
+
+f.dictFunc(name = 'Supreme-YS', age = 30)
+
+(oddSum, evenSum) = f.cntSum(100, 500)
+print('홀수의 합 {}, 짝수의 합 {}'.format(oddSum, evenSum))
+
+
+# 인자값으로 받은 년도 사이의 윤년을 찾아 리턴시켜주는 함수를 작성한다면?
+# list 타입
+leapYearList = f.leapYearFunc(1900, 2021)
+print('leapYearList - ', leapYearList)
+
+dictMsg = f.rtnDictFunc(10)
+print('dictMSG - ', type(dictMsg), dictMsg)
+
+for value in dictMsg.values() :
+    print('dictValues - ', value)
+
+for key in dictMsg.keys() :
+    print('dictKeys - ', key)
