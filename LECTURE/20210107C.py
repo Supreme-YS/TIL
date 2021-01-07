@@ -191,3 +191,11 @@ while whileList :
     print(whileList.pop())
     print('whileList - ', whileList)
 print('while - end')
+
+# 난수를 발생시켜서 횟수내에 맞추는 게임
+
+import random
+ran = random.random() # 0 ~ 1 사이의 난수를 발생시킨다(실수형)
+print('random - ', ran)
+
+ran = random.randint() # 정수형의 난수를 발생시킨다
