@@ -121,3 +121,44 @@ for i in range(1, 6) :
 for i in range(2, 10):
     for j in range(1, 10) :
         print('{} X {} = {}'.format(i, j, (i * j)))
+    print()
+    if i == 5 : # 5단 까지 출력하고 싶을 때
+        break
+
+    string ='''저는 여러분과 함께 파이썬 강의를 듣고있는 심영석입니다.
+    어려운 시기입니다. 
+    나이는 숫자에 불과하지만 벌써 30이네요...
+    '''
+
+    sentences = []
+    words     = []
+
+    # append(), insert(), extend()
+
+    for s in string.split('\n') :
+        sentences.append(s)
+        for w in s.split() :
+            words.append(w)
+    print('sentences - ', sentences,len(sentences))
+    print('words - ', words, len(words))
+
+# 분류정확도
+
+answer  = [1, 0, 2, 1, 0]
+predict = [1, 0, 2, 0 ,0]
+acc = 0
+for idx in range(len(answer)) :
+    fit = answer[idx] == predict[idx]
+    #print(fit, end = '\t')
+    acc += int(fit) * 20
+
+print('classification accuracy - ', acc)
+
+'''
+enumerate
+반복문 사용시 몇 번째 반복문인지 확인이 필요하다면
+인덱스 번호와 컬렉션 요소를 확인 할 수 있다.'''
+
+bookList = ['SQL', 'R', 'TEXT-MINING', 'NLP', 'DATA-MINING', 'PYTHON', 'DJANGO']
+for idx, book in enumerate(bookList) :
+    print('index - {}, value - {}'.format(idx, book))
