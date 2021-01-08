@@ -181,6 +181,36 @@ print('n=5 - ', addSum(5))
 print('n=100 - ', addSum(100))
 
 # 익명의 함수( lambda 식)를 만드는 방법
+# 람다식 (가독성 향상, 코드 간결, 메모리 절약 - 즉시 실행 함수이기 때문에)
+
+def multiFunc(x, y) :
+    return x * y
+
+print(multiFunc(10, 50))
+
+# syntax : lambda arg : body
+# 람다도 함수다.
+
+lambdaVar = lambda x, y : x * y
+print(lambdaVar(10, 50))
+
+def lambdaFunc(x, y, func) :
+    print('lambdaFunc - ', x * y * func(100, 100))
+
+lambdaFunc(10, 20, lambda x, y : x * y)
+lambdaFunc(10, 20, lambdaVar)
+lambdaFunc(10, 20, multiFunc)
+
+# hint : 매개변수를 받을 때 데이터 type을 정해놓는 방법
+
+def totalLengthFunc(word : str, num : int) :
+    return len(word) * num
+
+print('hint - ', totalLengthFunc('I love you', 3000))
+
+
+
+
 
 
 
