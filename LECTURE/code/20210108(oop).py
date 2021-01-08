@@ -10,11 +10,12 @@ Object Oriented Programming (OOP)
 
 Real World                      P/G World
 ----------------추상화과정------------------
-Object ---------   Class   ------> instance != class class는 instance가 아니다. class는 instance를 생성할 수 있게 하는 template
+Object ---------   Class   ------> instance != class / class는 instance가 아니다. class는 instance를 생성할 수 있게 하는 template
 - 명사적 특징 ---> Variable  ______/
 - 동사적 특징 ---> Function  ______/
 
 class에 정의되는 변수와 함수는 instance의 소유이다.
+class는 instance를 생성하기 위해 만든다.
 '''
 
 # 학생의 정보를 저장한다. --> 비효율적
@@ -61,8 +62,6 @@ class Calc :
 # Class(설계도면)에 대한 instance(건물)를 만들어내는 문법
 obj = Calc()# --> 자동으로 init이라고 하는 객체생성시 호출됨 --> 설계도면(Class)을 기반으로 건물(instance)을 지은 상태
 obj.plus() # 위쪽에서 obj는 class내 함수들의 주소값을 갖고있음 그래서 변수명.함수명() 으로 호출할 수 있음
-
-
 
 '''
 user define function
@@ -118,6 +117,7 @@ class Student :
 
     def __init__(self, name, major, id, grade): # 초기화 함수가 생성되는 시점에 4개의 매개변수를 받는구나~
                                                 # self는 인자가 아니다. self는 인스턴스 소유를 나타내는 것
+                                                # init은 생성자 함수(내장함수) : 객체 생성시 실행되는 함수
         self.name  = name                       # 고로 이 친구들도 인스턴스의 소유
         self.major = major
         self.id    = id
@@ -152,18 +152,26 @@ class Employee :
     def __init__(self, name, salary):
         self.name = name
         self.salary = salary
+        print('employee init')
 
     def getSalary(self):
         return '현재 {}님의 급여는 {} 입니다.'.format(self.name, self.salary)
 
     @classmethod # decorator를 통해 클래스 메서드라는 것을 명시해줘야한다. # 클래스 소유의 함수
     def updateRate(cls, rate): # 클래스 소유의 함수(메서드)는 self가 아니라 cls로 가져가야 한다.
-
         print('인상률이 {}에서 {} 로 변경되었습니다.'.format(Employee.raiseRate, rate))
         cls.raiseRate = rate
 
     def applyRaise(self): # 인스턴스 소유의 메서드 이기 때문에 아래 Employee 대신에 cls 사용 못한다.
         self.salary = int(self.salary * Employee.raiseRate)
+
+    # static method(함수) cls(클래스소속)도 self(인스턴스소속)도 아닌 것들
+    # Decoration 필요하다
+    # class 함수와 static 함수는 동일한데, 차이는 namespace(영역)이 다르다는 차이가 있다.
+    @staticmethod
+    def isValid(salary):
+        if salary < 0 :
+            print('음수가 될 수 없습니다')
 
 emp01 = Employee('Supreme-YS', 1000) # 인스턴스를 생성
 print('인상 전 급여 - ', emp01.getSalary()) # emp01.getSalary() 는 인스턴스 소유의 함수
@@ -173,7 +181,7 @@ emp01.applyRaise()
 
 print('인상 후 급여 - ', emp01.getSalary())
 
-
+print(Employee.isValid(1000))
 
 
 
