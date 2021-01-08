@@ -112,24 +112,75 @@ def overroll(args01, args02, *args03, **args04) :
 
 overroll(10, 20, 'kim', 'park', 'sim', age01=20, age02=30, age03=40)
 
+# nested function (중첩함수)
+def outerFunc(num) :
+    print('outerFunc - ', num)
+    def innerFunc(x) :
+        print('innerFunc - ', x)
+    innerFunc(num + 100)
 
-#
+outerFunc(100)
+
+# 중첩함수 활용 예)
+'''outer 함수 : 자료 생성, inner 함수 포함
+inner 함수 : 자료 연산/처리(합계, 평균)'''
+
+def calcFunc(data) :
+
+    dataset = data
+
+    def sumFunc() :
+        total = sum(dataset)
+        return total
+    def avgFunc(total) :
+        avg = total / len(dataset)
+        return avg
+
+    return sumFunc , avgFunc # 리턴값을 함수 호출? --> 가능하다 함수는 또 다른 함수를 리턴값으로 할 수 있다 --> 클로저 함수의 반환!
+                                 # 리턴값이 2개? --> 튜플형식이다.
+
+data = list(range(1, 101))
+print('range data - ', data)
+
+rtnSumFunc, rtnAvgFunc = calcFunc(data) # 리턴값이 2개인 튜플 형태로 넘어오기 때문에 새로운 두 개의 그릇을 만듦.
+# 외부에서는 변수지만 이를 또 함수를 사용할 수 있다.
+tot = rtnSumFunc()
+print(tot)
+avg = rtnAvgFunc(tot)
+print(avg)
 
 
+'''
+재귀함수(self-recursive function)
+- 함수 내부에서 자신의 함수를 반복 호출하는 기법
+- 용도 : 반복적으로 변수를 변경해서 연산할 때 (누적, 팩토리얼)
+'''
+def countFunc(n) : # n = 5 -> 1, 2, 3, 4, 5 로 출력되게 하고 싶다면?
+    if n == 0 :
+        return 0
+        # break도 가능한데 함수에선 잘 안쓴다
+        # 그래서 return 0을 씀
+    else :
+        countFunc(n-1) # stack [5, 4, 3, 2, 1] 이 쌓이게 된다. 하지만 재귀함수는 후입선출!
+        print(n, end = " ")
 
+    pass
 
+countFunc(5) # 1 2 3 4 5
+countFunc(0) # 0
 
+def addSum(n) :
+    if n == 1:
+        return 1
+    else :
+        result = n + addSum(n - 1)
+        print('debug - ', result)
+        return result
 
+print('n=5 - ', addSum(5))
+print('n=100 - ', addSum(100))
 
-
-
-
-
-
-
-
-
-
+# 익명의 함수( lambda 식)를 만드는 방법
 
 
 
