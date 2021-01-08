@@ -81,7 +81,7 @@ class Student :
         self.id    = id
         self.grade = grade
 
-    def __repr__(self):
+    def __repr__(self): # 인스턴스를 문자열로 보여주는 내장함수
         return self.name + "\t" + self.major + "\t" + self.id + "\t" + str(self.grade)
 
     def getInfo(self):
