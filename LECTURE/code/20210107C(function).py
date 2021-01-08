@@ -97,6 +97,21 @@ def myFunc(x) :
 
 print('caller myFunc - ', myFunc(100))
 
+def personInfo(weight, height, **other) :
+    print('weight - ', weight)
+    print('height - ', height)
+    print('extra - ', other, type(other)) # dict 타입
+
+personInfo(80, 173, name='Supreme-YS', address='gimpo') # 가변인자는 비어있는 것으로 출력이 된다.
+                                       # **는 dict 가변인자이고 mapping 형식으로 arg를 입력해야 한다.
+
+#personInfo(80, 173, {'name':'SupYS', 'address':'gimpo'}) # {} 사용 X
+
+def overroll(args01, args02, *args03, **args04) :
+    print(args01, args02, args03, args04)
+
+overroll(10, 20, 'kim', 'park', 'sim', age01=20, age02=30, age03=40)
+
 
 
 
