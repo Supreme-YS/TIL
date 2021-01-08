@@ -52,16 +52,61 @@ class Calc :
 
     # 생성자함수 혹은 초기화
     def __init__(self):
-        print('객체 생성시 호출되는 함수이고 난 초기화라고 한다.')
+        print('객체 생성시 호출되는 함수이고 난 생성자 혹은 초기화라고 한다.')
 
     # 함수선언
     def plus(self):
         print('사용자 정의 함수이고 난 instance의 소유가 된다.')
 
 # Class(설계도면)에 대한 instance(건물)를 만들어내는 문법
-obj = Calc() # --> 자동으로 init이라고 하는 객체생성시 호출됨
+obj = Calc()# --> 자동으로 init이라고 하는 객체생성시 호출됨 --> 설계도면(Class)을 기반으로 건물(instance)을 지은 상태
 obj.plus() # 위쪽에서 obj는 class내 함수들의 주소값을 갖고있음 그래서 변수명.함수명() 으로 호출할 수 있음
 
+
+
+'''
+user define function
+- setXXXX
+- getXXXX
+- isXXXXX
+'''
+
+# OOP 방식으로 설계하기
+class Student :
+
+    def __init__(self, name, major, id, grade): # 초기화 함수가 생성되는 시점에 4개의 매개변수를 받는구나~
+                                                # self는 인자가 아니다. self는 인스턴스 소유를 나타내는 것
+        self.name  = name                       # 고로 이 친구들도 인스턴스의 소유
+        self.major = major
+        self.id    = id
+        self.grade = grade
+
+    def __repr__(self):
+        return self.name + "\t" + self.major + "\t" + self.id + "\t" + str(self.grade)
+
+    def getInfo(self):
+        return '이름 : {} \t 전공 : {} \t 학번 : {} \t 학점 : {}'.format(self.name, self.major, self.id, self.grade)
+
+
+stuList = []
+stu01 = Student('SupremeYS', 'IE', '20111850', 4.5)
+stu02 = Student('Supreme-YS2', 'IE2', '20111850-2', 4.5)
+stu03 = Student('Supreme-YS3', 'IE3', '20111850-3', 4.5)
+
+stuList.append(stu01)
+stuList.append(stu02)
+stuList.append(stu03)
+
+print(stuList)
+
+
+stu01 = Student('Supreme-YS', 'IE', '20111850', 4.5)
+print('stu01 address - ', stu01)
+
+print(stu01.name)
+print(stu01.major)
+print(stu01.id)
+print(stu01.grade)
 
 
 
