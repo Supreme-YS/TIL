@@ -181,7 +181,7 @@ emp01.applyRaise()
 
 print('인상 후 급여 - ', emp01.getSalary())
 
-print(Employee.isValid(1000))
+print(Employee.isValid(1000)) # 메서드에 리턴타입이 없는데 print를 하면 None이 된다.
 
 
 
