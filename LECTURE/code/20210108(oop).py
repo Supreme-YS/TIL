@@ -109,9 +109,69 @@ print(stu01.id)
 print(stu01.grade)
 
 
+'''-------------------------------------------------------------------------------------------'''
+# 인스턴스 소유의 변수가 아닌 클래스 소유의 변수
+# namespace ( instance -> class -> super class
+class Student :
 
+    scholarshipRate = 3.5 # class variable ( 클래스 소유 ) self로 사용할 수 없고 , class 소유이기 때문에
 
+    def __init__(self, name, major, id, grade): # 초기화 함수가 생성되는 시점에 4개의 매개변수를 받는구나~
+                                                # self는 인자가 아니다. self는 인스턴스 소유를 나타내는 것
+        self.name  = name                       # 고로 이 친구들도 인스턴스의 소유
+        self.major = major
+        self.id    = id
+        self.grade = grade
 
+    def __repr__(self): # 인스턴스를 문자열로 보여주는 내장함수
+        return self.name + "\t" + self.major + "\t" + self.id + "\t" + str(self.grade)
+
+    def getInfo(self):
+        return '이름 : {} \t 전공 : {} \t 학번 : {} \t 학점 : {}'.format(self.name, self.major, self.id, self.grade)
+
+    def isScholarShip(self):
+        if self.grade >= Student.scholarshipRate: # 클래스 소유의 변수를 활용할 때는 class명을 사용해서 접근해야 한다.
+            return True
+        else :
+            return False
+
+stu01 = Student('YS', 'IE', '2011', 4.5)
+print('장학금 여부 - ', stu01.isScholarShip(), Student.scholarshipRate)
+
+# 인스턴스 소유가 아닌 class method
+'''
+self X
+클래스 함수는 cls인 인자를 받고 모든 인스턴스가 공유하는 클래스 변수와
+같은 데이터를 생성, 변경 또는 참조하기 위해서 사용됩니다.
+'''
+
+class Employee :
+
+    raiseRate = 1.1 # 급여인상률 / class variable이다. / class 소유의 변수
+
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+
+    def getSalary(self):
+        return '현재 {}님의 급여는 {} 입니다.'.format(self.name, self.salary)
+
+    @classmethod # decorator를 통해 클래스 메서드라는 것을 명시해줘야한다. # 클래스 소유의 함수
+    def updateRate(cls, rate): # 클래스 소유의 함수(메서드)는 self가 아니라 cls로 가져가야 한다.
+
+        print('인상률이 {}에서 {} 로 변경되었습니다.'.format(Employee.raiseRate, rate))
+        cls.raiseRate = rate
+
+    def applyRaise(self): # 인스턴스 소유의 메서드 이기 때문에 아래 Employee 대신에 cls 사용 못한다.
+        self.salary = int(self.salary * Employee.raiseRate)
+
+emp01 = Employee('Supreme-YS', 1000) # 인스턴스를 생성
+print('인상 전 급여 - ', emp01.getSalary()) # emp01.getSalary() 는 인스턴스 소유의 함수
+
+Employee.updateRate(1.5) # Employee.updateRate는 클래스 소유의 함수
+emp01.applyRaise()
+
+print('인상 후 급여 - ', emp01.getSalary())
 
 
 
