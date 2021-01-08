@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f5c3ba2a-b7d1-4402-a15a-e6a50b68f76d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/20210108(oop).py" beforeDir="false" afterPath="$PROJECT_DIR$/code/20210108(oop).py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/quiz.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/quiz.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/theorem/20210107(quiz).md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +119,7 @@
       <workItem from="1610066864334" duration="986000" />
       <workItem from="1610068279383" duration="3667000" />
       <workItem from="1610072052380" duration="7448000" />
-      <workItem from="1610084084126" duration="4405000" />
+      <workItem from="1610084084126" duration="5914000" />
     </task>
     <servers />
   </component>
@@ -130,7 +131,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/code/quiz.py</url>
-          <line>18</line>
+          <line>19</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
