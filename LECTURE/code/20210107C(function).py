@@ -53,3 +53,68 @@ for value in dictMsg.values() :
 
 for key in dictMsg.keys() :
     print('dictKeys - ', key)
+
+
+# default parameter 사용
+# 함수 선언
+def defaultParam(x, y, z = True) :
+    paramSum = x + y
+    if paramSum > 10 and z :
+        return paramSum
+    else :
+        return 0
+# 함수 호출
+defaultParam(10, 20) # 인자값이 다른데 왜 오류가 안날까? --> 함수 선언에서 세번째 인자값은 default로 True를 사용한다는 것이기 때문이다
+
+# caller function
+result = defaultParam(10, 20) # z값은 default로 True이기 때문에 실행이 되는것이다.
+print('caller defaultParam() - ', result)
+
+# 함수의 입력인자가 list , dict - mutable
+# 함수의 입력인자가 숫자, 문자열, tuple - immutable
+tmpList = [10]
+tmpX = 10
+
+def mutableFunc(argX, argList) :
+    argX = argx + 100
+    argList.append(100)
+
+mutableFunc(tmpX, tmpList)
+print('tmpList - ', tmpList)
+print('tmpX - ', tmpX) # 110이 출력되는 것이 아니라 10을 출력하고 있다. 즉, 참조불가능! immutable
+
+# variable(변수) - 선언위치에 따른 구분 (local, global)
+
+tmp = 100 # global (전역변수) 선언이다.
+
+def myFunc(x) :
+    tmp = 0 # 함수안에 동일한 변수가 선언이 되었다. # 이름은 같지만 local(지역변수) 선언이다.
+            # 만약에 tmp 초기값을 선언해주지 않으면 unbounded 오류가 발생한다.
+            # 초기값을 설정하지 않을 시, global로 전역변수를 사용하기 위한 코드를 추가해준다.
+            # 예) global tmp
+    tmp += x
+    return tmp
+
+print('caller myFunc - ', myFunc(100))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
