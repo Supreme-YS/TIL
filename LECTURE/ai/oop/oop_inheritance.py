@@ -22,9 +22,34 @@ class Car :
 # car01.함수 # car01 함수에 접근
 # car01.변수 # car01 변수에 접근
 
-# 최상위 : Object > Sup > Sub 순 Sub가 가장 많은 구성요소를 갖고 있다. 
+# 최상위 : Object > Sup > Sub 순 Sub가 가장 많은 구성요소를 갖고 있다.
 class Sup(object) : # Sup가 object를 상속받는 형식 java의 extends
     pass
 
 class Sub(Sup) : # Sub가 Sup을 상속받는 형식
+    pass
+
+
+
+class Parent(object) :
+
+    # 초기화 함수, 생성자
+    def __init__(self, name, job):
+        self.name = name
+        self.job  = job
+
+    def display(self): # repr 과 똑같은 내장함수 , 인스턴스의 주소값이 아닌 문자열을 출력해준다.
+        return '당신의 이름은 {} 이고, 직업은 {} 입니다.'.format(self.name, self.job)
+
+
+class Child01(Parent) : # Parent를 상속받는 Child01
+    def __init__(self, name, job, age):
+        self.name = name
+        self.job  = job
+        self.age  = age
+    def __str__(self):
+        return '당신의 이름은 {]이고, 직업은 {}이며 나이는 {}입니다.'.format(self.name, self.job, self.age)
+
+
+class Child02(Parent) :
     pass
