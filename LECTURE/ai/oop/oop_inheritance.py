@@ -90,6 +90,7 @@ class ManagerVO(Person) :
 
 # encapsulation ( 은닉화 )
 # information hiding ( 정보은닉 )
+# 변수에 대한 직접적인 접근을 막고자 변수 앞 __ 처리를 통해 캡슐화를 시켜줄 수 있다.
 
 class MyDate(object) :
                             # def __init__이 없다면
