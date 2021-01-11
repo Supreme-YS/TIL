@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5c3ba2a-b7d1-4402-a15a-e6a50b68f76d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ai/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ai/oop/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ai/oop/oop_inheritance.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/quiz.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/quiz.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/theorem/20210107(quiz).md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +42,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\1234\Desktop\TIL\LECTURE\ai" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.20210106C(date_demo)">
     <configuration name="20210105C(dict)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -119,7 +125,9 @@
       <workItem from="1610066864334" duration="986000" />
       <workItem from="1610068279383" duration="3667000" />
       <workItem from="1610072052380" duration="7448000" />
-      <workItem from="1610084084126" duration="5914000" />
+      <workItem from="1610084084126" duration="6056000" />
+      <workItem from="1610324431798" duration="1187000" />
+      <workItem from="1610325650661" duration="159000" />
     </task>
     <servers />
   </component>
