@@ -103,3 +103,16 @@ class MyDate(object) :
 
     def getYear(self):
         return self.__year # 즉, 캡슐화가 되어버린다. 외부에서 year라는 변수에 직접 접근이 불가능해진다.
+
+
+'''
+public vs private
+instance variable - public 변경 private ? __instance variable
+instance variable - public 변경 private ? __instance function'''
+
+class HidingClass(object) :
+    def __init__(self, name, dept, num):
+        self.utype = self.__class__.__name__ # __내장속성__
+        self.name = name
+        self.__dept = dept # private으로 변경 __ 사용
+        self.num  = num
