@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5c3ba2a-b7d1-4402-a15a-e6a50b68f76d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ai/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ai/oop/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ai/oop/oop_inheritance.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai/oop/oop_inheritance.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai/oop/oop_inheritance.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/inheritanceCaller.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/inheritanceCaller.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +125,7 @@
       <workItem from="1610072052380" duration="7448000" />
       <workItem from="1610084084126" duration="6056000" />
       <workItem from="1610324431798" duration="1187000" />
-      <workItem from="1610325650661" duration="159000" />
+      <workItem from="1610325650661" duration="422000" />
     </task>
     <servers />
   </component>

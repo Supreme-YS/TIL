@@ -26,5 +26,5 @@ class Car :
 class Sup(object) : # Sup가 object를 상속받는 형식 java의 extends
     pass
 
-class Sub(Sup) : #Sub가 Sup을 상속받는 형식
+class Sub(Sup) : # Sub가 Sup을 상속받는 형식
     pass
