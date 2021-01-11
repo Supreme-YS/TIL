@@ -45,37 +45,44 @@ from ai.oop.oop_inheritance import *
 
 # 다형성
 
-stu01 = StudentVO('심영석', 30, 'gimpo', '2011')
-tea01 = TeacherVO('심영석', 30, 'gimpo', 'python')
-emp01 = ManagerVO('심영석', 30, 'gimpo', 'manager')
+# stu01 = StudentVO('심영석', 30, 'gimpo', '2011')
+# tea01 = TeacherVO('심영석', 30, 'gimpo', 'python')
+# emp01 = ManagerVO('심영석', 30, 'gimpo', 'manager')
+#
+# perList = []
+# perList.append(stu01)
+# perList.append(tea01)
+# perList.append(emp01)
+#
+# print('perList - ', perList)
+# # 다형성을 사용하지 않고 출력하는 방법
+# # isinstance() : 런 타임에 타입을 체크해주는 함수
+# for obj in perList :
+#     if isinstance(obj, StudentVO) :
+#         print(obj.stuInfo())
+#     elif isinstance(obj, TeacherVO) :
+#         print(obj.teaInfo())
+#     else :
+#         print(obj.empInfo())
+#
+# # 다형성을 활용해서 출력하는 방법
+# for obj in perList:
+#     print(obj.perInfo())
+#
+# # Quiz_Caller
+#
+# account = Account('441-2919-1234', 500000, 0.073)
+# account.accountInfo()
+# account.withDraw(600000)
+# account.deposit(200000)
+# account.withDraw(600000)
+# account.accountInfo()
+# print('현재 잔액의 이자를 포함한 금액')
+# account.printInterestRate()
 
-perList = []
-perList.append(stu01)
-perList.append(tea01)
-perList.append(emp01)
-
-print('perList - ', perList)
-# 다형성을 사용하지 않고 출력하는 방법
-# isinstance() : 런 타임에 타입을 체크해주는 함수
-for obj in perList :
-    if isinstance(obj, StudentVO) :
-        print(obj.stuInfo())
-    elif isinstance(obj, TeacherVO) :
-        print(obj.teaInfo())
-    else :
-        print(obj.empInfo())
-
-# 다형성을 활용해서 출력하는 방법
-for obj in perList:
-    print(obj.perInfo())
-
-# Quiz_Caller
-
-account = Account('441-2919-1234', 500000, 0.073)
+account = FundAccount('441-2919-1234', 500000, 0.073, 'F')
 account.accountInfo()
-account.withDraw(600000)
-account.deposit(200000)
-account.withDraw(600000)
+account = SavingAccount('441-2919-1234', 500000, 0.073, 'S')
 account.accountInfo()
-print('현재 잔액의 이자를 포함한 금액')
-account.printInterestRate()
+
+print(account.printInterestRate())

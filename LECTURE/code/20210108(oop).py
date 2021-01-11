@@ -110,7 +110,7 @@ print(stu01.grade)
 
 '''-------------------------------------------------------------------------------------------'''
 # 인스턴스 소유의 변수가 아닌 클래스 소유의 변수
-# namespace ( instance -> class -> super class
+# namespace ( instance -> class -> super class )
 class Student :
 
     scholarshipRate = 3.5 # class variable ( 클래스 소유 ) self로 사용할 수 없고 , class 소유이기 때문에
