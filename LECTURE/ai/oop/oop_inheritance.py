@@ -69,7 +69,7 @@ class Person(object) :
 class StudentVO(Person) :
     def __init__(self, name, age, address, stuID): # 4개 중 3개는 부모에서 가져옴
         super().__init__(name, age, address) # 부모의 __init__ 생성자를 호출하는 행위, 자식에게 들어온 인자를 부모에게 assign 하는 행위
-        self.stuId = stuID
+        self.stuId = stuID # self로 자식 클래스에서 추가로 정의한 stuID를 assign
     def stuInfo(self) :
         return super().perInfo() + "\t" + self.stuId # 부모의 함수인 perInfo를 가져오고 자식의 것인 stuID를 합친 것!
 
@@ -80,3 +80,25 @@ class TeacherVO(Person) :
     def teaInfo(self) :
         return super().perInfo() + "\t" + self.subject
 
+class ManagerVO(Person) :
+    def __init__(self, name, age, address, dept):
+        super().__init__(name, age, address)
+        self.dept = dept
+    def empInfo(self):
+        return super().perInfo() + "\t" + self.dept
+
+
+# encapsulation ( 은닉화 )
+# information hiding ( 정보은닉 )
+
+class MyDate(object) :
+                            # def __init__이 없다면
+                            # 인자가 없는 init이 삽입된 코드라고 간주함
+    def setYear(self, year):
+        if year < 0 :
+            self.__year = 2021 # 변수에 __ 를 준다면 정보은닉의 의미가 된다.
+        else :
+            self.__year = year
+
+    def getYear(self):
+        return self.__year # 즉, 캡슐화가 되어버린다. 외부에서 year라는 변수에 직접 접근이 불가능해진다.
