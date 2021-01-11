@@ -11,4 +11,7 @@ from ai.oop.oop_inheritance import *
 # child01.childInfo()
 
 stu01 = StudentVO('심영석', 30, 'gimpo', '2011')
-print(stu01.stuInfo())
+print('stu info - ', stu01.stuInfo())
+
+tea01 = TeacherVO('심영석', 30, 'gimpo', 'python')
+print('tea info - ', tea01.teaInfo())

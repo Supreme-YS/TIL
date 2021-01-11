@@ -65,6 +65,7 @@ class Person(object) :
         return self.name + "\t" + str(self.age) + "\t" + self.address # 문자열 중간에 int 형 즉, 형(type)이 다른게 있으면 Error 발생한다.
                                                                       # 따라서 casting 필요하다.
 # super() - 부모의 생성자를 호출하는 작업
+# StudentVO, TeacherVO 2개의 자식 클래스. 둘 다 Parent class를 상속받고 있다.
 class StudentVO(Person) :
     def __init__(self, name, age, address, stuID): # 4개 중 3개는 부모에서 가져옴
         super().__init__(name, age, address) # 부모의 __init__ 생성자를 호출하는 행위, 자식에게 들어온 인자를 부모에게 assign 하는 행위
@@ -73,4 +74,9 @@ class StudentVO(Person) :
         return super().perInfo() + "\t" + self.stuId # 부모의 함수인 perInfo를 가져오고 자식의 것인 stuID를 합친 것!
 
 class TeacherVO(Person) :
-    pass
+    def __init__(self, name, age, address, subject):
+        super().__init__(name, age, address)
+        self.subject = subject
+    def teaInfo(self) :
+        return super().perInfo() + "\t" + self.subject
+
