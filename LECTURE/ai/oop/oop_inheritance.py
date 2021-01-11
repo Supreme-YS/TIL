@@ -64,28 +64,42 @@ class Person(object) :
     def perInfo(self):
         return self.name + "\t" + str(self.age) + "\t" + self.address # 문자열 중간에 int 형 즉, 형(type)이 다른게 있으면 Error 발생한다.
                                                                       # 따라서 casting 필요하다.
+
 # super() - 부모의 생성자를 호출하는 작업
 # StudentVO, TeacherVO 2개의 자식 클래스. 둘 다 Parent class를 상속받고 있다.
 class StudentVO(Person) :
     def __init__(self, name, age, address, stuID): # 4개 중 3개는 부모에서 가져옴
         super().__init__(name, age, address) # 부모의 __init__ 생성자를 호출하는 행위, 자식에게 들어온 인자를 부모에게 assign 하는 행위
         self.stuId = stuID # self로 자식 클래스에서 추가로 정의한 stuID를 assign
+
     def stuInfo(self) :
+        return super().perInfo() + "\t" + self.stuId # 부모의 함수인 perInfo를 가져오고 자식의 것인 stuID를 합친 것!
+
+    def perInfo(self) :
         return super().perInfo() + "\t" + self.stuId # 부모의 함수인 perInfo를 가져오고 자식의 것인 stuID를 합친 것!
 
 class TeacherVO(Person) :
     def __init__(self, name, age, address, subject):
         super().__init__(name, age, address)
         self.subject = subject
+
     def teaInfo(self) :
+        return super().perInfo() + "\t" + self.subject
+
+    def perInfo(self) :
         return super().perInfo() + "\t" + self.subject
 
 class ManagerVO(Person) :
     def __init__(self, name, age, address, dept):
         super().__init__(name, age, address)
         self.dept = dept
+
     def empInfo(self):
         return super().perInfo() + "\t" + self.dept
+
+    def perInfo(self) :
+        return super().perInfo() + "\t" + self.dept
+
 
 
 # encapsulation ( 은닉화 )
@@ -111,8 +125,22 @@ instance variable - public 변경 private ? __instance variable
 instance variable - public 변경 private ? __instance function'''
 
 class HidingClass(object) :
+
     def __init__(self, name, dept, num):
         self.utype = self.__class__.__name__ # __내장속성__
         self.name = name
         self.__dept = dept # private으로 변경 __ 사용
         self.num  = num
+
+    def getDept(self):
+        return self.__dept # 클래스 내 에서는 접근이 가능하다.
+
+    def __getInfo(self):
+        return "__로 시작했기 때문에 해당 함수는 외부에서 접근이 불가능하다."
+
+
+'''
+다형성
+상위 클래스에 정의된 함수를 하위 클래스에서 해당 함수를 재정의(method overriding)
+같은 이름의 함수지만 하는 일이 다른 개념
+'''
