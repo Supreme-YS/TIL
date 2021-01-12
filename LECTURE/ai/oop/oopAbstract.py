@@ -232,7 +232,7 @@ def tagH1(func) :
 # 클래스 내부에서 호출해서 사용하는 개념이다.
 class Per(object) :
 
-    @tagH1 #클래스 내부에서 호출해서 사용하는 개념이다.
+    @tagH1 # 클래스 내부에서 호출해서 사용하는 개념이다.
     def getName(self):
         return self.name
 
