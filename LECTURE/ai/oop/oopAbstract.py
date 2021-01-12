@@ -338,11 +338,26 @@ yield 키워드 이해
 def textSequenceFunc() :
     msg = 'hi python'
     for txt in msg :
-        return txt
+        yield txt
+        #return txt
 
 # print(textSequenceFunc)
 textSequenceFunc()
 
+print(textSequenceFunc)
 charIte = iter(textSequenceFunc()) # 함수자체를 iterator로 만들어 줌
 print( type(charIte))
-print( next(charIte)) 
+print( next(charIte)) # return txt 로 하면 h 이후에 오류 --> 하나의 값만 출력하고 끝나버리기 때문에
+                      # yield txt로 코드를 바꾸면 재실행됨 --> 실행된 상태를 기반으로 다음 코드 실행
+
+'''
+yield - 잠시 함수 실행을 멈추고 호출한 곳에 값을 전달
+- 현재 실행된 상태를 계속 유지할 수 있다.
+- 그러므로, 다시 해당 함수를 호출하면 현재 실행된 상태를 기반으로 다음 코드를 실행
+'''
+
+print(textSequenceFunc()) # generator라는 형식으로 바뀜.
+                          # <generator object textSequenceFunc at 0x000001C2D93B3350>
+
+charIte = iter(textSequenceFunc())
+next(charIte)
