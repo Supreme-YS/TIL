@@ -328,3 +328,21 @@ print('dict comprehension -', type(keySet), keySet)
 # key 값을 10단위로 한번에 바꿔본다면?
 keySet = {key*10:value for key, value in dataset.items()}
 print('dict comprehension -', type(keySet), keySet)
+
+# python generator
+'''
+iterator 를 만들어주는 기능(함수)
+yield 키워드 이해
+'''
+# 즉, 함수를 iterator로 만들어주는거다.
+def textSequenceFunc() :
+    msg = 'hi python'
+    for txt in msg :
+        return txt
+
+# print(textSequenceFunc)
+textSequenceFunc()
+
+charIte = iter(textSequenceFunc()) # 함수자체를 iterator로 만들어 줌
+print( type(charIte))
+print( next(charIte)) 
