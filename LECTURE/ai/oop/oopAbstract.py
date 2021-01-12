@@ -207,3 +207,39 @@ def userQuad(digit01, digit02, digit03, digit04) : # 인자를 네 개 받는 �
     return digit01 * digit02 * digit03 * digit04
 print(userQuad(2, 3, 4, 5))
 
+
+def makeBold(func) :
+    def wrapper(string) :
+        return '<b>' + func(string) + '</b>'
+    return wrapper
+
+def makeFont(func) :
+    def wrapper(string) :
+        return '<i>' + func(string) + '</i>'
+    return wrapper
+
+@makeBold
+@makeFont
+def makeBoldFont(string) :
+    return string
+
+print( makeBoldFont('두 개의 데코레이터를 활용하고 있습니다.'))
+
+# class - function 데코레이터 적용이 가능할까?
+# 데코레이터를 외부 함수로 정의해두고
+def tagH1(func) :
+    pass
+# 클래스 내부에서 호출해서 사용하는 개념이다.
+class Per(object) :
+
+    @tagH1 #클래스 내부에서 호출해서 사용하는 개념이다.
+    def getName(self):
+        return self.name
+
+
+
+
+
+
+
+
