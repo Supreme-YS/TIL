@@ -228,18 +228,75 @@ print( makeBoldFont('두 개의 데코레이터를 활용하고 있습니다.'))
 # class - function 데코레이터 적용이 가능할까?
 # 데코레이터를 외부 함수로 정의해두고
 def tagH1(func) :
-    pass
+    # 인스턴스에 함수가 호출할 수 있는 데코다 라는 의미로 self 넣어줘야 한다.
+    def wrapper(self, *args, **kwargs) :
+        return '<h1>{}</h1>'.format(func(self, *args, **kwargs))
+    return wrapper
+
 # 클래스 내부에서 호출해서 사용하는 개념이다.
 class Per(object) :
+    def __init__(self, name):
+        self.name = name
 
     @tagH1 # 클래스 내부에서 호출해서 사용하는 개념이다.
-    def getName(self):
+    def getName(self) :
         return self.name
 
+per = Per('Supreme-YS')
+print('per - ', per.getName())
 
+# Iterator
+'''
+- iterable 객체 (iterable Object)
+list, set, tuple, dict - (collection) 
+Text Sequence
 
+for ~ in collection :
+    pass
+    
+- iterator -> 파이썬 모듈이 가지고 있는 내장함수 iter()
+-> 순차적으로 다음 데이터를 리턴할 수 있는 객체
+-> 내장함수 next()를 사용해서, 순환하는 다음 값을 반환함
+'''
 
+for num in [1, 2, 3, 4, 5] :
+    print(num)
 
+for char in 'text sequence' :
+    print(char)
 
+userList = [1, 2, 3, 4, 5]
+print(next(userList))
+
+userIterator = iter(userList)
+print(type(userIterator)) # type이 list가 아니라 list_iterator로 출력된다.
+print('type - ', type(userIterator), type(userList))
+
+print(next(userIterator))
+
+# 사용자 정의 iterator 클래스 만들기
+
+class Counter :
+    def __init__(self, stop):
+        self.stop = stop
+
+    def __iter__(self):
+        return CounterIterator(self.stop)
+
+class CounterIterator:
+    def __init__(self, stop):
+        self.current = 0
+        self.stop = stop
+
+    def __next__(self):
+        if self.current < self.stop:
+            rtnValue = self.current
+            self.current += 1
+            return rtnValue
+        else :
+            return exit()
+
+cntIterator = iter(Counter(10))
+print(next(cntIterator))
 
 
