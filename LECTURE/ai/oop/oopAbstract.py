@@ -147,4 +147,63 @@ YS()
 @datetimeDecorator
 def dumpFunc() :
     print('함수 실행~~')
-dumpFunc() # 함수를 호출할 때 함수 밑단에 datetimeDecorator를 장식자로 가질겁니다. 라고 함 2
+dumpFunc() # 함수를 호출할 때 함수 밑단에 datetimeDecorator를 장식자로 가질겁니다. 라고 함
+
+# 데코레이터 [실습]
+'''
+1. typeChecker Decorator 만들기 (인자의 유효성 검사)
+- digit01, digit02를 곱한 값을 출력하는 함수.
+- typeChecker Decorator로 digit01, digit02가 정수가 아니면
+- 'only integer support'
+'''
+
+# 데코레이터
+def typeChecker(func) :
+
+    def innerFunc(digit01, digit02) :
+        # 유효성 검사
+        if type(digit01) != int or type(digit02) != int :
+            print('only integer support')
+            return # if에서 리턴을 만나면 함수의 수행이 끝난다.
+
+        return func(digit01, digit02)
+
+    return innerFunc
+
+# 사용
+@typeChecker
+def div(digit01, digit02) :
+    return digit01 * digit02
+
+div(2 , 1)
+div(0.4, 1)
+
+
+# 파라미터와 관계없이 모든 함수에 적용 가능한 Decorator 만들고 싶다면?
+# *args, **args
+# generalDeco라는 장식을 다 갖고 있는 상태
+
+# 데코레이터
+def generalDeco(func):
+
+    def wrapper(*args, **kwargs) : # 가변인자를 걸어주기
+        print('this is decorated')
+        return func(*args, **kwargs)
+
+    return wrapper
+
+@generalDeco
+def userSquare(digit) : # 인자를 한 개 받는 함수
+    return digit * digit
+print(userSquare(2))
+
+@generalDeco
+def userPlus(digit01, digit02) : # 인자를 두 개 받는 함수
+    return digit01 + digit02
+print(userPlus(2, 3))
+
+@generalDeco
+def userQuad(digit01, digit02, digit03, digit04) : # 인자를 네 개 받는 함수
+    return digit01 * digit02 * digit03 * digit04
+print(userQuad(2, 3, 4, 5))
+

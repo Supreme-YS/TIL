@@ -10,3 +10,22 @@ obj.goToSchool()
 
 stu = Student()
 stu.study()
+
+
+import datetime
+
+def loggerLogin():
+    print('Supreme-YS login')
+
+def loggerLoginSup():
+    print('Sup login')
+
+def loggerLoginYS():
+    print('YS login')
+
+def datetimeDecorator(func) :
+    def wrapper() :
+        print(datetime.datetime.now()) # 기능 앞 뒤로 decorate 하는 것
+        func() # 각 함수별 구현되야 할 기능들
+        print(datetime.datetime.now()) # 기능 앞 뒤로 decorate 하는 것
+    return wrapper
