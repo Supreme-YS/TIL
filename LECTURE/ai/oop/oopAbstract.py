@@ -299,4 +299,32 @@ class CounterIterator:
 cntIterator = iter(Counter(10))
 print(next(cntIterator))
 
+# Comprehension
+'''
+[ 출력표현식  for 요소 in sequence [if 조건식] ]  # list
+{ 출력표현식  for 요소 in sequence [if 조건식] }  # set
+{ key:value for 요소 in sequence [if 조건식] }  # dict
+'''
+dataset = [4, True, 'Supreme-YS', 3.1, 10]
+# 위 데이터 셋에서 정수값만 출력
+# list comprehension
+intType = [index ** 2 for index in dataset if type(index) == int]
 
+print('int type - ', type(intType), intType)
+
+dataset = [1, 1, 2, 2, 3, 3, 4, 4]
+setType = {value * value for value in dataset}
+print('setType - ', type(setType), setType)
+
+dataset = { 1 : 'Sup', 2 : 'Sim', 3 : 'Supreme'}
+print('dict keys - ', dataset.keys())
+print('dict values - ', dataset.values())
+print('dict items - ', dataset.items()) # items의 특징 : 리스트 안에 튜플로 데이터가 삽입됨
+
+# key 값이 1 이상인 데이터를 값 : 키 형식으로 새로운 set을 만든다면?
+keySet = {value:key for key, value in dataset.items() if key > 1}
+print('dict comprehension -', type(keySet), keySet)
+
+# key 값을 10단위로 한번에 바꿔본다면?
+keySet = {key*10:value for key, value in dataset.items()}
+print('dict comprehension -', type(keySet), keySet)
