@@ -333,6 +333,7 @@ print('dict comprehension -', type(keySet), keySet)
 '''
 iterator 를 만들어주는 기능(함수)
 yield 키워드 이해
+메모리 성능 때문에 루프를 컨트롤하기 위해 쓰여지는 루틴
 '''
 # 즉, 함수를 iterator로 만들어주는거다.
 def textSequenceFunc() :
@@ -361,3 +362,42 @@ print(textSequenceFunc()) # generator라는 형식으로 바뀜.
 
 charIte = iter(textSequenceFunc())
 next(charIte)
+
+def userGeneratorFunc(data) :
+    result = []
+    for tmp in data :
+        #result.append(tmp * 2)
+        yield tmp * 2
+
+    #return result
+twiceList = userGeneratorFunc([1, 2, 3, 4, 5])
+# print('처리된 결과 - {}'.format(twiceList))
+
+print(type(twiceList))
+print('next {} -'.format(next(twiceList))) # 무언가 정지된 for 문을 보는 것 같다.
+
+for t in twiceList :
+    print(t)
+
+# Generator Comprehension ()
+# (Lazy Operation) 연산이 나중에 된다해서 이렇게 표현한다.
+
+'''
+syntax)
+(출력형식 for 요소 in collection )
+'''
+
+squareData = (num ** 2 for num in range(5))
+print( type(squareData)) # <class 'generator'>
+
+print( squareData) # <generator object <genexpr> at 0x0000022DE04B5D60>
+                   # 결과값 출력이 안되는 이유 ? --> lazy loading 이기 때문이다.
+print( sum(squareData))
+
+for data in squareData :
+    print(data, end = '\t') # 리턴값들이 다 소모되기 때문에 loop를 도는거니까, loop를 컨트롤 하는 느낌.
+
+
+
+
+
