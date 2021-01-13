@@ -47,3 +47,14 @@ def withListFileWriter(fileName, dataset) :
             print('idx - ', idx)
             file.write('{}-{}\n'.format(idx, dataset[idx]))
 
+
+# quiz read
+def withListFileRead(fileName, mode) :
+    with open(fileName, mode, encoding='utf-8') as file :
+        # line = None
+        # while line != '' :
+        #     line = file.readline() # 한 줄씩 읽어들이는 내장함수
+        #     print(line.strip('\n')) # 빈 공백의 줄을 지우기..
+        print(file.readlines()) # 리스트로 리턴이 된다.
+# readline 한 줄씩 '텍스트'로 읽어오고
+# readlines 는 통째로 '리스트'로 갖고온다.

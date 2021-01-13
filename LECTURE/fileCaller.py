@@ -15,3 +15,6 @@ lines = ['안녕하세요',
          '강사의 주옥같은 말을 한 귀로 흘리면 안돼요ㅜ_ㅜ']
 
 withListFileWriter('listline.txt', lines)
+
+# quiz multiline text read
+withListFileRead('listline.txt', 'r')

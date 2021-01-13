@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5c3ba2a-b7d1-4402-a15a-e6a50b68f76d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ai/file/fileProc.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai/file/fileProc.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fileCaller.py" beforeDir="false" afterPath="$PROJECT_DIR$/fileCaller.py" afterDir="false" />
     </list>
@@ -136,7 +137,7 @@
       <workItem from="1610495977830" duration="7019000" />
       <workItem from="1610503778901" duration="6067000" />
       <workItem from="1610514227895" duration="3590000" />
-      <workItem from="1610518068818" duration="1442000" />
+      <workItem from="1610518068818" duration="2391000" />
     </task>
     <servers />
   </component>
