@@ -89,7 +89,20 @@ finally:
 ## dict = {'name' : 'supreme', 'age' : 30, 'city' : 'gimpo'}
 ## print(dict['hobby'])
 
+# AttributeError
+## import time
+## print(time.time2())
+
 # 예외가 없는 것을 가정하고 프로그램 작성 -> 런타임 예외 발생시 예외 처리를 권장
-print(dict.get('name'))
-print('*' * 50)
-print('end')
+
+def userKeyIn() :
+    try :
+        age = int(input('본인의 나이를 입력하세요'))
+        print('예외 발생 이후 code') # 악의적으로 Value Error를 발생시키면 except로 넘어가서 이 구문은 실행이 안된다.
+
+    except ValueError as e :
+        print('error - ', e.args[0])
+
+    print('함수 실행 종료')
+
+userKeyIn()
