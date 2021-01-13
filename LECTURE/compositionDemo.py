@@ -118,6 +118,54 @@ def userKeyIn() :
     #except ValueError as e :
     #    print('error - ', e.args[0])
 
-
-
 userKeyIn()
+
+# 예시
+nameList = ['kim', 'lee', 'park', 'sim']
+try :
+    name = 'sim'
+    idx = nameList.index(name)
+
+except ValueError as e:
+    print('{} Not Found it !!'.format(name))
+
+else :
+    print('{} Found it !! {}'.format(name, idx + 1))
+
+finally:
+    print('예외 여부와 상관없이 항상 실행되는 블럭')
+
+print('프로그램 종료')
+
+
+
+
+
+# 사용자 정의 예외 클래스를 작성할 수 있다.
+class InsufficientError(Exception) :
+    def __init__(self, msg):
+        self.msg = msg
+
+
+# 클래스에 정의된 함수에 예외처리 적용 및 강제 예외 발생
+
+class Account :
+    def __init__(self, account, balance, interestRate):
+        self.account      = account
+        self.balance      = balance
+        self.interestRate = interestRate
+
+    def withDraw(self, amount) :
+        try :
+            if self.balance < amount :
+                # raise Exception # 강제로 예외를 발생시키는 메서드
+                raise InsufficientError('잔액이 부족합니다')
+        except Exception as e : # 예외가 발생했다면!
+            print('error msg -', str(e))
+
+        else : # 예외가 발생하지 않았다면
+            self.balance -= amount
+
+account = Account('100', 100000, 0.073) # 객체 생성 완료
+account.withDraw(200000)
+print('프로그램 종료')
