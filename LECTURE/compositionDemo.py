@@ -100,9 +100,24 @@ def userKeyIn() :
         age = int(input('본인의 나이를 입력하세요'))
         print('예외 발생 이후 code') # 악의적으로 Value Error를 발생시키면 except로 넘어가서 이 구문은 실행이 안된다.
 
-    except ValueError as e :
-        print('error - ', e.args[0])
+    #except IndexError as e : # 예외처리 안됨. ValueError가 나기 때문에 indexError는 못잡음
+    #    print('error - ', e)
 
-    print('함수 실행 종료')
+    except Exception as e : # 다중 except를 쓰기 싫으면 Exception 자체로 해버리면 된다.
+        #print('error = ', e)
+        print('문자열이 아닌 정수를 입력해주세요.')
+        userKeyIn() # 재시도를 위한 본인 함수 재호출
+
+    else :
+        print('age - ', age)
+        print('함수 실행 종료')
+
+    finally:
+        print('넌 너무 지조가 없다.. 항상 실행되니까..')
+
+    #except ValueError as e :
+    #    print('error - ', e.args[0])
+
+
 
 userKeyIn()
