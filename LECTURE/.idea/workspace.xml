@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5c3ba2a-b7d1-4402-a15a-e6a50b68f76d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/fileCaller.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compositionDemo.py" beforeDir="false" afterPath="$PROJECT_DIR$/compositionDemo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../word/sam_kospi.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../word/service_bmi.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../word/spam_data.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai/file/fileProc.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai/file/fileProc.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +136,7 @@
       <workItem from="1610419201215" duration="8984000" />
       <workItem from="1610495977830" duration="7019000" />
       <workItem from="1610503778901" duration="6067000" />
-      <workItem from="1610514227895" duration="567000" />
+      <workItem from="1610514227895" duration="2433000" />
     </task>
     <servers />
   </component>
