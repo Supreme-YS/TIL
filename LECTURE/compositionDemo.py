@@ -166,6 +166,76 @@ class Account :
         else : # 예외가 발생하지 않았다면
             self.balance -= amount
 
+    def withDraw02(self, amount) :
+        if self.balance < amount :
+            raise InsufficientError('잔액이 부족합니다')
+        else : # 예외가 발생하지 않았다면
+            self.balance -= amount
+
 account = Account('100', 100000, 0.073) # 객체 생성 완료
-account.withDraw(200000)
+
+try :
+    account.withDraw02(200000)
+except InsufficientError as e :
+    print(str(e))
+
 print('프로그램 종료')
+
+
+'''
+객체를 생성하기 위해서 클래스(인스턴스 소유의 변수, 인스턴스 소유의 함수)를 만들어야 한다.
+하지만 경우에 따라 클래스 없이 객체를 생성하는 방법이 있다. (변수)
+class A :
+    def __init__(self, x) :
+        self.x = x 이런 과정을 생략하고 아래처럼 만들 수 있다.
+
+usage)
+collections.namedtuple('실제 클래스 이름', (변수), [변수])
+'''
+
+import collections
+# Person 이라는 클래스 이름, 인스턴스 소유의 변수 list 형식의 name, id 를 만듦.
+Person = collections.namedtuple('Person', ['name', 'id']) # 이 자체가 클래스
+# Person2 = collections.namedtuple('Person', ('name', 'id')) # 이번엔 튜플형식으로 만들어봄
+
+per = Person('Supreme-YS01', '100')
+# per2 = Person2('Supreme-YS02', '100')
+print(per, type(per)) # <class '__main__.Person'>
+# print(per2, type(per2)) # <class '__main__.Person'>
+
+# 만약에 name만 가져오고 싶다면? 즉, 속성에 접근하고 싶다면? --> 시퀀스 자료형이기 때문에 인덱싱을 할 수 있다. --> 속성으로 접근은 안됨
+print('idx 0 - ', per[0])
+print('idx 1 - ', per[1])
+
+# for ~ in 가능할까?
+
+for idx in range(len(per)) :
+    print('idx {} - {} '.format(idx, per[idx]))
+
+# 속성에 접근 2
+print(per.name)
+print(per.id)
+
+# 속성에 접근 3
+(name, id) = per
+print(name, id)
+
+'''
+1. 직장인 이름, 나이, 부서를 속성으로 갖는 클래스 만들기
+2. 직장인 이름, 나이, 부서를 속성으로 갖는 클래스를 namedtuple로 만들기
+'''
+#1
+class Emp :
+    def __init__(self, name, age, dept):
+        self.name = name
+        self.age = age
+        self.dept = dept
+#2
+Emp2 = collections.namedtuple('Emp2', ['name', 'age', 'dept'])
+
+
+emp = Emp('YS', '30', 'PM')
+print(emp)
+
+emp2 = Emp2('YS', '30', 'PM')
+print(emp2)
