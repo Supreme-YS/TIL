@@ -13,16 +13,29 @@ file.close()
 
 
 def fileStream(fileName, mode) :
-    if mode == 'w' :
-        pass
-    elif mode == 'r' :
-        with open(file=fileName, mode=mode) as file :
+    try :
+        if mode == 'w' :
+            file = open(file=fileName, mode=mode)
+            file.write('sample txt')
+        elif mode == 'r' :
+            file = open(file=fileName, mode=mode)
             line = file.read()
             print('result read - ', line)
-    elif mode == 'a' :
-        pass
+        elif mode == 'a' :
+            file = open(file=fileName, mode=mode)
+            file.write('\nappend') # 특정 문자를 개행해서 추가하기~
+        else :
+            raise Exception('모드를 확인하세요')
+    except Exception as e :
+        print('error - ', e)
+    finally :
+        if file != None :
+            file.close()
 
-    else :
-        raise Exception('모드를 확인하세요')
-
+def withMultiWriter(fileName) :
+    with open(fileName, 'w', encoding='utf-8') as file :
+        for idx in range(3) :
+            print('idx - ', idx)
+            text = input('문자열 입력 요망 >>> ')
+            file.write('{} - {}\n'.format(idx, text))
 

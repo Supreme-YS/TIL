@@ -1,10 +1,8 @@
 from ai.file.fileProc import *
 
-fileStream('hello.txt', 'r')
+# single line text inout
+fileStream('./ai/file/hello.txt', 'r')
 
-try :
-    fileStream('hello.txt', 'asd')
-except Exception as e:
-    print(e)
-
+# multi line text out
+withMultiWriter('multiline.txt')
 print('end')
