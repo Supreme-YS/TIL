@@ -11,7 +11,7 @@ file.close()
 # file.close()
 # with open(file = 'hello.txt', mode = 'r') as file # with 를 사용해주면~ close()를 사용해주지 않아도 된다.
 
-
+# single line text
 def fileStream(fileName, mode) :
     try :
         if mode == 'w' :
@@ -32,10 +32,18 @@ def fileStream(fileName, mode) :
         if file != None :
             file.close()
 
+# multi line text
 def withMultiWriter(fileName) :
     with open(fileName, 'w', encoding='utf-8') as file :
         for idx in range(3) :
             print('idx - ', idx)
             text = input('문자열 입력 요망 >>> ')
             file.write('{} - {}\n'.format(idx, text))
+
+# quiz text
+def withListFileWriter(fileName, dataset) :
+    with open(fileName, 'w', encoding='utf-8') as file :
+        for idx in range(len(dataset)) :
+            print('idx - ', idx)
+            file.write('{}-{}\n'.format(idx, dataset[idx]))
 
