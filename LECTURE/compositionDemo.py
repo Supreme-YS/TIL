@@ -233,7 +233,6 @@ class Emp :
 #2
 Emp2 = collections.namedtuple('Emp2', ['name', 'age', 'dept'])
 
-
 emp = Emp('YS', '30', 'PM')
 print(emp)
 
