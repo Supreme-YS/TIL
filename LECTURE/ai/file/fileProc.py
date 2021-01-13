@@ -51,10 +51,19 @@ def withListFileWriter(fileName, dataset) :
 # quiz read
 def withListFileRead(fileName, mode) :
     with open(fileName, mode, encoding='utf-8') as file :
+        # 첫 번째 방법
         # line = None
         # while line != '' :
         #     line = file.readline() # 한 줄씩 읽어들이는 내장함수
         #     print(line.strip('\n')) # 빈 공백의 줄을 지우기..
-        print(file.readlines()) # 리스트로 리턴이 된다.
+
+        # 두 번째 방법
+        # for line in file.readlines() : # 리스트로 리턴이 된다.
+        #     print(line.strip('\n'))
+
+        # 세 번째 방법
+        # print(file, type(file)) # 클래스 객체.. 출력이 가능할까?
+        # for line in file : # 가능하다. 텍스트로 이루어진 객체기 때문에..
+            # print(line.strip('\n'))
 # readline 한 줄씩 '텍스트'로 읽어오고
 # readlines 는 통째로 '리스트'로 갖고온다.
