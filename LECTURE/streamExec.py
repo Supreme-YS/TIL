@@ -243,4 +243,10 @@ from statistics import *
 print('high mean -', mean(kospi.High))
 
 # json 파일 입출력 - 파이썬의 딕셔너리라고 생각하면 됨. 쫄지마셈. 어렵지 않음
+'''
+json file : 네트워크 상에서 표준으로 사용되는 파일형식
+구성 : {key : value , key : value}
+encoding : python(dict, list) -> json 문자열 (json file) 파이썬을 json 식으로 바꾸는 건 encoding : dumps() ** pickle에서 dump랑 다른거임
+decoding : json의 문자열을 -> python 의 객체로 만드는 행위 ( dict, list 등 )
 
+'''
