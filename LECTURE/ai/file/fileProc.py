@@ -1,7 +1,7 @@
 '''
 텍스트파일 입출력
 open(file = '파일경로/파일명' , mode = 'r|w|a|wb')
-
+r 읽기, w 쓰기, a 추가, wb 바이너리 형식으로 쓰기
 file = open(file = 'hello.txt', mode = 'w') # 디렉토리에 해당 파일명이 없으면 새로운 파일이 생성된다.
 file.write('Hi, Seok')
 file.close()
