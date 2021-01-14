@@ -281,3 +281,11 @@ with open(file = './word/usagov_bitly.txt', mode = 'r', encoding = 'utf-8') as f
     for row in rows : # rows 라는 리스트에서 dict 값을 row에 할당
         for key, value in row.items() :
             print('key - {}, value - {}'.format(key, value))
+
+with open(file='./word/usagov_bitly.txt', mode='r', encoding='utf-8') as file:
+    lines = file.readlines()
+    rows = [json.loads(line) for line in lines]
+    # rows -> pd.DataFrame (행렬) 즉, 값들을 분석이 용이한 table 형태로 바꿔줄 필요도 있다.
+    rowsDF = pd.DataFrame(rows)
+
+print(rowsDF.head)
