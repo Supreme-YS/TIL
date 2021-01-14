@@ -265,3 +265,19 @@ print(pythonObj, type(pythonObj)) # 문자열이 딕셔너리의 객체로 바�
 
 print( pythonObj['name'])
 print( pythonObj.get('id'))
+
+'''
+usagov_bitly.txt
+'''
+with open(file = './word/usagov_bitly.txt', mode = 'r', encoding = 'utf-8') as file :
+    lines = file.readlines()
+    # print( type(lines), len(lines))
+    # print( lines[0:5]) # 5개만 슬라이싱
+    rows = [ json.loads(line) for line in lines ] # 라인별로 가져온 것을 python의 객체로 만들어주는 list comprehension
+                                                  # 리스트에 딕셔너리를 담는 행위가 되겠지? 리스트 컴프리헨션 --> loads로 변환
+    # print( type(rows)) # 전체는 list 이지만
+    # print( type(rows[0])) # 각 인덱스의 값은 dict 클래스이다.
+
+    for row in rows : # rows 라는 리스트에서 dict 값을 row에 할당
+        for key, value in row.items() :
+            print('key - {}, value - {}'.format(key, value))
