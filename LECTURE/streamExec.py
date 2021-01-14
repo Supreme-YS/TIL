@@ -76,5 +76,26 @@ def wordCntFunc() :
 
 wordCntFunc()
 
+# 2
+# special_words.txt 파일에서 문자가 'c'가 포함된 단어를 출력하는 함수를 만들어서 호출한다면?
+# 주의) 단어를 출력할 때는 등장한 순서대로 출력하며, 쉼표나 마침표는 출력하지 않는다.
 
+'''My answer'''
+def includeCword() :
+    with open(file = './word/special_words.txt', mode = 'r', encoding= 'utf-8') as file :
+        for word in file.readline():
+            word = word.replace(',', ' ') # 쉼표를 공백으로 대체
+            word = word.replace('.', ' ') # 마침표를 공백으로 대체
+            word = word.replace(' ', '\n') # 공백을 개행으로 구분
+            if 'c' in word.:
+                print(word)
 
+'''Teacher Answer'''
+def specialWordFuc() :
+    with open(file = './word/special_words.txt', mode = 'r', encoding= 'utf-8') as file :
+        words = file.read().split()
+        for word in words :
+            if 'c' in word :
+                print(word.strip(',.'))
+
+specialWordFuc()
