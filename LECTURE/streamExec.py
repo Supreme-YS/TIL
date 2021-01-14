@@ -215,15 +215,32 @@ print(match)
 # 텍스트 전처리 - (특수문자, 숫자, 공백, 영문제거) => 한글 단어만 추출하겠다. 라는 의도로 한번 배보자!
 # 그니까, 만약에 데이터를 크롤링을 통해 수집했는데 순수히 한글만 보고 싶을 때, 데이터를 꺨껌하게 정리하고 싶을 때 사용하는게 정규표현식
 text = spamDataSet[1]
-print(text)
+print(text, type(text))
 
 def cleanText(str):
-    str = re.sub('[,.?!:;]', ' ', str) # str에서 ,.?!:;를 만나면 공백으로 대체하겠습니다! 라는 의미
-    print(str)
-    str = re.sub('[0-9a-zA-Z]', ' ', str) # 0~9, a-z, A-Z 까지 제거
-    print(str)
-    str = ' '.join(str.split()) # 공백을 ' '로 대체
-    print(str)
 
-cleanText('비아그라 500GRAM 정력 최고!')
+    for text in str :
+
+        text = re.sub('[,.?!:;]', ' ', text) # str에서 ,.?!:;를 만나면 공백으로 대체하겠습니다! 라는 의미
+        #print(text)
+        text = re.sub('[0-9a-zA-Z]', ' ', text) # 0~9, a-z, A-Z 까지 제거
+        #print(text)
+        text = ' '.join(text.split()) # 공백을 ' '로 대체
+        print(text)
+
+cleanText(text)
+
+# cleanData = [ cleanText(t) for t in text]
+# print(cleanData)
+
+# xls 파일
+
+kospiDataset = pd.ExcelFile('./word/sam_kospi.xlsx')
+kospi = kospiDataset.parse('sam_kospi') # 시트 이름을 할당
+print(kospi.info())
+
+from statistics import *
+print('high mean -', mean(kospi.High))
+
+# json 파일 입출력 - 파이썬의 딕셔너리라고 생각하면 됨. 쫄지마셈. 어렵지 않음
 
