@@ -117,6 +117,54 @@ def searchAddrFunc () :
             # 다음 줄로 라인을 넘기는 것
             line = file.readline()
 
-
-
 searchAddrFunc()
+
+
+'''
+csv, excel 파일은 -> pandas 라이브러리를 사용
+- pip install pandas
+- conda install pandas
+- service_bmi.csv 
+- DataFrame : 테이블 형식
+'''
+import pandas as pd
+
+bmiDataSet = pd.read_csv('./word/service_bmi.csv', encoding='utf-8')
+print(bmiDataSet.info())
+print(bmiDataSet.head()) # 최상위 5개의 데이터 정보를 보여준다.
+print(bmiDataSet.tail()) # 최하위 5개의 데이터 정보를 보여준다.
+
+# Feature(속성) 에 대한 접근 - Series로 return 된다.
+print(bmiDataSet.height, type(bmiDataSet.height)) # height feature(피쳐)에 해당하는 데이터가 출력되고, type은 Series다. 리스트와 유사
+print(bmiDataSet['weight']) # 이런식의 접근도 가능하다.
+print(bmiDataSet['label']) # 이런식의 접근도 가능하다.
+
+# 키 / 몸무게 평균
+print('height avg {}, weight avg {}'.format( sum(bmiDataSet.height)/len(bmiDataSet.height),
+                                             sum(bmiDataSet['weight'])/len(bmiDataSet['weight']) ))
+
+# 키 최대 / 몸무게 최대
+print('height max {}, weight mx {}'.format( max(bmiDataSet.height), max(bmiDataSet['weight']))) # 표현식을 두 개 사용함.
+
+# label 빈도수
+labelCnt = {}
+for label in bmiDataSet.label :
+    labelCnt[label] = labelCnt.get(label, 0) + 1 # key 값으로 value를 꺼내는 데 없으면 0 있으면 1추가
+print(labelCnt)
+
+'''
+spam_data.csv (common separate value)
+'''
+spamDataSet = pd.read_csv('./word/spam_data.csv', header=None, encoding='ms949') # 기본 ANSI가 ms949
+print(spamDataSet)
+print(spamDataSet.info()) # 첫번째 줄은 헤더로 인식한다. 따라서, 헤더 옵션을 줌으로써 해결가능
+print(spamDataSet.head())
+
+target = spamDataSet[0]
+print('target - ', target, type(target))
+text = spamDataSet[1]
+print('target - ', text, type(text))
+
+# spam = 1, ham = 0 새로운 타겟을 만들고 싶다면?
+target = [ 1 if t == 'spam' else 0 for t in target ] # list comprehension에서 else까지 써야할 때는 if 조건문이 앞에 나와야한다.
+print(target)
