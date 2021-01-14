@@ -99,3 +99,24 @@ def specialWordFuc() :
                 print(word.strip(',.'))
 
 specialWordFuc()
+
+# 3
+# zipcode.txt
+# input() 이용해서 동 이름을 입력 받아서 해당하는 동의 주소를 출력하는 함수를 정의하고 호출한다면?
+# 예시 ) 개포 입력 --> 개포 1동 , 개포 2동 ..etc 출력.
+# startswith(), endswith()
+
+def searchAddrFunc () :
+    dong = input('찾는 동을 입력하세요 : ')
+    with open(file = './word/zipcode.txt', mode = 'r', encoding='utf-8') as file :
+        line = file.readline()
+        while line :
+            address = line.split()
+            if address[3].startswith(dong) :
+                print(address)
+            # 다음 줄로 라인을 넘기는 것
+            line = file.readline()
+
+
+
+searchAddrFunc()
