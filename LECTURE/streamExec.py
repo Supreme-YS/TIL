@@ -247,6 +247,21 @@ print('high mean -', mean(kospi.High))
 json file : 네트워크 상에서 표준으로 사용되는 파일형식
 구성 : {key : value , key : value}
 encoding : python(dict, list) -> json 문자열 (json file) 파이썬을 json 식으로 바꾸는 건 encoding : dumps() ** pickle에서 dump랑 다른거임
-decoding : json의 문자열을 -> python 의 객체로 만드는 행위 ( dict, list 등 )
-
+decoding : json의 문자열을 -> python 의 객체로 만드는 행위 ( dict, list 등 ) : loads()
 '''
+
+# python -> json ( encoding이 필요하겠지? )
+import json
+
+user = {'id' : 1234, 'name' : 'Sup'}
+print( type(user))
+
+jsonStr = json.dumps(user) # object -> json str
+print(jsonStr, type(jsonStr))
+
+# decoding
+pythonObj = json.loads(jsonStr) # json str -> object
+print(pythonObj, type(pythonObj)) # 문자열이 딕셔너리의 객체로 바뀌었다 ? -> key, value에 접근 가능
+
+print( pythonObj['name'])
+print( pythonObj.get('id'))
