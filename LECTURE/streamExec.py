@@ -93,7 +93,7 @@ def includeCword() :
 '''Teacher Answer'''
 def specialWordFuc() :
     with open(file = './word/special_words.txt', mode = 'r', encoding= 'utf-8') as file :
-        words = file.read().split()
+        words = file.read().split() # 함수를 연결해서 쓸 수 있다. Chaining 기법
         for word in words :
             if 'c' in word :
                 print(word.strip(',.'))
