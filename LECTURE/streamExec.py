@@ -197,4 +197,33 @@ print(target)
 010-0000-0000
 \d{3}-\d{4}-\d{4}
 ^\d{3}-\d{4}-\d{4} # 반드시 숫자로 시작하는 세자리(^)
+
+- sub()
+- match()
+- search()
+- findall()
+- findinter()
+
 '''
+
+# example
+import re
+p = re.compile('[a-z]+') # a부터 z까지 하나 이상
+match = p.match('python')
+print(match)
+
+# 텍스트 전처리 - (특수문자, 숫자, 공백, 영문제거) => 한글 단어만 추출하겠다. 라는 의도로 한번 배보자!
+# 그니까, 만약에 데이터를 크롤링을 통해 수집했는데 순수히 한글만 보고 싶을 때, 데이터를 꺨껌하게 정리하고 싶을 때 사용하는게 정규표현식
+text = spamDataSet[1]
+print(text)
+
+def cleanText(str):
+    str = re.sub('[,.?!:;]', ' ', str) # str에서 ,.?!:;를 만나면 공백으로 대체하겠습니다! 라는 의미
+    print(str)
+    str = re.sub('[0-9a-zA-Z]', ' ', str) # 0~9, a-z, A-Z 까지 제거
+    print(str)
+    str = ' '.join(str.split()) # 공백을 ' '로 대체
+    print(str)
+
+cleanText('비아그라 500GRAM 정력 최고!')
+
