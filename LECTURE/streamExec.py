@@ -112,7 +112,7 @@ def searchAddrFunc () :
         line = file.readline()
         while line :
             address = line.split()
-            if address[3].startswith(dong) :
+            if address[3].startswith(dong) and address[3].endswith('동') : # 입력받은 값으로 시작하고 해당하는 값으로 끝나는 것들만 !
                 print(address)
             # 다음 줄로 라인을 넘기는 것
             line = file.readline()
