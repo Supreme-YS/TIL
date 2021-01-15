@@ -27,19 +27,16 @@ loadData()
 def question01() :
     dataset = loadData()
     for obj in dataset :
-        print(obj)
+        if obj['displ'] <= 4 :
+            meanUnderDispl = obj['displ']
+        elif obj['displ'] >= 5 :
+            pass
+
 
 question01()
 
 
-            # # 배기량이 4 이하인 자동차
-            # if '4' >= lineList[2] :
-            #     underCar = lineList
-            #     print(underCar)
-            # # 배기량이 5 이상인 자동차
-            # elif lineList[2] >= '5' :
-            #     overCar = lineList
-            #     print(overCar)
+
 
 checkAvgHigh()
 
