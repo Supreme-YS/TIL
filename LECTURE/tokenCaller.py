@@ -10,5 +10,7 @@ else :
 
 #
 reversedPalindrom()
-
+#
 palindromFile()
+#
+zipNgram()

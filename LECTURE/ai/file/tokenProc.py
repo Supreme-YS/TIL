@@ -56,3 +56,33 @@ for idx in range(len(textList) - 1) :
     print(textList[idx], textList[idx+1])
     
 # zip() 함수
+num = [1, 2, 3, 4]
+name = ['hong', 'gil', 'dong', 'guy']
+
+dic = {}
+for key, value in zip(num, name) : # 튜플형식으로 넘겨주는데
+    dic[key] = value # 보통 이것처럼 dict 형식으로 key-value 식으로 많이 활용된다.
+
+print(dic)
+
+'''
+input 함수를 이용해서 문자열을 입력받고
+예시 ) python is a programming language that lets your work quickly
+input 함수를 이용해서 gram의 숫자를 입력받는다. 예) 2
+입력된 숫자에 해당하는 단어 N-gram을 튜플 형식으로 출력하는 함수 
+만일 입력된 문자열의 단어 갯수가 입력된 정수 미만이라면 예외를 발생시킨다.
+'''
+
+def zipNgram() :
+    text = input('문자열을 입력하세요 : ')
+    gram = int(input('N-gram 숫자를 입력하세요 : '))
+    textList = text.split()
+
+    # for idx in range(len(textList) - gram + 1) :
+    #     print(textList[idx:idx+gram])
+
+    # 만일 zip함수를 이용하게 된다면?
+    ngram = zip(*[ textList[idx:] for idx in range(gram)])
+    # print(list(ngram))
+    for idx in ngram :
+        print(idx)
