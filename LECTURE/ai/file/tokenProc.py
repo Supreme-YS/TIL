@@ -35,5 +35,24 @@ def palindromFile() :
             if line == line[::-1] :
                 print(line)
 
-palindromFile()
 
+# 특정 문자열에서 N - gram 개의 연속된 요소를 추출한다면?
+# 자연어처리
+# hello -> 2 n gram -> he / el / ll / lo
+
+text = 'hello'
+for idx in range(len(text) - 1) :
+    # print('idx - ', idx)
+    print(text[idx], text[idx+1], sep='')
+
+# 문장이 입력됐을 때, 2n gram 을 한다면?
+text = 'this is python script'
+textList = text.split()
+print(textList)
+print( type(textList))
+
+for idx in range(len(textList) - 1) :
+    # print('idx - ', idx)
+    print(textList[idx], textList[idx+1])
+    
+# zip() 함수
