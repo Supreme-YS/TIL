@@ -1,6 +1,61 @@
+import pandas as pd
+
 ''' 1. displ(배기량)이 4 이하인 자동차와 5 이상인 자동차 중
 어떤 자동차의 hwy(고속도로 연비)가 평균적으로 더 높은지 확인하세요.'''
 
+def loadData():
+    with open('./word/mpg.txt', 'r', encoding='utf=8') as file:
+        features = file.readline().split(',') # 헤더
+        # print(features)
+        carList = []
+        for line in file.readlines() :
+            car = line.split(',')
+            # print(car)
+            dic = {}
+
+            for idx in range(len(car)) :
+                dic[features[idx]] = car[idx]
+
+            carList.append(dic)
+            print(carList)
+
+    return carList
+
+loadData()
+
+
+def question01() :
+    dataset = loadData()
+    for obj in dataset :
+        print(obj)
+
+question01()
+
+
+            # # 배기량이 4 이하인 자동차
+            # if '4' >= lineList[2] :
+            #     underCar = lineList
+            #     print(underCar)
+            # # 배기량이 5 이상인 자동차
+            # elif lineList[2] >= '5' :
+            #     overCar = lineList
+            #     print(overCar)
+
+checkAvgHigh()
+
+
+
+        #print(key, type(key))
+        # for line in file:
+        #     line = line.strip(",")
+        #     #print(line, type(line))
+        #
+        # for lines in line :
+        #     lineList = lines
+        #     print(lineList, type(lineList))
+
+
+checkAvgHigh()
 
 
 
