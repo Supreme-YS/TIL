@@ -92,4 +92,16 @@ WHERE PHONE LIKE '___9_______';
 SELECT *
 FROM EMPLOYEE;
 
+--Email ID 중 '_'앞 자리가 3자리인 직원의 이름과 이메일
+--_(UNDER)는 자릿수를 의미합니다. 
+--%(PERCENT)는 하나 또는 전부
+SELECT EMP_NAME, EMAIL
+FROM EMPLOYEE
+WHERE EMAIL LIKE '___\_%' ESCAPE '\' ; -- 와일드카드문자가 아닌 문자로 보여지게 하기 위해, ESCAPE 구문을 활용한다.
+
+--김씨 성이 아닌 직원의 이름과 급여를 조회
+SELECT EMP_NAME, SALARY 
+FROM EMPLOYEE
+WHERE EMP_NAME NOT LIKE '김%' ;
+
 
