@@ -99,6 +99,8 @@ SELECT EMP_NAME,
 FROM EMPLOYEE
 WHERE SALARY > 3500000;
 
+--DECODE 함수
+--SELECT 구문으로 IF-ELSE 논리를 제한적으로 구현한 오라클 DBMS 전용 함수
 
 
 
