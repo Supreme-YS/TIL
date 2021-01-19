@@ -79,3 +79,39 @@ SELECT EMP_NO,
        TO_NUMBER(SUBSTR(EMP_NO, 1, 6)) + TO_NUMBER(SUBSTR(EMP_NO, 8))--첫번째 데이터부터 6째자리까지 가져오겠다!
        
 FROM EMPLOYEE;
+
+--기타 함수 NVL 
+--NULL을 제거하는 함수
+
+SELECT EMP_NAME, SALARY, NVL(BONUS_PCT, 0)
+FROM EMPLOYEE
+WHERE SALARY > 3500000;
+
+-- NULL 값이 출력된다. 하라는 연산은 안하고..
+SELECT EMP_NAME,
+       (SALARY * 12) + ((SALARY*12) * BONUS_PCT)
+FROM EMPLOYEE
+WHERE SALARY > 3500000;
+
+--그래서 NVL 함수를 이용하자 NULL 값을 0으로 대체해서 계산하시오!
+SELECT EMP_NAME,
+      (SALARY * 12) + ((SALARY * 12) * NVL(BONUS_PCT, 0))
+FROM EMPLOYEE
+WHERE SALARY > 3500000;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
