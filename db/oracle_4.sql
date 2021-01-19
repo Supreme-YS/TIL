@@ -121,7 +121,7 @@ WHERE JOB_ID = 'J4' ;
 -- null을 admin으로 채우기
 SELECT EMP_ID,
        EMP_NAME,
-       NVL(MGR_ID, 'admin')
+       NVL(MGR_ID, 'ADMIN') AS MANAGER
 FROM EMPLOYEE
 WHERE JOB_ID = 'J4' ;
 -- decode를 이용해서 admin으로 채우기
