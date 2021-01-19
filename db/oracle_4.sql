@@ -102,12 +102,22 @@ WHERE SALARY > 3500000;
 --DECODE 함수
 --SELECT 구문으로 IF-ELSE 논리를 제한적으로 구현한 오라클 DBMS 전용 함수
 
+SELECT EMP_NO,
+       DECODE(SUBSTR(EMP_NO, 8, 1), 
+       '1', '남자', '3', '남자', '여자' ) AS GENDER --성별 칼럼을 추가하고 싶다. 1일 땐 남자 2일 땐 여자
+       
+FROM EMPLOYEE ;
 
+SELECT EMP_NO,
+       DECODE(MOD(SUBSTR(EMP_NO, 8, 1), 2), 1, '남자', '여자') AS GENDER --성별 칼럼을 추가하고 싶다. 1일 땐 남자 2일 땐 여자
+       
+FROM EMPLOYEE ;
 
-
-
-
-
+SELECT EMP_ID,
+       EMP_NAME,
+       MGR_ID
+FROM EMPLOYEE
+WHERE JOB_ID = 'J4' ;
 
 
 
