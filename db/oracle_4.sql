@@ -131,11 +131,62 @@ SELECT EMP_ID,
 FROM EMPLOYEE
 WHERE JOB_ID = 'J4' ;
 
+-- 실습
+-- 직원의 직급별 인상급여를 확인하고 싶다.
+-- J7 -> 20% 인상
+-- J6 -> 15% 인상
+-- J5 -> 10% 인상
+-- 나머지 직급은 인상이 없다.
 
+SELECT EMP_NAME,
+       DECODE (JOB_ID,
+       'J7', SALARY * 1.2,
+       'J6', SALARY * 1.15,
+       'J5', SALARY * 1.1, SALARY) AS "인상 급여"
+       
+FROM EMPLOYEE;
 
+SELECT EMP_NAME,
+       JOB_ID,
+       SALARY,
+       CASE JOB_ID
+         WHEN 'J7' THEN SALARY * 1.2
+         WHEN 'J6' THEN SALARY * 1.15
+         WHEN 'J5' THEN SALARY * 1.1
+         ELSE SALARY
+       END AS "인상 급여"
+       
+FROM EMPLOYEE;
 
+SELECT EMP_NAME,
+       JOB_ID,
+       SALARY,
+       CASE WHEN JOB_ID = 'J7' THEN SALARY * 1.2
+       CASE WHEN JOB_ID = 'J6' THEN SALARY * 1.15
+       CASE WHEN JOB_ID = 'J5' THEN SALARY * 1.1
+         ELSE SALARY
+       END AS "인상 급여"
+FROM EMPLOYEE;
 
+--GROUP FUNCTION (그룹함수, 집계함수)
+--GROUP BY 함수와 함께 쓰인다.
+--그룹 함수가 SELECT 절에 사용되면 다른 컬럼 정의는 불가
+--그룹 함수는 NULL 값 제거후 연산을 하므로 주의요망
+SELECT SUM(SALARY), SUM(DISTINCT SALARY), --EMP_NAME 처럼 일반 컬럼 정의는 불가능하다.
+FROM EMPLOYEE;
 
+--22건(TOTAL)의 평균이 아니라, NULL값(14개)를 제외한 평균을 구해온다.
+--만약에 NULL값을 포함한 평균을 구하고 싶으면 NVL 함수를 이용해서 NULL값을 0으로 취해주고
+--계산을 때리면된다.
+SELECT AVG(BONUS_PCT),
+ROUND( AVG(NVL(BONUS_PCT, 0)),2 ) -- ROUND ... , 2 세번째에서 반올림 후 두번째자리까지 표현
+FROM EMPLOYEE;
+
+-- MIN, MAX, COUNT -> ANY 타입을 받는다. 나머지는 숫자
+SELECT MIN(SALARY), MAX(SALARY), 
+       MIN(HIRE_DATE), MAX(HIRE_DATE),
+       MIN(JOB_ID), MAX(JOB_ID)
+FROM EMPLOYEE ;
 
 
 
