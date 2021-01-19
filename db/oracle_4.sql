@@ -265,10 +265,11 @@ ORDER BY 2 DESC;
 --HAVING
 
 SELECT DEPT_ID,
+       JOB_ID,
        ROUND(AVG(SALARY) , -5) AS 급여평균
 FROM EMPLOYEE 
-GROUP BY DEPT_ID
-HAVING AVG(SALARY) > 3000000
-ORDER BY 급여평균 DESC ;
+GROUP BY ROLLUP(DEPT_ID , JOB_ID) --그룹이 COMPOSITE 되어버린 경우(DEPT_ID, JOB ID만 쓸 경우) 다른 값으로 인식이 된다. 따라서 ROLLUP 함수를 사용하게 되면 기준이 되는 값에 대한 소계가 나오게 된다.
+-- HAVING AVG(SALARY) > 3000000
+ORDER BY DEPT_ID ASC ;
 
 
