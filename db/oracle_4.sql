@@ -240,7 +240,7 @@ GROUP BY DEPT_ID
 ORDER BY 2 DESC;
 
 -- 성별에 따른 급여 평균을 구한다면?
-
+-- DECODE 사용
 SELECT DECODE(SUBSTR(EMP_NO, 8, 1),
                 '1', '남자', '3', '남자', '여자' ),
        AVG(SALARY)
@@ -248,5 +248,19 @@ FROM EMPLOYEE
 GROUP BY DECODE(SUBSTR(EMP_NO, 8, 1),
                 '1', '남자', '3', '남자', '여자' ) 
 ORDER BY 2 DESC ;
+-- CASE 사용
+SELECT CASE SUBSTR(EMP_NO, 8, 1) 
+            WHEN '1' THEN '남자'
+            WHEN '3' THEN '남자'
+            ELSE '여자'
+            END,
+            AVG(SALARY)
+FROM EMPLOYEE
+GROUP BY CASE SUBSTR(EMP_NO, 8, 1)
+              WHEN '1' THEN '남자'
+              WHEN '3' THEN '남자'
+              ELSE '여자'
+             END
+ORDER BY 2 DESC;
 
 
