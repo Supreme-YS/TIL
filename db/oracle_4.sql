@@ -203,5 +203,22 @@ GROUP BY 기준컬럼
 HAVING 조건식
 ORDER BY 기준컬럼 ;
 
+-- 부서번호가 50 이거나 부서번호가 존재하지 않는 사원의 이름, 급여를 조회하라
+-- 높은 급여 순으로 보려면? ORDER BY [기준 컬럼][ASC|DESC]
+SELECT EMP_NAME, SALARY
+FROM EMPLOYEE
+WHERE DEPT_ID = '50' OR DEPT_ID IS NULL
+ORDER BY SALARY DESC;
 
+-- 입사일이 03년 1월 1일 이후 입사자들의 이름, 입사일, 부서번호를 조회하라
+-- 단) 부서번호가 높은순으로 정렬하고 같으면 입사일이 빠른 순서로 정렬하고 같으면 이름이 빠른 순서로 정렬한다.
 
+SELECT EMP_NAME, HIRE_DATE, DEPT_ID
+FROM EMPLOYEE
+WHERE HIRE_DATE > TO_DATE('03/01/01', 'RR/MM/DD')
+ORDER BY DEPT_ID DESC NULLS LAST, HIRE_DATE ASC, EMP_NAME ASC
+
+SELECT EMP_NAME, HIRE_DATE, DEPT_ID
+FROM EMPLOYEE
+WHERE HIRE_DATE > TO_DATE('03/01/01', 'RR/MM/DD')
+ORDER BY 3 DESC NULLS LAST , 2, 1
