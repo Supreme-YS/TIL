@@ -118,6 +118,18 @@ SELECT EMP_ID,
        MGR_ID
 FROM EMPLOYEE
 WHERE JOB_ID = 'J4' ;
+-- null을 admin으로 채우기
+SELECT EMP_ID,
+       EMP_NAME,
+       NVL(MGR_ID, 'admin')
+FROM EMPLOYEE
+WHERE JOB_ID = 'J4' ;
+-- decode를 이용해서 admin으로 채우기
+SELECT EMP_ID,
+       EMP_NAME,
+       DECODE (MGR_ID, NULL , 'ADMIN', MGR_ID) AS MANAGER
+FROM EMPLOYEE
+WHERE JOB_ID = 'J4' ;
 
 
 
