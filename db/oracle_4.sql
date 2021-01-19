@@ -221,4 +221,32 @@ ORDER BY DEPT_ID DESC NULLS LAST, HIRE_DATE ASC, EMP_NAME ASC
 SELECT EMP_NAME, HIRE_DATE, DEPT_ID
 FROM EMPLOYEE
 WHERE HIRE_DATE > TO_DATE('03/01/01', 'RR/MM/DD')
-ORDER BY 3 DESC NULLS LAST , 2, 1
+ORDER BY 3 DESC NULLS LAST , 2, 1;
+
+SELECT EMP_NAME 이름, 
+       HIRE_DATE 입사일,
+       DEPT_ID 부서
+FROM EMPLOYEE
+WHERE HIRE_DATE > TO_DATE('03/01/01', 'RR/MM/DD')
+ORDER BY 부서 DESC NULLS LAST ,입사일 , 이름;
+
+-- GROUP BY [기준컬럼]
+-- 부서별 평균급여
+-- 단) GROUP BY가 정의된 칼럼에 대해선 일반 칼럼이라도 정의할 수 있다.
+SELECT DEPT_ID,
+       ROUND(AVG(SALARY), -5) AS "부서별 급여 평균"
+FROM EMPLOYEE 
+GROUP BY DEPT_ID 
+ORDER BY 2 DESC;
+
+-- 성별에 따른 급여 평균을 구한다면?
+
+SELECT DECODE(SUBSTR(EMP_NO, 8, 1),
+                '1', '남자', '3', '남자', '여자' ),
+       AVG(SALARY)
+FROM EMPLOYEE
+GROUP BY DECODE(SUBSTR(EMP_NO, 8, 1),
+                '1', '남자', '3', '남자', '여자' ) 
+ORDER BY 2 DESC ;
+
+
