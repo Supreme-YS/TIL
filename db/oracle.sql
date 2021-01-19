@@ -1,7 +1,10 @@
 -- SELECT 구문
 SELECT [특정컬럼 |*(전체컬럼)] 표현식 | DISTINCT | AS 컬럼별칭
-FROM 테이블이름 ;
-
+FROM 테이블이름 
+WHERE 조건식
+GROUP BY 기준컬럼
+HAVING 조건식
+ORDER BY 기준컬럼 ;
 --전체컬럼 EMPLOYEE
 SELECT *
 FROM EMPLOYEE ;

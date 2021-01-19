@@ -188,5 +188,20 @@ SELECT MIN(SALARY), MAX(SALARY),
        MIN(JOB_ID), MAX(JOB_ID)
 FROM EMPLOYEE ;
 
+--COUNT
+--레코드의 갯수를 센다.
+--NULL값을 누락시킴
+
+SELECT COUNT(*), COUNT(JOB_ID), COUNT(DISTINCT JOB_ID)
+FROM EMPLOYEE ;
+
+-- SELECT 구문 REVIEW
+SELECT [특정컬럼 |*(전체컬럼)] 표현식 | DISTINCT | AS 컬럼별칭
+FROM 테이블이름 
+WHERE 조건식
+GROUP BY 기준컬럼
+HAVING 조건식
+ORDER BY 기준컬럼 ;
+
 
 
