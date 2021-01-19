@@ -36,9 +36,16 @@ FROM EMPLOYEE;
 -- 검색이 왜 안될까><?
 SELECT *
 FROM EMPLOYEE 
-WHERE HIRE_DATE = '90/04/01';
+WHERE HIRE_DATE = '90/04/01'; --년 월 일만 입력해서 비교가 안되는것..
 
 -- 비교해보기
 SELECT HIRE_DATE
 FROM EMPLOYEE
 WHERE HIRE_DATE = TO_DATE('900401 133030', 'YYMMDD HH24MISS') ; --년월일에 시분초 데이터까지 있다면 형식을 다 입력해서 비교를 해줘야한다.
+
+-- 그러면 어떻게 시분초를 알까..?
+SELECT HIRE_DATE
+FROM EMPLOYEE
+WHERE TO_CHAR(HIRE_DATE, 'YYMMDD') = '900401' ; --TO_CHAR를 활용해서 포맷을 정해줘서 갖고오기
+
+
