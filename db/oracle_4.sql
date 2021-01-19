@@ -52,7 +52,30 @@ WHERE TO_CHAR(HIRE_DATE, 'YYMMDD') = '900401' ; --TO_CHAR를 활용해서 포맷을 정해
 
 SELECT EMP_NAME,
        HIRE_DATE,
-       TO_CHAR(HIRE_DATE, 'RRRR/MM/DD')
+       TO_CHAR(TO_DATE(HIRE_DATE, 'RRRR/MM/DD'), 'YYYY')
 FROM EMPLOYEE
 WHERE EMP_NAME = '한선기';
 
+SELECT EMP_NAME,
+       HIRE_DATE,
+       TO_CHAR(TO_DATE(HIRE_DATE, 'RRRR/MM/DD'), 'RRRR')
+FROM EMPLOYEE
+WHERE EMP_NAME = '한선기';
+
+--TO_NUMBER 
+--CHAR를 입력받아서 NUMBER로 변환하는 함수
+--숫자형이기 때문에 형식(FORMAT)이 필요없다.
+--묵시적 형변환
+SELECT EMP_NO,
+       SUBSTR(EMP_NO, 1, 6),
+       SUBSTR(EMP_NO, 8),
+       SUBSTR(EMP_NO, 1, 6) + SUBSTR(EMP_NO, 8)--첫번째 데이터부터 6째자리까지 가져오겠다!
+       
+FROM EMPLOYEE;
+
+SELECT EMP_NO,
+       SUBSTR(EMP_NO, 1, 6),
+       SUBSTR(EMP_NO, 8),
+       TO_NUMBER(SUBSTR(EMP_NO, 1, 6)) + TO_NUMBER(SUBSTR(EMP_NO, 8))--첫번째 데이터부터 6째자리까지 가져오겠다!
+       
+FROM EMPLOYEE;
