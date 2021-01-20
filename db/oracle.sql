@@ -4,7 +4,7 @@ FROM 테이블이름
 WHERE 조건식
 GROUP BY 기준컬럼
 HAVING 조건식
-ORDER BY 기준컬럼 ;
+ORDER BY 기준컬럼 ;ㄴ
 --전체컬럼 EMPLOYEE
 SELECT *
 FROM EMPLOYEE ;
