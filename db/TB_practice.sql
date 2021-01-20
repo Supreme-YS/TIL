@@ -75,8 +75,49 @@ FROM TB_PROFESSOR;
 
 SELECT PROFESSOR_NAME AS 교수이름,
        PROFESSOR_SSN AS 나이
+       TO_CHAR(SYSDATA, 'YYYY') - TO_CHAR(SUBSTR(PROFESSOR_SSN, 1, 4))
+       
 FROM TB_PROFESSOR;
-WHERE 
+
+--#4교수들의 이름 중 성을 제외한 이름만 출력하는 SQL 문장을 작성하시오. 출력 헤더는 이름 이 찍히도록 한다. (성이 2자인 경우는 교수는 없다고 가정하시오)
+SELECT SUBSTR(PROFESSOR_NAME, 2, 2) AS "이름"
+FROM TB_PROFESSOR
+
+--#5춘 기술대학교의 재수생 입학자를 구하려고 한다. 어떻게 찾아낼 것인가? 이때, 19살에 입학하면 재수를 하지 않은 것으로 간주한다.
+SELECT STUDENT_NO, STUDENT_NAME
+FROM TB_STUDENT
+WHERE SUBSTR(STUDENT_SSN, 1, 2);
+
+SELECT *
+FROM TB_STUDENT
+WHERE SUBSTR(STUDENT_SSN, 1, 2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
