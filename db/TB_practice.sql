@@ -92,8 +92,15 @@ SELECT *
 FROM TB_STUDENT
 WHERE SUBSTR(STUDENT_SSN, 1, 2)
 
+--#6. 2020 년 크리스마스는 무슨 요일인가?
+SELECT  TO_CHAR(TO_DATE('20201225', 'YYYYMMDD'), 'DAY')
+FROM    DUAL;
 
-
+--#7. TO_DATE('99/10/11','YY/MM/DD'), TO_DATE('49/10/11','YY/MM/DD') 은 각각 몇 년 몇 월 몇 일을 의미할까?
+--또 TO_DATE('99/10/11','RR/MM/DD'), TO_DATE('49/10/11','RR/MM/DD') 은 각각 몇 년 몇 월 몇 일을 의미할까?
+SELECT  TO_CHAR(TO_DATE('99/10/11','RR/MM/DD'), 'RRRR-MM-DD'),
+        TO_CHAR(TO_DATE('49/10/11','YY/MM/DD'), 'YYYY-MM-DD')
+FROM    DUAL;
 
 
 
