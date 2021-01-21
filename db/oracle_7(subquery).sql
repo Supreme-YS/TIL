@@ -61,7 +61,7 @@ FROM DEPARTMENT
 WHERE DEPT_ID = '20';
 
 -- UNION을 사용하여 50번 부서원을 관리자 직원으로 구분하여 표시하고 싶다면?
---NULL 인 부분과 아닌 두 개의 부분을 나누어서 DUMMY COLUMN을 활용해서 구분하자!
+-- NULL 인 부분과 아닌 두 개의 부분을 나누어서 DUMMY COLUMN을 활용해서 구분하자!
 SELECT EMP_ID,
        EMP_NAME,
        '직원' AS 구분
@@ -73,5 +73,19 @@ SELECT EMP_ID,
        '관리자' AS 구분
 FROM EMPLOYEE
 WHERE MGR_ID IS NULL AND DEPT_ID = '50'
+ORDER BY 3 ; --UNION 된 테이블 기준
 
+-- 직급(JOB_TITLE)이 대리 또는 사원 직원정보를 조회(이름, 직급)
+
+SELECT EMP_NAME,
+       JOB_TITLE
+FROM EMPLOYEE
+JOIN JOB USING(JOB_ID)
+WHERE JOB_TITLE = '대리'
+UNION
+SELECT EMP_NAME, JOB_TITLE
+FROM EMPLOYEE
+JOIN JOB USING(JOB_ID)
+WHERE JOB_TITLE = '사원'
+ORDER BY 2;
 
