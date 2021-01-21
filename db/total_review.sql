@@ -170,3 +170,18 @@ SELECT EMP_NAME, DEPT_ID, SALARY
 FROM EMPLOYEE
 WHERE DEPT_ID = '60'
 OR    DEPT_ID = '90';
+
+--연산자 우선순위
+--여러 연산자를 함께 사용할 때 우선 순위를 고려해야 한다. () 를 사용하면 연산자 우선 순위를 조절할 수 있다.
+SELECT EMP_NAME, SALARY, DEPT_ID
+FROM EMPLOYEE
+WHERE DEPT_ID = '20'
+OR DPET_ID = '90'
+AND SALARY > 3000000 ;
+--위와 같은 코드는 AND 연산자가 먼저 처리되어 "급여를 3000000원보다 많이 받는 90번 부서원 또는 20번 부서원"을 조회하는 의미가 된다.
+--따라서 () 처리를 통해 OR가 먼저 처리되도록 처리 순서를 변경
+SELECT EMP_NAME, SALARY, DEPT_ID
+FROM EMPLOYEE
+WHERE (DEPT_ID = '20' 
+OR DEPT_ID = '90')
+AND SALARY > 3000000;
