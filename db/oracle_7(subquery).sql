@@ -113,12 +113,24 @@ WHERE JOB_ID = ( SELECT JOB_ID
                  WHERE EMP_NAME = '나승원' )
 AND SALARY > ( SELECT SALARY 
                FROM EMPLOYEE
-               WHERE EMP_NAME = '나승원' )
---단일행 서브쿼리
+               WHERE EMP_NAME = '나승원' ) ;
+               
+--단일행 서브쿼리를 먼저 만들자!
 SELECT SALARY 
 FROM EMPLOYEE
 WHERE EMP_NAME = '나승원'
---단일행 서브쿼리
+--단일행 서브쿼리를 먼저 만들자!
 SELECT JOB_ID
 FROM EMPLOYEE
 WHERE EMP_NAME = '나승원'
+
+
+--최소 급여를 받는 사원의 이름, 직급, 급여를 조회하라
+SELECT EMP_NAME, JOB_ID, SALARY
+FROM EMPLOYEE
+WHERE SALARY = (SELECT MIN(SALARY)
+                FROM EMPLOYEE)
+
+--단일행 서브쿼리
+SELECT MIN(SALARY)
+FROM EMPLOYEE
