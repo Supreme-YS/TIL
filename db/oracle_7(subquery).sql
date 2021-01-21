@@ -99,7 +99,12 @@ WHERE JOB_TITLE IN ('대리', '사원');
 --SELECT, FROM, WHERE, HAVING 절 등에서 사용 가능
 --서브쿼리는 ()로 묶어서 표현
 --서브쿼리에는 ; 를 사용하지 않음
---유형에 따라 연산자
+--유형에 따라 연산자를 구분해서 사용
+
+--단일행서브쿼리 : 단일 행 반환, 단일 행 비교 연산자 사용
+--다중행서브쿼리 : 여러 행 반환, 다중 행 비교 연산자(IN, ANY, ALL 등) 사용
+
+
 
 --나승원의 이름을 이용하여
 --직급이 동일하고, 나승원보다 급여가 많은 사원의 이름, 직급, 급여를 조회
@@ -118,19 +123,37 @@ AND SALARY > ( SELECT SALARY
 --단일행 서브쿼리를 먼저 만들자!
 SELECT SALARY 
 FROM EMPLOYEE
-WHERE EMP_NAME = '나승원'
+WHERE EMP_NAME = '나승원';
 --단일행 서브쿼리를 먼저 만들자!
 SELECT JOB_ID
 FROM EMPLOYEE
-WHERE EMP_NAME = '나승원'
+WHERE EMP_NAME = '나승원';
 
 
 --최소 급여를 받는 사원의 이름, 직급, 급여를 조회하라
+--1. 최소급여확인
+--2. 검색
 SELECT EMP_NAME, JOB_ID, SALARY
 FROM EMPLOYEE
 WHERE SALARY = (SELECT MIN(SALARY)
-                FROM EMPLOYEE)
+                FROM EMPLOYEE);
 
 --단일행 서브쿼리
 SELECT MIN(SALARY)
 FROM EMPLOYEE
+
+-- 부서별 급여 총합이 가장 많은 부서의 이름, 급여 총합을 조회하라
+--메인쿼리 만들기
+SELECT DEPT_NAME, SUM(SALARY)
+FROM EMPLOYEE
+JOIN DEPARTMENT USING(DEPT_ID)
+GROUP BY DEPT_NAME
+HAVING SUM(SALARY) = (SELECT MAX(SUM(SALARY))
+                        FROM EMPLOYEE
+                        GROUP BY DEPT_ID)
+
+--서브쿼리 만들기
+SELECT MAX(SUM(SALARY))
+FROM EMPLOYEE
+GROUP BY DEPT_ID;
+
