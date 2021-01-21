@@ -185,3 +185,70 @@ FROM EMPLOYEE
 WHERE (DEPT_ID = '20' 
 OR DEPT_ID = '90')
 AND SALARY > 3000000;
+
+
+--------------SELECT ADDITIONAL--------------
+--문자열 함수 LENGTH
+--주어진 컬럼 값/문자열 길이(문자 개수)를 반환하는 함수
+SELECT LENGTH(CHARTYPE),
+       LENGTH(VARCHARTYPE)
+FROM COLUMN_LENGTH;
+
+--LENGTHB : 주어진 컬럼 값/문자열 길이(BYTE)를 반환하는 함수
+SELECT LENGTHB(CHARTYPE),
+       LENGTHB(VARCHARTYPE)
+FROM COLUMN_LENGTH;
+
+--INSTR : 찾는 문자열이 지정한 위치부터 지정한 회수만큼 나타난 시작 위치를 반환하는 함수
+--#1
+SELECT EMAIL,
+       INSTR( EMAIL, 'c', -1, 2) 위치
+FROM   EMPLOYEE;
+--#2
+SELECT EMAIL,
+       INSTR( EMAIL, 'c', INSTR( EMAIL,'.' ) -1) 위치
+FROM EMPLOYEE;
+
+--주요 단일 행 함수 - 문자열 함수 LPAD/RPAD
+--주어진 컬럼/문자열에 임의의 문자을 왼쪽/오른쪽에 덧붙여 길이 N의 문자열을 반환하는 함수
+--EMAIL 컬럼 왼쪽에 '.'을 덧붙여 길이를 20으로 맞추시오
+SELECT EMAIL AS 원본데이터,
+       LENGTH(EMAIL) AS 원본길이,
+       LPAD(EMAIL, 20, '.') AS 적용결과,
+       LENGTH(LPAD(EMAIL, 20, '.')) AS 결과길이
+FROM EMPLOYEE;
+--EMAIL 컬럼 오른쪽에 '.'을 덧붙여 길이를 20으로 맞추시오
+SELECT EMAIL AS 원본데이터,
+       LENGTH(EMAIL) AS 원본길이,
+       RPAD(EMAIL, 20, '.') AS 적용결과,
+       LENGTH(RPAD(EMAIL, 20, '.')) AS 결과길이
+FROM EMPLOYEE;
+
+--주요 단일 행 함수 - 문자열 함수 LTRIM/RTRIM
+--주어진 컬럼/문자열의 왼쪽/오른쪽에서 지정한 STR에 포함된 모든 문자를 제거한 나머지를 반환하는 함수
+--패턴을 제거하는 의미가 아니다.
+SELECT LTRIM('===TECH', '=') FROM DUAL;
+SELECT RTRIM('TECH===', '=') FROM DUAL;
+
+--주요 단일 행 함수 - 문자열 함수 TRIM
+--주어진 컬럼/문자열의 앞/뒤/양쪽에 있는 지정한 문자를 제거한 나머지를 반환하는 함수
+SELECT TRIM('==TECH==') FROM DUAL;
+SELECT TRIM('=' FROM '==TECH==') FROM DUAL; --TECH 출력
+SELECT TRIM(LEADING '=' FROM '==TECH==') FROM DUAL; --TECH==출력
+SELECT TRIM(TRAILING '=' FROM '==TECH==') FROM DUAL; --==TECH 출력
+SELECT TRIM(BOTH '=' FROM '==TECH==') FROM DUAL; --TECH출력
+
+--주요 단일 행 함수 - 문자열 함수 SUBSTR
+--주어진 컬럼/문자열에서 지정한 위치부터 지정한 개수 만큼의 문자열을 잘라내어 반환하는 함수
+SELECT SUBSTR('This?is?a?test', 6, 2) FROM DUAL; --6번째 문자를 시작으로 2개 출력
+SELECT SUBSTR('This?is?a?test', 6) FROM DUAL; --6번째 문자를 시작으로 끝까지 출력
+SELECT SUBSTR('이것은?연습입니다', 3, 4) FROM DUAL; --3번째 문자를 시작으로 4개 출력
+SELECT SUBSTR('TechOnTheNet', 1, 4) FROM DUAL;
+SELECT SUBSTR('TechOnTheNet', -3, 3) FROM DUAL; --뒤에서 3번째부터 3개 Net 출력
+SELECT SUBSTR('TechOnTheNet', -6, 3) FROM DUAL; --뒤에서 6번째부터 3개 TheNet 출력
+SELECT SUBSTR('TechOnTheNet', -8, 2) FROM DUAL; --뒤에서 8번째부터 2개 On 출력
+
+--주요 단일 행 함수 - 숫자 함수 ROUND
+
+
+
