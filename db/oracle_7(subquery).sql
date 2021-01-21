@@ -60,3 +60,18 @@ SELECT DEPT_NAME,
 FROM DEPARTMENT
 WHERE DEPT_ID = '20';
 
+-- UNION을 사용하여 50번 부서원을 관리자 직원으로 구분하여 표시하고 싶다면?
+--NULL 인 부분과 아닌 두 개의 부분을 나누어서 DUMMY COLUMN을 활용해서 구분하자!
+SELECT EMP_ID,
+       EMP_NAME,
+       '직원' AS 구분
+FROM EMPLOYEE
+WHERE MGR_ID IS NOT NULL AND DEPT_ID = '50'
+UNION
+SELECT EMP_ID,
+       EMP_NAME,
+       '관리자' AS 구분
+FROM EMPLOYEE
+WHERE MGR_ID IS NULL AND DEPT_ID = '50'
+
+
