@@ -255,6 +255,23 @@ AND SALARY < ALL
                 FROM EMPLOYEE
                 JOIN JOB USING (JOB_ID)
                 WHERE JOB_TITLE = '과장');
+                
+                
+-- 자기 직급(JOB_ID)의 평균 급여를 받는 직원을 조회하라
+
+SELECT EMP_NAME , JOB_TITLE , SALARY
+FROM EMPLOYEE
+JOIN JOB USING(JOB_ID)
+WHERE (JOB_ID, SALARY) IN (SELECT JOB_ID, TRUNC(AVG(SALARY), -5) 
+                         FROM EMPLOYEE
+                         GROUP BY JOB_ID); --다중행서브쿼리지만 단일 열! 그래서 다중열로 만들어줘서 직급을 만들어줘서 넘겨줘야된다.
+                 
+
+--서브쿼리
+SELECT JOB_TITLE, TRUNC(AVG(SALARY), -5) 
+FROM EMPLOYEE
+JOIN JOB USING(JOB_ID)
+GROUP BY JOB_TITLE ;
 
 
 
