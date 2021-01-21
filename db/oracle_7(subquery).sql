@@ -189,7 +189,9 @@ FROM EMPLOYEE
 --#1 CASE ~ WHEN 방식
 SELECT EMP_ID,
        EMP_NAME,
-       CASE WHEN EMP_ID IN (SELECT MGR_ID FROM EMPLOYEE) THEN '관리자' ELSE '직원' END
+       CASE WHEN EMP_ID IN (SELECT MGR_ID
+                            FROM EMPLOYEE)
+       THEN '관리자' ELSE '직원' END
 FROM EMPLOYEE
 --#2 CASE
 SELECT EMP_ID,
@@ -200,8 +202,6 @@ SELECT EMP_ID,
            '관리자'
        END AS 구분
 FROM EMPLOYEE
-
-
 
 -- ANY와 ALL비교
 -- * > ANY 최소값보다 큰
