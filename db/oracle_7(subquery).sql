@@ -88,4 +88,37 @@ FROM EMPLOYEE
 JOIN JOB USING(JOB_ID)
 WHERE JOB_TITLE = '사원'
 ORDER BY 2;
+-- 이렇게도 가능하다.
+SELECT EMP_NAME, JOB_TITLE
+FROM EMPLOYEE
+JOIN JOB USING(JOB_ID)
+WHERE JOB_TITLE IN ('대리', '사원');
 
+--SUBQUERY
+--일반적인 SQL 구문과 동일 (별도 형식이 존재하는 것이 아님)
+--SELECT, FROM, WHERE, HAVING 절 등에서 사용 가능
+--서브쿼리는 ()로 묶어서 표현
+--서브쿼리에는 ; 를 사용하지 않음
+--유형에 따라 연산자
+
+--나승원의 이름을 이용하여
+--직급이 동일하고, 나승원보다 급여가 많은 사원의 이름, 직급, 급여를 조회
+--단일행 서브쿼리 합친거
+SELECT EMP_NAME,
+       JOB_ID,
+       SALARY
+FROM EMPLOYEE
+WHERE JOB_ID = ( SELECT JOB_ID
+                 FROM EMPLOYEE
+                 WHERE EMP_NAME = '나승원' )
+AND SALARY > ( SELECT SALARY 
+               FROM EMPLOYEE
+               WHERE EMP_NAME = '나승원' )
+--단일행 서브쿼리
+SELECT SALARY 
+FROM EMPLOYEE
+WHERE EMP_NAME = '나승원'
+--단일행 서브쿼리
+SELECT JOB_ID
+FROM EMPLOYEE
+WHERE EMP_NAME = '나승원'
