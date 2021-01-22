@@ -58,3 +58,20 @@ INSERT INTO TEST_MEMBER(ID, PWD, ADDR) VALUES('YSSIM', 'ADMIN', 'SEOUL');
 
 SELECT *
 FROM TEST_MEMBER;
+
+
+--ERD 보고 만들기, LOCATION 테이블을 참조하여 기본키를 전이받는 새로운 외래 테이블 만들기.
+--FK (부모에 의존하는 데이터이거나 NULL값을 허용)
+CREATE TABLE TEST_FK(
+       ID      CHAR(3) PRIMARY KEY,
+       NAME    VARCHAR(50) NOT NULL,
+       LID     CHAR(2) REFERENCES LOCATION(LOCATION_ID)--FK 컬럼으로 쓰고 싶은 컬럼! 즉, 부모를 참조하는 키
+)                                                      --LOCATION테이블의 기본키은 LOCATION_ID를 참조하여 LID라는 FK를 만든거임
+INSERT INTO TEST_FK VALUES('B', 'YSSIM', 'OT') --LOCATION_ID에 있는 값들만 입력이 가능하기 때문에
+INSERT INTO TEST_FK VALUES('S', 'SUPREME', 'A') -- A처럼 LOCATION_ID에 없는 값을 입력하면 parent key not found라는 오류를 발생시킨다.
+
+
+--LOCATION 테이블 확인
+SELECT *
+FROM LOCATION; 
+                                                       
