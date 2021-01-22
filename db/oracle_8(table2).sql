@@ -85,8 +85,51 @@ FROM V_EMP_DEPT_JOB
 -- VIEW 삭제
 DROP VIEW V_EMP_DEPT_JOB ;
 
+--SEQUENCE 객체
+CREATE SEQUENCE TEST_SEQ
+START WITH   300
+INCREMENT BY 2
+MAXVALUE     310
+NOCYCLE
+NOCACHE ;
+
+SELECT TEST_SEQ.NEXTVAL FROM DUAL;
+SELECT TEST_SEQ.CURRVAL FROM DUAL;
+DROP SEQUENCE TEST_SEQ
+
+--18 문제
+--TOP-N 분석 : 조건에 맞는 최상위 레코드 N개를 식별해야하는 경우 사용하는 쿼리 기법
+--원리 1. 정렬 2. ROWNUM 3. 부여된 순번대로 필요한 만큼 식별
+
+
+--부서별 평균급여보다 많은 급여를 받은 사원의 정보 중 사원이름, 급여를 조회하려고 한다.
+--평균급여는 정수 3자리에서 올림
+--FROM 절에서 SUBQUERY(INLINE VIEW)를 이용해서 작성
+
+
+--서브쿼리!
+SELECT DEPT_ID,  ROUND(AVG(SALARY), -3) AS DAVG
+FROM EMPLOYEE 
+GROUP BY DEPT_ID
 
 
 
+
+
+
+
+
+
+
+
+
+-- TOP-N 분석
+
+SELECT  EMP_NAME , JOB_TITLE , SALARY
+FROM    (SELECT  JOB_ID, TRUNC(AVG(SALARY) , -5) AS JOBAVG
+         FROM    EMPLOYEE
+         GROUP BY    JOB_ID) V
+JOIN    EMPLOYEE E ON(V.JOB_ID = E.JOB_ID AND V.JOBAVG = E.SALARY)
+JOIN    JOB J ON(E.JOB_ID = J.JOB_ID)
 
 
