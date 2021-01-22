@@ -17,9 +17,10 @@ CREATE TABLE TABLE_NAME(
 DROP TABLE TEST_MEMBER; --테이블 삭제
 
 CREATE TABLE TEST_MEMBER(--테이블 생성
-    ID   VARCHAR2(50) PRIMARY KEY, --중복값 허용하지 않는 조건
+    ID   VARCHAR2(50), --PRIMARY KEY, --중복값 허용하지 않는 조건
     PWD  VARCHAR2(50) NOT NULL, -- 널 값을 허용하지 않는 조건
-    ADDR VARCHAR2(50) DEFAULT 'SEOUL' --DEFAULT 즉, 기본값으로 삽입되는 열
+    ADDR VARCHAR2(50) DEFAULT 'SEOUL', --DEFAULT 즉, 기본값으로 삽입되는 열
+    PRIMARY KEY(ID) --TABLE 제약을 줄 수 있는 자리이며, NOT NULL(칼럼명)은 불가능 PRIMARY KEY(칼럼명)은 가능
 )
 
 INSERT INTO TEST_MEMBER(ID, PWD, ADDR) VALUES('YSSIM', 'YSSIM', 'SEOUL');
