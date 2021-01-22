@@ -70,8 +70,29 @@ CREATE TABLE TEST_FK(
 INSERT INTO TEST_FK VALUES('B', 'YSSIM', 'OT') --LOCATION_ID에 있는 값들만 입력이 가능하기 때문에
 INSERT INTO TEST_FK VALUES('S', 'SUPREME', 'A') -- A처럼 LOCATION_ID에 없는 값을 입력하면 parent key not found라는 오류를 발생시킨다.
 
-
 --LOCATION 테이블 확인
 SELECT *
 FROM LOCATION; 
-                                                       
+                              
+--TABLE 삭제
+DROP TABLE TEST_FK
+
+--테이블레벨 제약으로 만들기
+CREATE TABLE TEST_FK(
+       ID      CHAR(3) PRIMARY KEY,
+       NAME    VARCHAR(50) NOT NULL,
+       LID     CHAR(2),
+       FOREIGN KEY(LID) REFERENCES LOCATION(LOCATION_ID)
+)
+
+INSERT INTO TEST_FK VALUES('B', 'YSSIM', 'OT')
+INSERT INTO TEST_FK VALUES('S', 'SUP', 'A1')
+
+--JOIN해보기
+
+SELECT LOC_DESCRIBE, ID
+FROM LOCATION
+RIGHT JOIN TEST_FK ON (LOCATION_ID = LID)
+
+SELECT *
+FROM TEST_FK
