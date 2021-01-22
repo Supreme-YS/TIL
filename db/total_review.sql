@@ -249,6 +249,49 @@ SELECT SUBSTR('TechOnTheNet', -6, 3) FROM DUAL; --뒤에서 6번째부터 3개 TheNet 출
 SELECT SUBSTR('TechOnTheNet', -8, 2) FROM DUAL; --뒤에서 8번째부터 2개 On 출력
 
 --주요 단일 행 함수 - 숫자 함수 ROUND
+--지정한 자릿수에서 반올림 하는 함수
+SELECT ROUND(125.315) FROM DUAL;
+SELECT ROUND(125.315, 0) FROM DUAL;
+SELECT ROUND(125.315, 1) FROM DUAL; --소수점 둘째자리에서 반올림
+SELECT ROUND(125.315, -1) FROM DUAL; --정수 첫째자리에서 반올림
+SELECT ROUND(125.315, 3) FROM DUAL; --소수쩜 넷째자리에서 반올림
+SELECT ROUND(-125.315, 2) FROM DUAL;
 
+--주요 단일 행 함수 - 숫자 함수 TRUNC
+--지정한 자릿수에서 버림하는 함수
+SELECT TRUNC(125.315) FROM DUAL;
+SELECT TRUNC(125.315, 0) FROM DUAL;
+SELECT TRUNC(125.315, 1) FROM DUAL; --둘째자리에서 버림
+SELECT TRUNC(125.315, -1) FROM DUAL;
+SELECT TRUNC(125.315, 3) FROM DUAL;
+SELECT TRUNC(-125.315, -3) FROM DUAL;
 
+--주요 단일 행 함수 - 날짜 함수 SYSDATE
+--지정된 형식으로 현재 날짜와 시간을 표시하는 함수
+SELECT SYSDATE
+FROM DUAL;
 
+--주요 단일 행 함수 - 날짜 함수 ADD_MONTH
+--지정한 만큼의 달 수를 더한 날짜를 반환하는 함수
+--직원 별로 입사일 기준으로 근무한 지 20년이 되는 일자를 조회하시오
+SELECT EMP_NAME,
+       HIRE_DATE,
+       ADD_MONTHS( HIRE_DATE, 240)
+FROM EMPLOYEE;
+
+--주요 단일 행 함수 - 날짜 함수 MONTHS_BETWEEN
+--지정한 두 날짜 사이의 월 수를 반환하는 함수
+SELECT MONTHS_BETWEEN( '09/01/01', '09/03/14' ) FROM DUAL;
+SELECT MONTHS_BETWEEN( '09/07/01', '09/03/14' ) FROM DUAL;
+SELECT MONTHS_BETWEEN( '09/03/01', '09/03/01' ) FROM DUAL;
+SELECT MONTHS_BETWEEN( '09/08/02', '09/06/02' ) FROM DUAL;
+--2010년 1월 1일 기준으로 입사한지 10년이 넘은 직원들의 근무년수 조회
+SELECT EMP_NAME,
+       HIRE_DATE,
+       ROUND(MONTHS_BETWEEN('10/01/01', HIRE_DATE) / 12) AS 근무년수
+FROM EMPLOYEE
+WHERE MONTHS_BETWEEN('10/01/01', HIRE_DATE) > 120 ;
+
+--주요 단일 행 함수 - 데이터 타입 변환
+--데이터 타입에 따라 사용할 수 있는 변환 함수가 다름
+-- 상호 타입 변환이 되지 않는 데이터 타입 존재
