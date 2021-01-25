@@ -6,4 +6,5 @@ from django.shortcuts import render, HttpResponse
 def index(request):
     # return HttpResponse('*** 여기는 시작페이지 입니다. Hello World Guys. ***') # 이게 비효율적이라서, html template와 연결시킨다.
     # template와 연동시킬 수 있게 하는 함수 render
-    return render(request, 'hello/index.html') # hello 라는 directory안에 있는 index html파일을 연동
+    context = {'ment' : '난 이 세계의 왕이다.'}
+    return render(request, 'hello/index.html', context) # hello 라는 directory안에 있는 index html파일을 연동
