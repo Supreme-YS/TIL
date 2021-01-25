@@ -15,3 +15,8 @@ def football(request) :
     return HttpResponse('*** THIS PAGE IS FOOTBALL ***')
 def basketball(request) :
     return HttpResponse('*** THIS PAGE IS BASKETBALL ***')
+
+def login(request) :
+    msg = request.POST['msg']
+    print('param msg - ', msg)
+    return HttpResponse('*** THIS PAGE IS LOGIN ***')
