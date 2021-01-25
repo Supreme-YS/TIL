@@ -8,3 +8,10 @@ def index(request):
     # template와 연동시킬 수 있게 하는 함수 render
     context = {'ment' : '난 이 세계의 왕이다.'}
     return render(request, 'hello/index.html', context) # hello 라는 directory안에 있는 index html파일을 연동
+
+def baseball(request) :
+    return HttpResponse('*** THIS PAGE IS BASEBALL ***')
+def football(request) :
+    return HttpResponse('*** THIS PAGE IS FOOTBALL ***')
+def basketball(request) :
+    return HttpResponse('*** THIS PAGE IS BASKETBALL ***')
