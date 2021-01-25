@@ -9,14 +9,14 @@
     <div align = "center"> {{ment}} </div>
     <hr/>
 
-    <form method="POST" action="http://localhost:8000/hello/login/">
+    <form method="POST" action="{% url 'msg'%}">
         {% csrf_token %}
         <input type="text" name="msg">
         <input type="submit" value="send">
     </form>
 
     <hr/>
-    <a href="http://localhost:8000/hello/baseball">야구</a></a>&nbsp;&nbsp;&nbsp;
+    <a href="../baseball">야구</a></a>&nbsp;&nbsp;&nbsp;
     <a href="http://localhost:8000/hello/football">축구</a></a>&nbsp;&nbsp;&nbsp;
     <a href="http://localhost:8000/hello/basketball">농구</a></a>&nbsp;&nbsp;&nbsp;
 

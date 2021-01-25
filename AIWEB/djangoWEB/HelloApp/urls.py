@@ -9,5 +9,5 @@ urlpatterns = [
     path('baseball/', views.baseball),
     path('football/', views.football),
     path('basketball/', views.basketball),
-    path('login/', views.login),
+    path('login/', views.login, name = 'msg'),
 ]
