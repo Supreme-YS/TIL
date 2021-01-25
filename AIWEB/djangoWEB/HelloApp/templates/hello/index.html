@@ -9,15 +9,15 @@
     <div align = "center"> {{ment}} </div>
     <hr/>
 
-    <form method="POST" action="{% url 'msg'%}">
+    <form method="POST" action="{% url 'msg'%}"> <!-- 상대경로이지만 내가 urls.py에서 지정한 이름으로 호출이 가능하다.-->
         {% csrf_token %}
         <input type="text" name="msg">
         <input type="submit" value="send">
     </form>
 
     <hr/>
-    <a href="../baseball">야구</a></a>&nbsp;&nbsp;&nbsp;
-    <a href="http://localhost:8000/hello/football">축구</a></a>&nbsp;&nbsp;&nbsp;
+    <a href="{% url 'base' %}">야구</a></a>&nbsp;&nbsp;&nbsp;
+    <a href="http://localhost:8000/hello/football">축구</a></a>&nbsp;&nbsp;&nbsp; <!--절대 경로를 사용한 방법 -->
     <a href="http://localhost:8000/hello/basketball">농구</a></a>&nbsp;&nbsp;&nbsp;
 
 </body>
