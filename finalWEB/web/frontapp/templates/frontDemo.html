@@ -10,6 +10,7 @@
 <body>
     <div id="msg"></div><br/>
     <button id='btn'>click</button><br/>
+    <button id='clrbtn'>clearBtn</button><br/>
     <input type="text" name="id" id="id"/>
 
     <script>
@@ -18,6 +19,10 @@
             $('#btn').click(function () {
                 param = $('#id').val()
                 alert(param)
+            })
+            $('#clrbtn').click(function () {
+                $('#msg').empty()
+                $('#msg').html('<bold> Change Data </bold>')
             })
         })
     </script>
