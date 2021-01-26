@@ -11,9 +11,24 @@
     <div id="msg"></div><br/>
     <button id='btn'>click</button><br/>
     <button id='clrbtn'>clearBtn</button><br/>
-    <input type="text" name="id" id="id"/>
+    <input type="text" name="id" id="id"/><p/>
+    <button id="searchBtn">searchBtn</button><br/>
+
+    <table border="1">
+        <tr><th>ID</th><th>PWD</th></tr>
+        <tbody id="tbody">
+            <tr><td>yssim</td><td>yssim</td></tr>
+            <tr><td>admin</td><td>admin</td></tr>
+        </tbody>
+    </table>
 
     <script>
+        obj = { id : 'multicampusID', pwd : 'multicampusPWD'}
+
+        list = [{ id : 'multicampusID01', pwd : 'multicampusPWD01'},
+                { id : 'multicampusID02', pwd : 'multicampusPWD02'}]
+
+
         $(document).ready(function() {
             $('#msg').text('페이지 로딩 시 해당 영역에 텍스트 입력')
             $('#btn').click(function () {
@@ -24,6 +39,23 @@
                 $('#msg').empty()
                 $('#msg').html('<bold> Change Data </bold>')
             })
+
+            $('#searchBtn').click(function () {
+                txt = ""
+                $.each(list, function (idx, data) {
+                    txt += '<tr><td>' + data.id + '</td><td>' + data.pwd + '</td></tr>'
+                })
+                // append(), html(), text() --val()
+                $('#tbody').empty().html(txt)
+                //$('#tbody').empty()
+                // alert(obj.id)
+                // alert(obj.pwd)
+                // $.each(list, function (idx, data) {
+                //     alert(idx+" , "+data.id+" , "+data.pwd)
+                // })
+                })
+
+
         })
     </script>
 
