@@ -30,7 +30,7 @@
 
     <hr/>
     <label>제조사</label>
-    <select>
+    <select id="maker">
         <option>선택하세요</option>
         <option>BMW</option>
         <option>AUDI</option>
@@ -38,17 +38,42 @@
     </select>
 
     <label>모델</label>
-    <select>
+    <select id="model">
         <option>선택하세요</option>
     </select>
+
+
     <script>
         obj = { id : 'multicampusID', pwd : 'multicampusPWD'}
 
         list = [{ id : 'multicampusID01', pwd : 'multicampusPWD01'},
                 { id : 'multicampusID02', pwd : 'multicampusPWD02'}]
 
+        bmwAry = ['320d', '520d', '640d', '740d']
+        audiAry = ['a4', 'a6', 'a8', 'r8']
+        benzAry = ['c200', 'e200', 's500', 's600']
+        function display(ary) {
+            txt = '<option>선택하세요</option>' ;
+            $.each(ary, function (idx, data) {
+                txt += '<option>'+data+'</option>' ;
+            })
+            $('#model').empty().html(txt)
+        }
 
         $(document).ready(function() {
+            $('#maker').change(function () {
+                maker = $('#maker').val()
+                if(maker == 'BMW') {
+                    display(bmwAry)
+                }
+                if(maker == 'AUDI') {
+                    display(audiAry)
+                }
+                if(maker == 'BENZ') {
+                    display(benzAry)
+                }
+            })
+
             $('#msg').text('페이지 로딩 시 해당 영역에 텍스트 입력')
             $('#btn').click(function () {
                 param = $('#id').val()
