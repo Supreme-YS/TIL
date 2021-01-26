@@ -3,12 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"> </script> <!--script 사용을 위한 준비-->
+
+
 </head>
 <body>
-    document 영역
-    <script>
-        
+    <div id="msg"></div><br/>
+    <button id='btn'>click</button><br/>
+    <input type="text" name="id" id="id"/>
 
+    <script>
+        $(document).ready(function() {
+            $('#msg').text('페이지 로딩 시 해당 영역에 텍스트 입력')
+            $('#btn').click(function () {
+                param = $('#id').val()
+                alert(param)
+            })
+        })
     </script>
+
 </body>
 </html>
