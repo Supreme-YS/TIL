@@ -25,4 +25,5 @@ def paramAjax(request) :
     return JsonResponse(list, safe=False)
 
 def chart(request) :
-    return render(request, 'chartDemo.html')
+    context = {'msg' : [2,3,4,5]}
+    return render(request, 'chartDemo.html', context)
