@@ -48,8 +48,12 @@
                     type : 'post' ,
                     data : {'csrfmiddlewaretoken' : '{{csrf_token}}'},
                     dataType : 'json' ,
-                    success : function (data){
-                        alert(data)
+                    success : function (list){
+                        txt = ""
+                        $.each(list, function (idx, data) {
+                            txt += '<tr><td>'+data.id+'</td><td>'+data.pwd+'</td></tr>'
+                        })
+                        $('#tbody').empty().append(txt)
                     }
                 })
             })
