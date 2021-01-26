@@ -14,3 +14,12 @@ def nonAjax(request) :
 
     return JsonResponse(list, safe=False)
 
+def paramAjax(request) :
+    id =  request.POST['user_id']
+    pwd = request.POST['user_pwd']
+    print('ajax param - ', id, pwd)
+
+    list = [{'id': 'multicampusID04', 'pwd': 'multicampusPWD04'},
+            {'id': 'multicampusID05', 'pwd': 'multicampusPWD05'}]
+
+    return JsonResponse(list, safe=False)

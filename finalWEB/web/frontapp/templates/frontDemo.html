@@ -13,7 +13,12 @@
     <button id='clrbtn'>clearBtn</button><br/>
     <input type="text" name="id" id="id"/><p/>
     <button id="searchBtn">searchBtn</button><br/>
+
     <button class="ajaxBtn">ajaxBtn</button><br/>
+    <button class="ajaxParamBtn">ajaxParamBtn</button><br/>
+
+    <input type="text"     name="user_id" id="user_id"/>
+    <input type="password" name="user_pwd" id="user_pwd"/>
 
     <table border="1">
         <tr><th>ID</th><th>PWD</th></tr>
@@ -23,6 +28,19 @@
         </tbody>
     </table>
 
+    <hr/>
+    <label>제조사</label>
+    <select>
+        <option>선택하세요</option>
+        <option>BMW</option>
+        <option>AUDI</option>
+        <option>BENZ</option>
+    </select>
+
+    <label>모델</label>
+    <select>
+        <option>선택하세요</option>
+    </select>
     <script>
         obj = { id : 'multicampusID', pwd : 'multicampusPWD'}
 
@@ -47,6 +65,25 @@
                     url : "{% url 'nonParamAjax' %}",
                     type : 'post' ,
                     data : {'csrfmiddlewaretoken' : '{{csrf_token}}'},
+                    dataType : 'json' ,
+                    success : function (list){
+                        txt = ""
+                        $.each(list, function (idx, data) {
+                            txt += '<tr><td>'+data.id+'</td><td>'+data.pwd+'</td></tr>'
+                        })
+                        $('#tbody').empty().append(txt)
+                    }
+                })
+            })
+
+            $('.ajaxParamBtn').click(function () {
+                //alert('ajax')
+                $.ajax({
+                    url : "{% url 'paramAjax' %}",
+                    type : 'post' , //포스트방식
+                    data : {'csrfmiddlewaretoken' : '{{csrf_token}}',
+                            user_id : $('#user_id').val(),
+                            user_pwd : $('#user_pwd').val() }, //보안토큰
                     dataType : 'json' ,
                     success : function (list){
                         txt = ""

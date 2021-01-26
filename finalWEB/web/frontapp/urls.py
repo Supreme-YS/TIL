@@ -6,4 +6,5 @@ from frontapp import views
 urlpatterns = [
     path('main/', views.index),
     path('nonParamAjax/', views.nonAjax, name='nonParamAjax'),
+    path('paramAjax/', views.paramAjax, name='paramAjax'),
 ]
