@@ -7,4 +7,6 @@ urlpatterns = [
     path('main/', views.index),
     path('nonParamAjax/', views.nonAjax, name='nonParamAjax'),
     path('paramAjax/', views.paramAjax, name='paramAjax'),
+    path('chart/', views.chart, name='chart'),
+
 ]

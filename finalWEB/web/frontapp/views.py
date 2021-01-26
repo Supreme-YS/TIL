@@ -23,3 +23,6 @@ def paramAjax(request) :
             {'id': 'multicampusID05', 'pwd': 'multicampusPWD05'}]
 
     return JsonResponse(list, safe=False)
+
+def chart(request) :
+    return render(request, 'chartDemo.html')
