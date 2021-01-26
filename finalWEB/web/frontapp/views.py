@@ -6,4 +6,5 @@ def index(request) :
     print('request index - ')
     return render(request , 'frontDemo.html' )
 
-
+def nonAjax(request) :
+    print('request ajax nonAjax')
