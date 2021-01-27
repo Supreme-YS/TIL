@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from .models import *
 
 # Create your views here.
+
+# --------------------SQL 문법과 ORM 문법의 비교-------------------- #
+
 # select * from table;
 # -> modelName.objects.all()
 
@@ -26,8 +29,16 @@ from .models import *
 # -> modelName.objects.filter(subject_endswith='공지')
 
 # insert into table values()
-# model(attr=value, attr=value)
-# model.save()
+# -> model(attr=value, attr=value)
+# -> model.save()
+
+# delete * from tableName where id = xxxx
+# -> modelName.objects.get(id=xxxx).delete()
+
+# update tableName set attr = value where id = xxxx
+# -> obj = modelName.objects.get(id=xxxx)
+# -> obj.attr = value
+# -> obj.save() --commit
 
 
 def index(request) :
