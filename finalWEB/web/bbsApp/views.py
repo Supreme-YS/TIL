@@ -2,6 +2,19 @@ from django.shortcuts import render, redirect
 from .models import *
 
 # Create your views here.
+# select * from table;
+# -> modelName.objects.all()
+
+# select * from table where id = xxxx;
+# -> modelName.objects.get(id = xxxx)
+# -> modelName.objects.filter(id = xxxx)
+
+# select * from table where id = xxxx and pwd = xxxx;
+# -> modelName.objects.get(id = xxxx, pwd = xxxx)
+# -> modelName.objects.filter(id = xxxx, pwd = xxxx)
+
+# select * from table where id = xxxx or pwd = xxxx;
+# -> modelName.objects.filter(Q(id = xxxx) | Q(pwd = xxxx))
 
 def index(request) :
     return render(request, 'login.html')
