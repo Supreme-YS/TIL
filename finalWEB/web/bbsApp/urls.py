@@ -6,4 +6,5 @@ from bbsApp import views
 
 urlpatterns = [
     path('index/', views.index, name='index'),
+    path('login/', views.loginProc, name='login'),
 ]
