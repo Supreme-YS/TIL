@@ -5,5 +5,5 @@ from bbsApp import views
 
 
 urlpatterns = [
-    path('index/', view.index, name='index'),
+    path('index/', views.index, name='index'),
 ]
