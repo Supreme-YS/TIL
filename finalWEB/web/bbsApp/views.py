@@ -16,6 +16,16 @@ from .models import *
 # select * from table where id = xxxx or pwd = xxxx;
 # -> modelName.objects.filter(Q(id = xxxx) | Q(pwd = xxxx))
 
+# select * from table where subject like '%공지%' '공지'를 포함하는 단어
+# -> modelName.objects.filter(subject_icontains='공지')
+
+# select * from table where subject like '공지%' # '공지'로 시작하는 단어
+# -> modelName.objects.filter(subject_startswith='공지')
+
+# select * from table where subject like '%공지' # '공지'로 끝나는 단어
+# -> modelName.objects.filter(subject_endswith='공지')
+
+
 def index(request) :
     return render(request, 'login.html')
 
