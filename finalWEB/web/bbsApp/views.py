@@ -59,3 +59,18 @@ def loginProc(request) :
             return render(request, 'home.html')
         else :
             return redirect('index')
+
+def registerForm(request) :
+    print('request - registerForm')
+    return render(request, 'join.html')
+
+def register(request):
+    # id, pwd, name 을 입력받아 -> model을 이용해 -> db(insert) 시키는 작업이 필요하다.
+    if request.method == 'POST':
+        id    = request.POST['id']
+        pwd   = request.POST['pwd']
+        name  = request.POST['name']
+        register = BbsUserRegister(user_id = id, user_pwd = pwd, user_name = name)
+        register.save()
+
+    return render(request, 'login.html')
