@@ -25,6 +25,10 @@ from .models import *
 # select * from table where subject like '%공지' # '공지'로 끝나는 단어
 # -> modelName.objects.filter(subject_endswith='공지')
 
+# insert into table values()
+# model(attr=value, attr=value)
+# model.save()
+
 
 def index(request) :
     return render(request, 'login.html')
