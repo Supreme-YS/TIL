@@ -41,8 +41,21 @@ from .models import *
 # -> obj.save() --commit
 
 
+# 사용자의 상태정보 저장을 위해서는 session, cookie
+
 def index(request) :
-    return render(request, 'login.html')
+    if request.session.get('user_id') and request.session.get('user_name') :
+        context = {'id'  : request.session['user_id'],
+                   'name': request.session['user_name']}
+        return render(request, 'home.html', context)
+    else :
+        return render(request, 'login.html')
+
+def logout(request) :
+    request.session['user_name'] = {}
+    request.session['user_id']   = {}
+    request.session.modified     = True
+    return redirect('index') # render로 주면 logout이라는 주소값이 남아진다. 분기를 위해 redirect를 사용한 것
 
 def loginProc(request) :
     print('request - loginProc')
@@ -55,8 +68,15 @@ def loginProc(request) :
         # orm class - table
         user = BbsUserRegister.objects.get(user_id=id, user_pwd=pwd)
         print('************ user result -', user)
+
+        context = {}
+
         if user is not None :
-            return render(request, 'home.html')
+            request.session['user_name'] = user.user_name
+            request.session['user_id'] = user.user_id
+            context['name'] = request.session['user_name']
+            context['id']   = request.session['user_id']
+            return render(request, 'home.html', context)
         else :
             return redirect('index')
 
