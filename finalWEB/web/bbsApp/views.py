@@ -125,3 +125,18 @@ def bbs_register(request) :
     board.save()
 
     return redirect('bbs_list')
+
+
+def bbs_read(request, id) :
+    print('request bbs_read param id -', id)
+    # select * from bbs where id = id
+    board = Bbs.objects.get(id = id)
+    print('request bbs_read result -', board)
+
+    context = {'board' : board,
+               'name': request.session['user_name'],
+               'id': request.session['user_id']
+               }
+
+    return render(request, 'read.html', context)
+

@@ -40,7 +40,7 @@
 	{% for board in boards %}
 	<tr>
 		<td>{{board.id}}</td>
-		<td><a href="OOO">{{board.title}}</a></td>
+		<td><a href="{% url 'bbs_read' id=board.id %}">{{board.title}}</a></td> <!-- 일반 ver "../bbs_read?id={{board.id}}"-->
 		<td>{{board.writer}}</td>
 		<td>{{board.regdate}}</td>
 		<td><span class="badge bg-red">{{board.viewcnt}}</span></td>
