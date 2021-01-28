@@ -130,7 +130,11 @@ def bbs_register(request) :
 def bbs_read(request, id) :
     print('request bbs_read param id -', id)
     # select * from bbs where id = id
+    # update table set viewcnt = viewcnt +1 where id = id
     board = Bbs.objects.get(id = id)
+    board.viewcnt = board.viewcnt + 1
+    board.save() # commit 시켜버리기
+
     print('request bbs_read result -', board)
 
     context = {'board' : board,

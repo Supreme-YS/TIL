@@ -41,16 +41,19 @@
 <!-- /.box-body -->
 
 <div class="box-footer">
-	<button type="button" class="btn btn-primary">LIST ALL</button>
+	<button type="button" class="btn btn-primary" id ="listBtn">LIST ALL</button>
 </div>
 
 
 <script>
 				
-$(document).ready(function(){
+	$(document).ready(function(){
+		$('#listBtn').click(function () {
+			location.href='../bbs_list'
+
+		})
 	
-	
-});
+	});
 
 </script>
 
