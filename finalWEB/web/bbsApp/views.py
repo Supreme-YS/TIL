@@ -94,3 +94,7 @@ def register(request):
         register.save()
 
     return render(request, 'login.html')
+
+# bbs
+def bbs_list(request) :
+    return render(request, 'list.html')
