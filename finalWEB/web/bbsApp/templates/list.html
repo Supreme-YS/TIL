@@ -14,9 +14,9 @@
 					<h3 class="box-title">Board List</h3>
 				</div>
 				<div class='box-body'>
-					
+
 					<button id='newBtn'>New Board</button>
-				
+
 				</div>
 			</div>
 
@@ -71,7 +71,11 @@
 
 
 <script>
-
+    $(document).ready(function () {
+	    $('#newBtn').click(function () {
+	    	location.href = '../bbs_registerForm'
+		})
+})
 
 </script>
 

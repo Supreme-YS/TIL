@@ -97,12 +97,31 @@ def register(request):
 
 # bbs
 def bbs_list(request) :
-    return render(request, 'list.html')
+
     # select * from bbs ;
     # modelName.objects.all()
     boards = Bbs.objects.all()
-    print('bbs)list request - ', type(boards), boards)
-    context = {'boards' : boards ,
-               'name'   : request.session['user_name'],
-               'id'     : request.session['user_id']}
+    print('bbs_list request - ', type(boards), boards)
+    context = {'boards': boards,
+               'name': request.session['user_name'],
+               'id': request.session['user_id']}
     return render(request, 'list.html', context)
+
+def bbs_registerForm(request) :
+    print('request bbs_registerForm - ')
+    context = {'name': request.session['user_name'],
+               'id': request.session['user_id']}
+    return render(request, 'bbsRegisterForm.html', context)
+
+def bbs_register(request) :
+    print('request bbs_register -')
+    title   = request.POST['title']
+    content = request.POST['content']
+    writer  = request.POST['writer']
+    print('request bbs_register - ', title, content, writer)
+
+    # insert into table values(title, content, writer)
+    board = Bbs(title = title, content = content, writer = writer)
+    board.save()
+
+    return redirect('bbs_list')

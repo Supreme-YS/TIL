@@ -10,5 +10,7 @@ urlpatterns = [
     path('registerForm/', views.registerForm, name='registerForm'),
     path('register/', views.register, name='register'),
     path('logout/', views.logout, name='logout'),
-    path('bbs_list', views.bbs_list, name='bbs_list'),
+    path('bbs_list/', views.bbs_list, name='bbs_list'),
+    path('bbs_registerForm/', views.bbs_registerForm, name='bbs_registerForm'),
+    path('bbs_register/', views.bbs_register, name='bbs_register'),
 ]
