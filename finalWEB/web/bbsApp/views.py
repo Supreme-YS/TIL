@@ -98,3 +98,11 @@ def register(request):
 # bbs
 def bbs_list(request) :
     return render(request, 'list.html')
+    # select * from bbs ;
+    # modelName.objects.all()
+    boards = Bbs.objects.all()
+    print('bbs)list request - ', type(boards), boards)
+    context = {'boards' : boards ,
+               'name'   : request.session['user_name'],
+               'id'     : request.session['user_id']}
+    return render(request, 'list.html', context)

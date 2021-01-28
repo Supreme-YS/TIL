@@ -25,6 +25,7 @@
 					<h3 class="box-title">LIST ALL PAGE</h3>
 				</div>
 				<div class="box-body">
+{% if boards %}
 
 <table class="table table-bordered">
 	<tr>
@@ -36,19 +37,20 @@
 	</tr>
 
 	<tbody id="tbody">
-
+	{% for board in boards %}
 	<tr>
-		<td>OOOO</td>
-		<td><a href="OOO">OOO</a></td>
-		<td>OOO</td>
-		<td>OOO</td>
-		<td><span class="badge bg-red">OOO</span></td>
+		<td>{{board.id}}</td>
+		<td><a href="OOO">{{board.title}}</a></td>
+		<td>{{board.writer}}</td>
+		<td>{{board.regdate}}</td>
+		<td><span class="badge bg-red">{{board.viewcnt}}</span></td>
 	</tr>
-    
+    {% endfor %}
 	</tbody>
-
 </table>
-
+{% else %}
+	<p> 데이터가 존재하지 않습니다 </p>
+{% endif %}
 
 				</div>
 				<!-- /.box-body -->
