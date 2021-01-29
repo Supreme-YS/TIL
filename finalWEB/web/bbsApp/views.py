@@ -144,3 +144,9 @@ def bbs_read(request, id) :
 
     return render(request, 'read.html', context)
 
+def bbs_remove(request):
+    id = request.POST['id']
+    print('request bbs_remove param - ', id)
+    # delete from table where id = id
+    Bbs.objects.get(id=id).delete()
+    return redirect('bbs_list')
