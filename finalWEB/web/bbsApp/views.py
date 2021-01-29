@@ -173,3 +173,8 @@ def bbs_modify(request) :
     board.save()
 
     return redirect('bbs_list')
+
+def bbs_search(request) :
+    type = request.POST['type']
+    keyword = request.POST['keyword']
+    print('request bbs_search - ', type, keyword)

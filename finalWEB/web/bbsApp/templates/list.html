@@ -80,7 +80,24 @@
 	    $('#newBtn').click(function () {
 	    	location.href = '../bbs_registerForm'
 		})
-})
+
+		$('#searchBtn').click(function() {
+			type = $('#searchType').val()
+			keyword = $('#searchKeyword').val()
+			$.ajax({
+				url : "{% url 'bbs_search' %}",
+				type : "post",
+				data : {"csrfmiddlewaretoken" : '{{csrf_token}}',
+					    type : type,
+					    keyword : keyword },
+				dataType : 'json',
+				success : function(ary) {
+					alert('success')
+				}
+				})
+			})
+		})
+
 
 </script>
 
