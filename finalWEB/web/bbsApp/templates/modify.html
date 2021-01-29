@@ -17,7 +17,7 @@
 
 <form id="modifyFrm" role="form" method="post" action="{% url 'bbs_modify' %}">
 	<div class="box-body">
-
+		{% csrf_token %}
 		<div class="form-group">
 			<label for="exampleInputEmail1">ID</label> <input type="text"
 				name='id' class="form-control" value="{{board.id}}"

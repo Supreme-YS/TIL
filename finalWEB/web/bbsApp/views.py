@@ -163,10 +163,13 @@ def bbs_modifyForm(request):
 
 def bbs_modify(request) :
     id = request.POST['id']
-    print('request bbs_modify param - ', id)
+    title = request.POST['title']
+    content = request.POST['content']
+    writer = request.POST['writer']
+    print('request bbs_modify param - ', id, title, content, writer)
     board = Bbs.objects.get(id=id)
-    context = {'board' : board,
-               'name': request.session['user_name'],
-               'id': request.session['user_id']
-               }
-    
+    board.title = title
+    board.content = content
+    board.save()
+
+    return redirect('bbs_list')
