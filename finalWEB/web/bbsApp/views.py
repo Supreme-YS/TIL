@@ -160,3 +160,13 @@ def bbs_modifyForm(request):
                'id': request.session['user_id']
                }
     return render(request, 'modify.html', context)
+
+def bbs_modify(request) :
+    id = request.POST['id']
+    print('request bbs_modify param - ', id)
+    board = Bbs.objects.get(id=id)
+    context = {'board' : board,
+               'name': request.session['user_name'],
+               'id': request.session['user_id']
+               }
+    
