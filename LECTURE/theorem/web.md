@@ -1,0 +1,228 @@
+### 20210125
+
+WEB -Django Framework
+
+<-----------------------CLIENT SIDE--------------------------->         <------------------------SERVER SIDE--------------------------->
+
+-- BROWSER(.HTML , .JSP , .ASP)                                            PYTHON
+
+-- HTML - TAG + TEXT로 이루어져있는 정적파일                  FRAMEWORK - FLASK, DJANGO
+
+-- HTML(구조) ,  CSS(표현), SCRIPT(동작)                               MVT(MODEL, VIEW, TEMPLATE)
+
+-- 동적코드삽입 ( JSP, ASP)
+
+
+
+```django-admin startproject <baseWeb>``` : 앱을 관리하는 웹을 만드는 명령어
+
+```dir/w```
+
+```cd baseWEB```
+
+```dir/w```
+
+서버실행 명령어-반드시 manage.py 파일이 있는 경로에서 서버를 실행해야 한다.
+
+```python manage.py runserver <port>```<optional>
+
+클라이언트 브라우저 이용해서
+
+http://127.0.0.1:8000 
+
+manage.py 파일이 있는 디렉토리에서 앱(app)을 만든다
+
+```python manage.py startapp```GrettingApp를 만들어보자.
+
+이후, baseWeb에 settings -> INSTALLED_APPS에 추가해줘야 한다.
+
+App 영역에서 urls.py를 만들어서 baseWEB의 urls.py와 연동될 수 있도록 한다.
+
+
+
+---NEW PROJECT
+
+```django-admin startproject djangoWEB```
+
+이후, settings.py 에서 ALLOWED_HOSTS에서 'localhost', '127.0.0.1' 입력
+
+TIME_ZONE = 'Asia/Seoul' 을 입력함으로써 세팅 끝ㅋ
+
+
+
+이후, 프로젝트에서 APP 생성하기
+
+따라서 dir/w 로 현재 경로 확인하고, manage.py가 있는 폴더로 경로를 바꿔준다  > cd djangoWeb
+
+python manage.py startapp HelloApp 를 통해 HelloApp라는 이름을 가진 App을 만든 것
+
+이 앱을 settings에 등록해줘야한다.
+
+![image-20210125131512027](C:\Users\1234\Desktop\TIL\LECTURE\theorem\20210125(web).assets\image-20210125131512027.png)
+
+하지만 우리가 만든HelloApp엔 urls가 없기 때문에 urls라는 모듈을 만들어준다.
+
+![image-20210125131612257](C:\Users\1234\Desktop\TIL\LECTURE\theorem\20210125(web).assets\image-20210125131612257.png)
+
+즉, djangoWEB에서 request를 받고 HelloApp에서 response를 해주는 느낌.
+
+![image-20210125131810451](C:\Users\1234\Desktop\TIL\LECTURE\theorem\20210125(web).assets\image-20210125131810451.png)
+
+![image-20210125132746392](C:\Users\1234\Desktop\TIL\LECTURE\theorem\20210125(web).assets\image-20210125132746392.png)
+
+http 방식이 비효율적이라 directory를 하나 생성해준다 .templates라는 이름의 약속으로 ! (모듈아님, 패키지아님)
+
+html template를 이용하여 response를 할 수 있도록 연동시켜주는 작업!
+
+
+
+```html
+{{ment}} 
+```
+
+html에서 {{}}은 파이썬의 print와 같다.
+
+
+
+
+
+-----------------------------html
+
+​                                             http://     host : port     /   app  / view 함수 ( urls.py )
+
+browser (xxxx.html)   -----------------------------------------------------------------------------> views.py  ----> model
+
+​																																				:
+
+​																																				: 
+
+xxxx.html                     <----------------------------------------------------------------------------- template ----> xxxx.html
+
+* 서버와 연결하는 방법
+
+url : xxxx.com?key=value&key=value ----> get 방식 
+
+​                        <------- querystring ------>
+
+url: xxxx.com --------------------------------------> post 방식
+
+-- form(action='destination' method='post|get')
+
+-- <a href=' '>
+
+
+
+* form 태그
+  - method 와 action 속성을 가진다.
+  - method : 데이터를 전달하는 방식 post방식 / get 방식
+  - action : 목적지 destination
+
+* a 태그
+  * GET 방식으로 된다.
+
+
+
+
+
+1. new project
+
+2. 가상환경설정 (django 설치)
+
+3. terminal로 django-admin startproject <패키지명> 명령어를 통해 생성
+
+4. <패키지명>의 settings에서 ALLOWED_HOSTS =['localhost', '127.0.0.1'] 로 세팅
+
+   TIME_ZONE = 'Asia/Seoul'로 바꿔주고
+
+5. cd <경로 파일> 로 경로를 변경해주고
+
+6. python manage.py startapp <APP 명> 명령어를 통해 APP 생성
+
+7. 이후, settings의 INSTALLED_APPS 에 지정한 APP 이름을 추가해준다.
+
+8. urls.py 에 들어가서 지정한 APP 이름의 path 를 추가해준다
+
+   ![image-20210125154415674](C:\Users\1234\Desktop\TIL\LECTURE\theorem\20210125(web).assets\image-20210125154415674.png)
+
+
+
+
+
+
+### 20210126
+
+json (restful service)
+
+ajax(비동기통신) - json( [ {key : value} ] )
+
+
+
+script -> jQuery
+
+bootstrap(theme)
+
+
+
+### 20210127
+
+{{}} -- print
+
+{% %} -- code (if, for, path)
+
+
+
+web > python manage.py collectstatic
+
+* static 위치를 지정해주는 작업
+
+* 각각의 app에 흩어져있는 static file을 한 곳으로 모으는 작업
+
+
+
+orm을 통한 데이터베이스 관리를 위한 계정 생성 및 접근
+
+> python manage.py createsuperuser
+
+model 생성 후 admin 등록
+
+> python manage.py makemigrations
+>
+> python manage.py migrate
+
+이후
+
+> python manage.py runserver
+>
+> http://localhost:8000/admin 으로 접속 ID : admin , PWD : 1234567890
+
+
+
+browser --> urls ---> app Urls --> view --> model과 통신 후 --> template을 통해 response
+
+
+
+urls ------ > views
+
+- httpResponse() -  X
+- JsonResponse() - json
+- render() - templates(xxxx.html)
+- redirect(path X , alias O )
+
+
+
+### 20210128
+
+사용자의 상태정보 유지 - 세션과 쿠키 사용
+
+
+
+
+
+orm을 통한 디비 관리를 위한 계정 생성
+
+model 생성 후 admin 등록은 필수닷.
+
+python manage.py makemigration
+
+python manage.py migrate
+
