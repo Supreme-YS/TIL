@@ -67,6 +67,9 @@
 			// $('#removeFrm').attr('action', "bbs_remove").submit()
 			$('#removeFrm').attr('action', "{% url 'bbs_remove' %}").submit()
 		})
+		$('#modiBtn').click(function () {
+            $('#removeFrm').attr('action', "{% url 'bbs_modifyForm' %}").submit()
+		})
 	});
 
 </script>

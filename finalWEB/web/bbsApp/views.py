@@ -150,3 +150,13 @@ def bbs_remove(request):
     # delete from table where id = id
     Bbs.objects.get(id=id).delete()
     return redirect('bbs_list')
+
+def bbs_modifyForm(request):
+    id = request.POST['id']
+    print('request bbs_modifyForm param - ', id)
+    board = Bbs.objects.get(id=id)
+    context = {'board' : board,
+               'name': request.session['user_name'],
+               'id': request.session['user_id']
+               }
+    return render(request, 'modify.html', context)
