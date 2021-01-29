@@ -1,5 +1,7 @@
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from .models import *
+
 
 # Create your views here.
 
@@ -20,7 +22,7 @@ from .models import *
 # -> modelName.objects.filter(Q(id = xxxx) | Q(pwd = xxxx))
 
 # select * from table where subject like '%공지%' '공지'를 포함하는 단어
-# -> modelName.objects.filter(subject_icontains='공지')
+# -> modelName.objects.filter(subject__icontains='공지')
 
 # select * from table where subject like '공지%' # '공지'로 시작하는 단어
 # -> modelName.objects.filter(subject_startswith='공지')
@@ -43,26 +45,28 @@ from .models import *
 
 # 사용자의 상태정보 저장을 위해서는 session, cookie
 
-def index(request) :
-    if request.session.get('user_id') and request.session.get('user_name') :
-        context = {'id'  : request.session['user_id'],
+def index(request):
+    if request.session.get('user_id') and request.session.get('user_name'):
+        context = {'id': request.session['user_id'],
                    'name': request.session['user_name']}
         return render(request, 'home.html', context)
-    else :
+    else:
         return render(request, 'login.html')
 
-def logout(request) :
-    request.session['user_name'] = {}
-    request.session['user_id']   = {}
-    request.session.modified     = True
-    return redirect('index') # render로 주면 logout이라는 주소값이 남아진다. 분기를 위해 redirect를 사용한 것
 
-def loginProc(request) :
+def logout(request):
+    request.session['user_name'] = {}
+    request.session['user_id'] = {}
+    request.session.modified = True
+    return redirect('index')  # render로 주면 logout이라는 주소값이 남아진다. 분기를 위해 redirect를 사용한 것
+
+
+def loginProc(request):
     print('request - loginProc')
-    if request.method == 'GET' :
+    if request.method == 'GET':
         return redirect('index')
-    elif request.method == 'POST' :
-        id  = request.POST['id']
+    elif request.method == 'POST':
+        id = request.POST['id']
         pwd = request.POST['pwd']
         # select * from bbsuserregister where user_id = id and user_pwd = pwd
         # orm class - table
@@ -71,33 +75,35 @@ def loginProc(request) :
 
         context = {}
 
-        if user is not None :
+        if user is not None:
             request.session['user_name'] = user.user_name
             request.session['user_id'] = user.user_id
             context['name'] = request.session['user_name']
-            context['id']   = request.session['user_id']
+            context['id'] = request.session['user_id']
             return render(request, 'home.html', context)
-        else :
+        else:
             return redirect('index')
 
-def registerForm(request) :
+
+def registerForm(request):
     print('request - registerForm')
     return render(request, 'join.html')
+
 
 def register(request):
     # id, pwd, name 을 입력받아 -> model을 이용해 -> db(insert) 시키는 작업이 필요하다.
     if request.method == 'POST':
-        id    = request.POST['id']
-        pwd   = request.POST['pwd']
-        name  = request.POST['name']
-        register = BbsUserRegister(user_id = id, user_pwd = pwd, user_name = name)
+        id = request.POST['id']
+        pwd = request.POST['pwd']
+        name = request.POST['name']
+        register = BbsUserRegister(user_id=id, user_pwd=pwd, user_name=name)
         register.save()
 
     return render(request, 'login.html')
 
-# bbs
-def bbs_list(request) :
 
+# bbs
+def bbs_list(request):
     # select * from bbs ;
     # modelName.objects.all()
     boards = Bbs.objects.all()
@@ -107,42 +113,45 @@ def bbs_list(request) :
                'id': request.session['user_id']}
     return render(request, 'list.html', context)
 
-def bbs_registerForm(request) :
+
+def bbs_registerForm(request):
     print('request bbs_registerForm - ')
     context = {'name': request.session['user_name'],
                'id': request.session['user_id']}
     return render(request, 'bbsRegisterForm.html', context)
 
-def bbs_register(request) :
+
+def bbs_register(request):
     print('request bbs_register -')
-    title   = request.POST['title']
+    title = request.POST['title']
     content = request.POST['content']
-    writer  = request.POST['writer']
+    writer = request.POST['writer']
     print('request bbs_register - ', title, content, writer)
 
     # insert into table values(title, content, writer)
-    board = Bbs(title = title, content = content, writer = writer)
+    board = Bbs(title=title, content=content, writer=writer)
     board.save()
 
     return redirect('bbs_list')
 
 
-def bbs_read(request, id) :
+def bbs_read(request, id):
     print('request bbs_read param id -', id)
     # select * from bbs where id = id
     # update table set viewcnt = viewcnt +1 where id = id
-    board = Bbs.objects.get(id = id)
+    board = Bbs.objects.get(id=id)
     board.viewcnt = board.viewcnt + 1
-    board.save() # commit 시켜버리기
+    board.save()  # commit 시켜버리기
 
     print('request bbs_read result -', board)
 
-    context = {'board' : board,
+    context = {'board': board,
                'name': request.session['user_name'],
                'id': request.session['user_id']
                }
 
     return render(request, 'read.html', context)
+
 
 def bbs_remove(request):
     id = request.POST['id']
@@ -151,17 +160,19 @@ def bbs_remove(request):
     Bbs.objects.get(id=id).delete()
     return redirect('bbs_list')
 
+
 def bbs_modifyForm(request):
     id = request.POST['id']
     print('request bbs_modifyForm param - ', id)
     board = Bbs.objects.get(id=id)
-    context = {'board' : board,
+    context = {'board': board,
                'name': request.session['user_name'],
                'id': request.session['user_id']
                }
     return render(request, 'modify.html', context)
 
-def bbs_modify(request) :
+
+def bbs_modify(request):
     id = request.POST['id']
     title = request.POST['title']
     content = request.POST['content']
@@ -174,7 +185,28 @@ def bbs_modify(request) :
 
     return redirect('bbs_list')
 
-def bbs_search(request) :
-    type = request.POST['type']
+
+def bbs_search(request):
+    type = request.POST['type']  # title, writer가 들어있다.
     keyword = request.POST['keyword']
     print('request bbs_search - ', type, keyword)
+
+    if type == 'title':
+        boards = Bbs.objects.filter(title__icontains=keyword)
+    if type == 'writer':
+        boards = Bbs.objects.filter(writer__startswith=keyword)
+    else:
+        pass
+
+    list = []
+
+    for board in boards:
+        list.append({
+            'id': board.id,
+            'title': board.title,
+            'writer': board.writer,
+            'regdate': board.regdate,
+            'viewcnt': board.viewcnt
+        })
+
+    return JsonResponse(list, safe=False)

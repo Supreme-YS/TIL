@@ -92,7 +92,15 @@
 					    keyword : keyword },
 				dataType : 'json',
 				success : function(ary) {
-					alert('success')
+					var txt = "";
+					$.each(ary , function(idx, obj) {
+						txt +="<tr><td>"+obj.id+"</td>" ;
+						txt +="<td><a href=../bbs_read/"+obj.id+">"+obj.title+"</a></td>";
+						txt +="<td>"+obj.writer+"</td>";
+						txt +="<td>"+obj.regdate+"</td>";
+						txt +="<td><span class='badge bg-red'>"+obj.viewcnt+"</span></td></tr>" ;
+					});
+					$("#tbody").empty().append(txt);
 				}
 				})
 			})
