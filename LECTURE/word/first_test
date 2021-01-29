@@ -1,0 +1,172 @@
+
+-- 테이블생성 명령어
+1. 부서번호(deptno), 부서명(dname), 지역명(loc)을 저장할수 있는 테이블(department)을 생성하려고 한다. 
+다음중 올바른 것은?
+
+
+-- like 
+2. 다음 중 Member라는 테이블에서 이름이 “홍”으로 시작하는 사람을 검색하고자 했을 때 사용되는 query는 무엇인가?
+
+3. SELECT 문에서 검색된 결과를 내림 차순으로 정렬할 때 ORDER BY 절에 사용하는 옵션은 무엇인가?
+
+-- 변환함수
+4. 날짜 또는 숫자를 문자열 형태로 바꿔주는 변환함수는?
+
+5. 오라클 전용구문의 EQUI-JOIN을 ANSI 표준형태로 정의하면 어떤 조인으로 표현 할 수 있는가?
+
+-- 테이블 생성
+6. 
+CREATE TABLE EMP
+       (EMPNO NUMBER(4) CONSTRAINT PK_EMP PRIMARY KEY,
+	ENAME VARCHAR2(10),
+	JOB VARCHAR2(9),
+	MGR NUMBER(4),
+	HIREDATE DATE,
+	SAL NUMBER(7,2),
+	COMM NUMBER(7,2),
+	DEPTNO NUMBER(2) CONSTRAINT FK_DEPTNO REFERENCES DEPT);
+
+위 테이블 생성 문장에 대한 설명을 하는것 중 잘못 된것은?
+
+
+
+7. 그룹에 조건을 주는 방법은 무었인가?
+
+
+-- python
+
+8. 변수의 타입을 확인할 수 있는 함수는?
+
+
+
+9. 다음 코드의 수행 결과로 맞는 것은?
+list = [1, 2, 3]
+list.append([4])
+
+
+10. 다음의 (      )안에 들어갈 기호는?
+print(“%d + %d” (      ) (100,200))
+
+
+11. python 언어명을 구성하는 각 문자들로 구성되는 리스트 listv 를 생성한 후에 다음에 제시된 연산을 했을 떼
+오류가 발생하는 것은?
+listv= [ 'p', 'y', 't', 'h', 'o', 'n' ]
+
+
+v1,v2,v3,v4,v5,v6 = listv
+v1,*v2,v3 = listv
+*v1 = listv
+v1 = listv[-1]
+
+
+-- 상속
+12. Python에서 Teacher클래스를 상속할 때 사용하는 구문으로 맞는 것은?
+
+
+13. 초기화 기능의 메서드를 정의하려 한다. 다음 (   )안에 들어갈 코드를 올바른 것은?
+class Student:
+     def (        ) (self):
+
+14. 다음에 제시된 Python의 collection type중에서 집합연산 같은 수학 연산이 가능하고 중복되지 않는 값을 갖는  것은?
+-- set
+
+
+15. 다음에 제시된 Python의 collection type중에서 immutable 한 성격을 갖는 것은?
+
+
+16. 다음에 제시된 bool() 함수의 수행 결과가 나머지 셋과 다른 것은?
+
+bool(None)
+bool({})
+bool('')
+bool('0')
+
+17. 여러 개의 아규먼트 값들을  튜플로 묶어서 하나의 매개변수에 전달받고자 한다. 함수의 헤더 정의로 
+적당한 것을 고르시오.
+
+
+18. 다음 코드의 수행 결과로 알맞는 것을 고르시오.
+
+listv=["A", "b", "c", "D", "e", "F", "G", "h"];
+result=[x for x in listv if x.islower() ];
+
+
+19. 데이터의 종류가 아닌 것은?(정형, 비정형, 반정형)
+
+
+20. HTML tag 중 텍스트에 링크를 설정해 hypertext를 생성하려는 경우 사용되는 태그명은?
+
+
+21. 다음 중 jQuery의 selector 중 id 속성의 값이 "test" 인 element를 선택할 때 사용하는 것은?
+
+
+22. 다음 중 jQuery의 selector 중 class 속성의 값이 "test" 인 element를 선택할 때 사용하는 것은?
+
+
+23. Django의 myweb 프로젝트 생성 명령으로 올바른 것은?
+
+
+
+24. Django 템플릿 처리에서 컨텍스트 변수 myname을 출력할 때의 코드로 올바른 것은?
+
+
+
+25. 다음 중 AJAX 호출을 하기 위해서 사용하는 jQuery 함수는?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
