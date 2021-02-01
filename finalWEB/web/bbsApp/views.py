@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from .models import *
-
+import csv
 
 # Create your views here.
 
@@ -215,6 +215,21 @@ def bbs_search(request):
 def csvUpload(request):
     file = request.FILES['csv_file']
     print('request upload - ', file)
+    if not file.name.endswith('.csv') :
+        return redirect('index')
+
+    result_file = file.read().decode('utf-8').splitlines()
+    print('reasult_file', result_file, type(result_file))
+
+    reader = csv.reader(result_file)
+    list = []
+    for row in reader :
+        print('row', row)
+        # list.append(csvModel(name=row[0], img=row[1], status=row[2])
+    file.close()
+    # csvModel.objects.bulk_create(list)
+
+    return redirect('index')
 
 
 
