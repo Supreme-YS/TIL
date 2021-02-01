@@ -210,3 +210,22 @@ def bbs_search(request):
         })
 
     return JsonResponse(list, safe=False)
+
+
+def csvUpload(request):
+    file = request.FILES['csv_file']
+    print('request upload - ', file)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
