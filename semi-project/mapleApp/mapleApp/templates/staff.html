@@ -1,0 +1,278 @@
+<!-- *************************** MAPLE : 공통 (HEADER) START  ******************  -->
+
+<!DOCTYPE html>
+{% load static%}
+
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>MAPLE CAFE</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/business-casual.min.css'  %}" rel="stylesheet">
+
+</head>
+
+<body>
+  <!--------------- MAPLE : 타이틀  --------------->
+
+  <h1 class="site-heading text-center text-white d-none d-lg-block">
+    <span class="site-heading-upper text-primary mb-3">The Best Coffee Shop in MultiCampus</span>
+    <span class="site-heading-lower">MAPLE CAFE</span>
+  </h1>
+  <!--------------- MAPLE : 메뉴  --------------->
+  <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">MAPLE CAFE</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mx-auto">
+<!--
+          <li class="nav-item active px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="index.html">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+-->
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="../order">주문</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="../orderStatus">주문현황</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="../menu">카페메뉴</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="../staff">직원관리</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="../salesStatus">매출현황</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<!-- *************************** MAPLE : 공통 (HEADER) END  ******************  -->
+
+
+
+
+
+<!-- *************************** MAPLE : 화면 START *************************  -->
+
+  <section class="page-section about-heading">
+    <div class="container">
+      <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="img/about.jpg" alt="">
+      <div class="about-heading-content">
+        <div class="row">
+          <div class="col-xl-9 col-lg-10 mx-auto">
+            <div class="bg-faded rounded p-5">
+
+
+
+<!-----------------MAPLE : List START ----------------->
+<!--  MAPLE:  TITLE  -->
+
+              <h2 class="section-heading mb-4">
+                <img  src="{% static 'img/cafe_icon3.png'%}" width="40" height="40">
+                <span class="text-uppercase text-primary"> SAMPLE : 직원관리 </span>
+              </h2>
+
+
+ <!--  MAPLE: BUTTON  1 -->
+              <div class="intro-button" align="right">
+<!--                <button type="submit" class="btn btn-primary" id="inputBtn1">입력</button>-->
+<!--                <button type="submit" class="btn btn-primary" id="modiBtn1">수정</button>-->
+<!--                <button type="submit" class="btn btn-primary" id="delBtn1">삭제</button>-->
+                <button type="submit" class="btn btn-primary" id="serchBtn1">조회</button>
+<!--                <button type="submit" class="btn btn-primary" id="saveBtn1">저장</button>-->
+              </div>
+
+              <br>
+
+
+    <!--  MAPLE: 테이블  START  -->
+              <div class="container d-flex justify-content-center mt-50 mb-50">
+                <div class="card w-100">
+                  <div class="table-responsive">
+                    <div style="width:100%; height:300px; overflow:auto ">
+                    <table class="table table-hover ">
+    <!-- MAPLE:  테이블 헤더   -->
+                      <thead class="thead-light">
+                        <tr>
+                          <th> </th>
+                          <th scope="col"></th>
+                          <th scope="col">상품명</th>
+                          <th scope="col">가격</th>
+                        </tr>
+                      </thead>
+
+    <!-- MAPLE:  테이블 바디  -->
+
+
+
+
+
+
+
+                      <tbody>
+                        <tr>
+                          <td> <input  type="radio" name="radioValue" value="{{produc.id}}"> </td>
+                          <td id="pId_1">1</td>
+                          <td id="pName_1" >iPhone</td>
+                          <td id="pPrice_1">1,000,000</td>
+                        </tr>
+                        <tr>
+                          <td> <input  type="radio" name="radioValue" value="{{produc.id}}"> </td>
+                          <td id="pId_2">2</td>
+                          <td id="pName_2" >Samsung</td>
+                          <td id="pPrice_2">2,000,000</td>
+                        </tr>
+                        <tr>
+                          <td> <input  type="radio" name="radioValue" value="{{produc.id}}"> </td>
+                          <td id="pId_3">3</td>
+                          <td id="pName_3" >LG</td>
+                          <td id="pPrice_3">3,000,000</td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    <!--  MAPLE: 테이블  END -->
+
+
+<!--  MAPLE: BUTTON  2 -->
+              <br>
+              <div class="intro-button" align="right">
+                <button type="submit" class="btn btn-primary" id="inputBtn2">입력</button>
+                <button type="submit" class="btn btn-primary" id="modiBtn2">수정</button>
+                <button type="submit" class="btn btn-primary" id="delBtn2">삭제</button>
+<!--                <button type="submit" class="btn btn-primary" id="serchBtn2">조회</button>-->
+<!--                <button type="submit" class="btn btn-primary" id="saveBtn2">저장</button>-->
+              </div>
+              <br>
+
+
+<!-----------------MAPLE : List END ----------------->
+</br>
+
+<!-----------------MAPLE : Detail START ----------------->
+<!--  MAPLE:  TITLE  -->
+              <h2 class="section-heading mb-4">
+                <img  src="{% static 'img/cafe_icon3.png'%}" width="40" height="40">
+                <span class="text-uppercase text-primary" > 상품정보 </span>
+              </h2>
+
+<!--  MAPLE:  INPUT  -->
+              <section class="content">
+                <div class="row">
+                <!-- left column -->
+                  <div class="col-md-12">
+                  <!-- general form elements -->
+                    <div class="box box-primary">
+                    <!-- /.box-header -->
+
+                      <form id="regForm"  method="post" action="{% url 'insertProduct' %}" >
+                      {% csrf_token %}
+
+                        <div class="box-body">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1"> ✔ 상품 아이디 </label>
+                              <input type="text" readonly="readonly"
+                                id='id' class="form-control" placeholder="">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="exampleInputEmail1"> ✔ 상품명 </label>
+                              <input type="text" readonly="readonly"
+                                id='pdName' class="form-control" placeholder="">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="exampleInputEmail1"> ✔ 가격 </label>
+                              <input type="text"  readonly="readonly"
+                                id='pdPrice' class="form-control" placeholder="">
+                          </div>
+
+                          <!--   업데이트 구분 : ( Y: 수정 , N:신규        -->
+                          <input type="hidden" name="updateYn" id="updateYn"  value="N">
+
+                        </div>
+                        <!-- /.box-body -->
+                      </form>
+
+
+                    </div>
+                            <!-- /.box -->
+                  </div>
+                        <!--/.col (left) -->
+                </div>
+                    <!-- /.row -->
+              </section>
+
+<!--  MAPLE: BUTTON  3 -->
+              <br>
+              <div class="intro-button" align="right">
+<!--                <button type="submit" class="btn btn-primary" id="inputBtn3">입력</button>-->
+<!--                <button type="submit" class="btn btn-primary" id="modiBtn3">수정</button>-->
+<!--                <button type="submit" class="btn btn-primary" id="delBtn3">삭제</button>-->
+<!--                <button type="submit" class="btn btn-primary" id="serchBtn3">조회</button>-->
+                <button type="submit" class="btn btn-primary" id="saveBtn3">저장</button>
+              </div>
+              <br>
+<!-----------------MAPLE : Detail END ----------------->
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+<!-- *************************** MAPLE : 화면 END ***************************  -->
+
+
+
+
+<!-- *************************** MAPLE : 공통 (FOOTER) START  ******************  -->
+  <footer class="footer text-faded text-center py-5">
+    <div class="container">
+      <p class="m-0 small">Copyright &copy; Your Website 2021</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js'%}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+
+</body>
+
+</html>
+<!-- *************************** MAPLE : 공통 (FOOTER) END  ******************  -->
