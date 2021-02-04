@@ -77,7 +77,20 @@
 
 
 <!-- *************************** MAPLE : 화면 START *************************  -->
+<!-- *************************** MAPLE 상태창 START *************************  -->
 
+<!--  {% if User.is_authenticated %}
+    <p>{{ User.username }}</p>
+    <a href="javascript:{document.getElementById('logout').submit()}">로그아웃</a>
+    <form id="logout" method="POST" action="{% url 'logout' %}">
+        {% csrf_token %} <input type="hidden" />
+    </form>
+{% else %}
+    <a href="{% url 'signup' %}">회원가입</a>
+    <a href="{% url 'index' %}">로그인</a>
+{% endif %} -->
+
+<!-- *************************** MAPLE 상태창 END *************************  -->
   <section class="page-section about-heading">
     <div class="container">
       <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="img/about.jpg" alt="">
@@ -193,7 +206,7 @@
                     <div class="box box-primary">
                     <!-- /.box-header -->
 
-                      <form id="regForm"  method="post" action="{% url 'insertProduct' %}" >
+                      <form id="regForm"  method="post" action="{% url 'test_menu' %}" >
                       {% csrf_token %}
 
                         <div class="box-body">

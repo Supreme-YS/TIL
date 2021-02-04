@@ -2,7 +2,6 @@ from django.http import JsonResponse
 from django.shortcuts import render , redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
-from .models import *
 from django.core.paginator import *
 
 
@@ -36,10 +35,10 @@ def salesStatus(request):
 #----------------------< 심영석 >--------------------#
 def signup(request) :
     if request.method == 'POST' :
-        if request.POST['password1'] == request.POST['password2'] :
-            user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
+        if request.POST['password'] == request.POST['re-password'] :
+            user = User.objects.create_user(request.POST['username'], password=request.POST['password'])
             auth.login(request, user)
-            return redirect('show')
+            return redirect('test_menu')
     return render(request, 's_signup.html')
 
 
@@ -47,9 +46,9 @@ def login(request):
     if request.method =='POST' :
         username=request.POST['username']
         password=request.POST['password']
-        user == auth.authenticate(request, username=username, password=password) # 등록된 회원인지 확인
-        if user is not None :
-            auth.login(request, user) # 로그인
+        User == auth.authenticate(request, username=username, password=password) # 등록된 회원인지 확인
+        if User is not None :
+            auth.login(request, User) # 로그인
             return redirect('show')
         else :
             return render(request, 'index.html', {'error' : 'username or password is incorrect.'})
