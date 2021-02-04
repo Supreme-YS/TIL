@@ -15,4 +15,11 @@ urlpatterns = [
     # 직원관리
     path('staff/'        , views.staff          , name='staff'),
     # 매출현황
-    path('salesStatus/'  , views.salesStatus    , name='salesStatus'),]
+    path('salesStatus/'  , views.salesStatus    , name='salesStatus'),
+
+
+#----------------------< 심영석 >----------------------
+
+    path('signup/', views.signup, name = 'signup'),
+    path('logout/', views.logout, name='logout'),
+]
