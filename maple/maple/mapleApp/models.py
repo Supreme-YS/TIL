@@ -16,9 +16,5 @@ class User(models.Model) :
     # registered_dttm = models.DateTimeField(auto_now_add=True, verbose_name=' 등록시간')
 
     def __str__(self):
-        return self.username # User object 대신 나타낼 문자
+        return self.username+" , "+self.password+" , "+self.usermail
 
-    class Meta : # 메타 클래스를 이용하여 테이블 명 지정
-        db_table = 'test_user'
-
-# 신규 유저들을 위한 회원가입용 모델

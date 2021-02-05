@@ -56,7 +56,6 @@ def login(request):
         # User == auth.authenticate(request, username=username, password=password) # 등록된 회원인지 확인
         user = User.objects.get(username = username, password = password)
         if user is not None :
-            # auth.login(request, user) # 로그인
             print('login ok ' , user) # 로그인 됐는지 체크여부
             return redirect('index') # 나중에 바꿔야 할 부분 -> menu 페이지로 넘어가야함
         else :
@@ -64,8 +63,75 @@ def login(request):
     else:
         return render(request, 'index.html')
 
-def logout(request) :
-    if request.method =='POST' :
-        auth.logout(request)
+
+def logout(request):
+    request.session['username'] = {}
+    request.session['usermail'] = {}
+    request.session.modified = True
+    return redirect('index')
+
+
+
+
+
+
+
+
+
+'''
+def index(request):
+    if request.session.get('user_id') and request.session.get('user_name'):
+        context = {'id': request.session['user_id'],
+                   'name': request.session['user_name']}
+        return render(request, 'home.html', context)
+    else:
+        return render(request, 'login.html')
+
+
+def logout(request):
+    request.session['user_name'] = {}
+    request.session['user_id'] = {}
+    request.session.modified = True
+    return redirect('index')  # render로 주면 logout이라는 주소값이 남아진다. 분기를 위해 redirect를 사용한 것
+
+
+def loginProc(request):
+    print('request - loginProc')
+    if request.method == 'GET':
         return redirect('index')
-    return render(request, 'index.html')
+    elif request.method == 'POST':
+        id = request.POST['id']
+        pwd = request.POST['pwd']
+        # select * from bbsuserregister where user_id = id and user_pwd = pwd
+        # orm class - table
+        user = BbsUserRegister.objects.get(user_id=id, user_pwd=pwd)
+        print('************ user result -', user)
+
+        context = {}
+
+        if user is not None:
+            request.session['user_name'] = user.user_name
+            request.session['user_id'] = user.user_id
+            context['name'] = request.session['user_name']
+            context['id'] = request.session['user_id']
+            return render(request, 'home.html', context)
+        else:
+            return redirect('index')
+
+
+def registerForm(request):
+    print('request - registerForm')
+    return render(request, 'join.html')
+
+
+def register(request):
+    # id, pwd, name 을 입력받아 -> model을 이용해 -> db(insert) 시키는 작업이 필요하다.
+    if request.method == 'POST':
+        id = request.POST['id']
+        pwd = request.POST['pwd']
+        name = request.POST['name']
+        register = BbsUserRegister(user_id=id, user_pwd=pwd, user_name=name)
+        register.save()
+
+    return render(request, 'login.html')'''
+
