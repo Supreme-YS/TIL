@@ -56,8 +56,8 @@ def register(request):
 def login(request):
     print('request login - ')
     if request.method =='POST':
-        id = request.POST['username']
-        pwd = request.POST['password']
+        id = request.POST['id']
+        pwd = request.POST['pwd']
         # User == auth.authenticate(request, username=username, password=password) # 등록된 회원인지 확인
         user = User.objects.get(user_id = id, user_pwd = pwd)
         if user is not None :
