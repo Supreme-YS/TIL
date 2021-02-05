@@ -44,21 +44,28 @@
           <h2 class="section-heading mb-4">
 
 
-          <form action="{% url 'signup' %}" method="post">
-            {%csrf_token%}
+          <form id="signupFrm" method="POST">
+            {% csrf_token %}
             <div class="form-group has-feedback">
-            Username:
-              <input type="text" name="username" class="form-control" placeholder="User ID"/>
+            NEW_Username
+              <input type="text" name="username" class="form-control" placeholder="Plz Input your ID"/>
             </div>
             <div class="form-group has-feedback">
-            Password:
-              <input type="password" name="password" class="form-control" placeholder="Password"/>
+            NEW_Password
+              <input type="password" name="password" class="form-control" placeholder="Plz Input your Password"/>
             </div>
+            <div class="form-group has-feedback">
+            NEW_Email
+              <input type="text" name="usermail" class="form-control" placeholder="Plz Input your E-mail"/>
+            </div>
+
+
+            <!--
             <div class="form-group has-feedback">
             Confirm Password:
               <input type="password" name="re-password" class="form-control" placeholder="Password"/>
-            </div>
-              <input class="btn btn-primary" type="submit" value="Sign up!">
+            </div> -->
+              <input class="btn btn-primary" id="signupBtn" value="Sign up!">
             <div class="row">
 
             </div>
@@ -83,6 +90,14 @@
   <!-- Bootstrap core JavaScript -->
   <script src="{% static 'vendor/jquery/jquery.min.js'%}"></script>
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script>
+    $(document).ready(function() {
+      $("#signupBtn").click(function() {
+        $("#signupFrm").attr('action' , '{% url 'signup' %}').submit()
+      })
+    })
+
+  </script>
 
 </body>
 

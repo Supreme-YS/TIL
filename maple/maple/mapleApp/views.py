@@ -3,7 +3,7 @@ from django.shortcuts import render , redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.core.paginator import *
-
+from .models import *
 
 
 #----------------------< 공통 : 메뉴이동>--------------------#
@@ -33,23 +33,32 @@ def salesStatus(request):
     return render(request,'salesStatus.html')
 
 #----------------------< 심영석 >--------------------#
-def signup(request) :
-    if request.method == 'POST' :
-        if request.POST['password'] == request.POST['re-password'] :
-            user = User.objects.create_user(request.POST['username'], password=request.POST['password'])
-            auth.login(request, user)
-            return redirect('test_menu')
+
+def signupForm(request):
+    print('request - signupForm')
     return render(request, 's_signup.html')
+
+def signup(request):
+    if request.method == 'POST' :
+        user_name = request.post['username']
+        pass_word = request.post['password']
+        user_mail = request.post['usermail']
+        register = User(username=user_name, password=pass_word, usermail=user_mail)
+        register.save()
+    return render(request, 'index.html')
 
 
 def login(request):
-    if request.method =='POST' :
-        username=request.POST['username']
-        password=request.POST['password']
-        User == auth.authenticate(request, username=username, password=password) # 등록된 회원인지 확인
-        if User is not None :
-            auth.login(request, User) # 로그인
-            return redirect('show')
+    print('request login - ')
+    if request.method =='POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        # User == auth.authenticate(request, username=username, password=password) # 등록된 회원인지 확인
+        user = User.objects.get(username = username, password = password)
+        if user is not None :
+            # auth.login(request, user) # 로그인
+            print('login ok ' , user) # 로그인 됐는지 체크여부
+            return redirect('index') # 나중에 바꿔야 할 부분 -> menu 페이지로 넘어가야함
         else :
             return render(request, 'index.html', {'error' : 'username or password is incorrect.'})
     else:
@@ -58,5 +67,5 @@ def login(request):
 def logout(request) :
     if request.method =='POST' :
         auth.logout(request)
-        return redirect('home')
+        return redirect('index')
     return render(request, 'index.html')

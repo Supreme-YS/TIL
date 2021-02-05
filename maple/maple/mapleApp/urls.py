@@ -19,8 +19,9 @@ urlpatterns = [
 
 
 #----------------------< 심영석 >----------------------
-
     path('signup/', views.signup, name = 'signup'),
+    path('signupForm/', views.signupForm, name = 'signupForm'),
+    path('login/', views.login, name = 'login'),
     path('logout/', views.logout, name='logout'),
-    path('test_menu/', views.menu, name='test_menu'),
+
 ]
