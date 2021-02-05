@@ -44,19 +44,19 @@
           <h2 class="section-heading mb-4">
 
 
-          <form id="signupFrm" method="POST">
+          <form id="registerFrm" method="POST">
             {% csrf_token %}
             <div class="form-group has-feedback">
             NEW_Username
-              <input type="text" name="username" class="form-control" placeholder="Plz Input your ID"/>
+              <input type="text" name="id" class="form-control" placeholder="Input your ID"/>
             </div>
             <div class="form-group has-feedback">
             NEW_Password
-              <input type="password" name="password" class="form-control" placeholder="Plz Input your Password"/>
+              <input type="password" name="pwd" class="form-control" placeholder="Input your Password"/>
             </div>
             <div class="form-group has-feedback">
             NEW_Email
-              <input type="text" name="usermail" class="form-control" placeholder="Plz Input your E-mail"/>
+              <input type="text" name="mail" class="form-control" placeholder="Input your E-mail"/>
             </div>
 
 
@@ -65,7 +65,8 @@
             Confirm Password:
               <input type="password" name="re-password" class="form-control" placeholder="Password"/>
             </div> -->
-              <input class="btn btn-primary" id="signupBtn" value="Sign up!">
+
+              <input class="btn btn-primary" id="registerBtn" value="Sign up!">
             <div class="row">
 
             </div>
@@ -92,8 +93,8 @@
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
   <script>
     $(document).ready(function() {
-      $("#signupBtn").click(function() {
-        $("#signupFrm").attr('action' , '{% url 'signup' %}').submit()
+      $("#registerBtn").click(function() {
+        $("#registerFrm").attr('action' , '{% url 'register' %}').submit()
       })
     })
 

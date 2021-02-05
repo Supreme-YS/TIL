@@ -10,11 +10,11 @@ class SampleProduct(models.Model):
 #----------------------< 심영석 >----------------------
 # 기존 유저들을 위한 로그인용 모델
 class User(models.Model) :
-    username = models.CharField(max_length=50 , verbose_name='사용자명')
-    password = models.CharField(max_length=50 , verbose_name='비밀번호')
-    usermail = models.CharField(max_length=100 , verbose_name='이메일주소')
+    user_id = models.CharField(max_length=50 , verbose_name='사용자명')
+    user_pwd = models.CharField(max_length=50 , verbose_name='비밀번호')
+    user_mail = models.CharField(max_length=100 , verbose_name='이메일주소')
     # registered_dttm = models.DateTimeField(auto_now_add=True, verbose_name=' 등록시간')
 
     def __str__(self):
-        return self.username+" , "+self.password+" , "+self.usermail
+        return self.user_id+" , "+self.user_pwd+" , "+self.user_mail
 

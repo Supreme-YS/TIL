@@ -30,31 +30,36 @@ def staff(request):
 
 # salesStatus
 def salesStatus(request):
-    return render(request,'salesStatus.html')
+    return render(request, 'salesStatus.html')
 
 #----------------------< 심영석 >--------------------#
 
-def signupForm(request):
-    print('request - signupForm')
-    return render(request, 's_signup.html')
+def registerForm(request):
+    print('request - registerForm')
+    return render(request, 's_registerForm.html')
 
-def signup(request):
+def register(request):
+    print('request - register')
     if request.method == 'POST' :
-        user_name = request.post['username']
-        pass_word = request.post['password']
-        user_mail = request.post['usermail']
-        register = User(username=user_name, password=pass_word, usermail=user_mail)
+        # s_registerForm에서 넘어온 값들을 새로운 변수에 담고
+        id = request.POST['id'] 
+        pwd = request.POST['pwd']
+        mail = request.POST['mail']
+        # register에 User 클래스를 이용해서 각 객체에 담아서
+        register = User(user_id=id, user_pwd=pwd, user_mail=mail)
+        # 저장했는데 왜 안됨 ㅡㅡ
         register.save()
+
     return render(request, 'index.html')
 
 
 def login(request):
     print('request login - ')
     if request.method =='POST':
-        username = request.POST['username']
-        password = request.POST['password']
+        id = request.POST['username']
+        pwd = request.POST['password']
         # User == auth.authenticate(request, username=username, password=password) # 등록된 회원인지 확인
-        user = User.objects.get(username = username, password = password)
+        user = User.objects.get(user_id = id, user_pwd = pwd)
         if user is not None :
             print('login ok ' , user) # 로그인 됐는지 체크여부
             return redirect('index') # 나중에 바꿔야 할 부분 -> menu 페이지로 넘어가야함
@@ -65,10 +70,11 @@ def login(request):
 
 
 def logout(request):
-    request.session['username'] = {}
-    request.session['usermail'] = {}
+    request.session['user_name'] = {}
+    request.session['user_id'] = {}
     request.session.modified = True
-    return redirect('index')
+    return redirect('index')  # render로 주면 logout이라는 주소값이 남아진다. 분기를 위해 redirect를 사용한 것
+
 
 
 
