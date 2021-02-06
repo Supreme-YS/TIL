@@ -62,7 +62,7 @@ def login(request):
         user = User.objects.get(user_id = id, user_pwd = pwd)
         if user is not None :
             print('login ok ' , user) # 로그인 됐는지 체크여부
-            return redirect('index') # 나중에 바꿔야 할 부분 -> menu 페이지로 넘어가야함
+            return redirect('order') # 나중에 바꿔야 할 부분 -> menu 페이지로 넘어가야함
         else :
             return render(request, 'index.html', {'error' : 'username or password is incorrect.'})
     else:
@@ -75,7 +75,9 @@ def logout(request):
     request.session.modified = True
     return redirect('index')  # render로 주면 logout이라는 주소값이 남아진다. 분기를 위해 redirect를 사용한 것
 
-
+def order(request):
+    print('request - order')
+    return render(request, 'order.html')
 
 
 
