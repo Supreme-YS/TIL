@@ -36,3 +36,21 @@ a = str(input())
 print(a)
 
 #1012
+a = float(input())
+print("%f" % a)
+
+#1013
+a, b = input().split()
+print(a, b)
+
+#1014
+a, b = input().split()
+print(b, a)
+
+#1015
+f = input()
+print('%.2f' % float(f))
+
+#1016
+a = input()
+print(a, a, a)
