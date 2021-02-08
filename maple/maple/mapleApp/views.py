@@ -75,71 +75,117 @@ def logout(request):
     request.session.modified = True
     return redirect('index')  # render로 주면 logout이라는 주소값이 남아진다. 분기를 위해 redirect를 사용한 것
 
+#----------------------< 김민재 >--------------------#
+
 def order(request):
-    print('request - order')
-    return render(request, 'order.html')
+    # print('*> serchmenu :')
+    menus = Menu.objects.all()
+    print('menus', menus)
+    context = {'menus': menus}
+    print('-------------------------------------')
+
+    return render(request, 'order.html', context)
+
+
+def saveOrder(request) :
+    mID = request.POST.get('menuId')
+    mOrderno = request.POST.get('orderNo')
+    mPrice = request.POST.get('mPrice')
+    mQty = request.POST.get('mValue')
+    print('request  saveOrder- ', mID, mOrderno, mPrice, mQty)
+
+    # print('-------------------------')
+    menu = Menu.objects.get(menuid=mID)
+    print(menu)
+    saved.menu()
+    # 저장했는데 왜 안됨 ㅡㅡ
+
+    # order = Order.objects.get(orderno=mOrderno)
+    # savodd = OrderDetail(
+    #     menuid = menu.menuid,
+    #     orderno = order.orderno,
+    #     price = mPrice,
+    #     qty = mQty
+    # )
+    # print(savodd)
+    # savodd.save()
+    #
+    # print('------------------------')
+
+    # mOrderno = request.POST.get('mOrderNo', '0')
+    # mOrderDate = request.POST.get('now', '2021-02-06 10:01:00')
+    # mPayment = request.POST.get('', 'card')
+    # mStatus = request.POST.get('', 'order')
+    # savod = Order(
+    #     orderno = mOrderno,
+    #     orderdate = mOrderDate,
+    #     payment = mPayment,
+    #     status = mStatus,
+    # )
+    # savod.save()
+
+    return redirect('order')
+
+def menu(request):
+    return redirect('serchmenu')
+
+
+def serchmenu(request):
+    print('*> serchmenu :')
+    menus = Menu.objects.all()
+    print('menus', menus)
+    # title  writer  content  regdata  viewcnt
+    # print('*>producs -', type(producs), producs)
+    context = {'menus': menus}
+
+    menuName = request.POST.get('menuName', '0')
+    return render(request, 'menu.html', context)
+
+
+# 샘플CRUD - 입력
+def insertmenu(request):
+    print('*> insertmenu :')
+
+    # Client 값 확인
+    mId = request.POST.get('menuId','0')
+    menuName = request.POST.get('menuName', '0')
+    menuPrice = request.POST.get('menuPrice',0)
+    print('--------------------------------',mId)
 
 
 
+    # 데이터 저장
+    pro = Menu(menuid=mId, menuname=menuName, price=menuPrice)
+    pro.save()
 
+    return redirect('serchmenu')
+# 샘플CRUD - 수정
+def updatemenu(request):
+    print('*> updateProduct :')
+    # Client 값 확인
 
+    #id = request.POST['id']
 
+    menuId = request.POST.get('menuId', 0)
+    menuName=request.POST.get('menuName', '0')
+    menuPrice=request.POST.get('menuPrice', 0 )
 
+    print('request modify - ', menuId, menuName, menuPrice)
 
-'''
-def index(request):
-    if request.session.get('user_id') and request.session.get('user_name'):
-        context = {'id': request.session['user_id'],
-                   'name': request.session['user_name']}
-        return render(request, 'home.html', context)
-    else:
-        return render(request, 'login.html')
+    # 데이터 수정
+    men = Menu.objects.get(menuid=menuId)
+    men.menuname = menuName
+    men.price = menuPrice
+    men.save()
+    return redirect('serchmenu')
 
-
-def logout(request):
-    request.session['user_name'] = {}
-    request.session['user_id'] = {}
-    request.session.modified = True
-    return redirect('index')  # render로 주면 logout이라는 주소값이 남아진다. 분기를 위해 redirect를 사용한 것
-
-
-def loginProc(request):
-    print('request - loginProc')
-    if request.method == 'GET':
-        return redirect('index')
-    elif request.method == 'POST':
-        id = request.POST['id']
-        pwd = request.POST['pwd']
-        # select * from bbsuserregister where user_id = id and user_pwd = pwd
-        # orm class - table
-        user = BbsUserRegister.objects.get(user_id=id, user_pwd=pwd)
-        print('************ user result -', user)
-
-        context = {}
-
-        if user is not None:
-            request.session['user_name'] = user.user_name
-            request.session['user_id'] = user.user_id
-            context['name'] = request.session['user_name']
-            context['id'] = request.session['user_id']
-            return render(request, 'home.html', context)
-        else:
-            return redirect('index')
-
-
-def registerForm(request):
-    print('request - registerForm')
-    return render(request, 'join.html')
-
-
-def register(request):
-    # id, pwd, name 을 입력받아 -> model을 이용해 -> db(insert) 시키는 작업이 필요하다.
-    if request.method == 'POST':
-        id = request.POST['id']
-        pwd = request.POST['pwd']
-        name = request.POST['name']
-        register = BbsUserRegister(user_id=id, user_pwd=pwd, user_name=name)
-        register.save()
-
-    return render(request, 'login.html')'''
-
+# menu- 삭제
+def deletemenu(request):
+    print('*> deleteProduct :')
+    # Client 값 확인
+    mId = request.POST.get('mId','0')
+    print('request bbs_remove param - ' , mId)
+    # 데이터 수정
+    Menu.objects.get(menuid=mId).delete()
+    #화면이동
+    return redirect('serchmenu')

@@ -23,6 +23,12 @@ urlpatterns = [
     path('registerForm/', views.registerForm, name = 'registerForm'),
     path('login/', views.login, name = 'login'),
     path('logout/', views.logout, name='logout'),
-    path('order/', views.order, name='order')
 
+
+#----------------------< 김민재 >----------------------
+    path('saveOrder/'    , views.saveOrder      ,name='saveOrder'),
+    path('serchmenu/'    , views.serchmenu      ,name='serchmenu'),
+    path('insertmenu/'    , views.insertmenu      ,name='insertmenu'),
+    path('deletemenu/'    , views.deletemenu      ,name='deletemenu'),
+    path('updatemenu/'    , views.updatemenu      ,name='updatemenu'),
 ]
