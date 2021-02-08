@@ -51,6 +51,37 @@ print(b, a)
 f = input()
 print('%.2f' % float(f))
 
-#1016
+#1017
 a = input()
 print(a, a, a)
+
+#1018
+h, m = map(int, input().split(':'))
+print('%d:%d' % (h,m))
+
+#1019
+y, m, d = map(int, input().split('.'))
+print('%04d.%02d.%02d' % (y,m,d))
+
+#1020
+f, b = input().split('-')
+print(f+b)
+
+#1021
+word = input()
+print(word)
+
+#1022
+sentence = input()
+print(sentence)
+
+#1023
+i, f = map(int, input().split('.'))
+print(i)
+print(f)
+
+data = [int(x) for x in input().split('.')]
+print(data[0])
+print(data[1])
+
+#1024
