@@ -95,9 +95,9 @@ def saveOrder(request) :
     print('request  saveOrder- ', mID, mOrderno, mPrice, mQty)
 
     # print('-------------------------')
-    menu = Menu.objects.get(menuid=mID)
-    print(menu)
-    saved.menu()
+    menus = Menu.objects.get(menuid=mID)
+    menus.save()
+    print(menus)
     # 저장했는데 왜 안됨 ㅡㅡ
 
     # order = Order.objects.get(orderno=mOrderno)
