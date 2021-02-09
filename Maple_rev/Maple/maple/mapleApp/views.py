@@ -88,6 +88,49 @@ def saveOrder(request) :
     print('mPrice ', mPrice)
     print('mQty ', mQty)
     print('-------------------------')
+<<<<<<< HEAD
+=======
+
+
+    # mDate = request.POST.get('hdate')
+    # mTime = request.POST.get('htime')
+    mPay = request.POST.get('hpay')
+    mStat = request.POST.get('hstat')
+    ord = Order(orderno=new_orderno, orderdate=mDate, ordertime=mTime, payment=mPay,
+                               status = mStat)
+    ord.save()
+    print(ord)
+
+    # -------------------------------
+    # 4. OrderDetail 테이블 저장
+    # -------------------------------
+    for i in range(len(mID)) :
+        menu = Menu.objects.get(menuid=mID[i])
+        # print('menu',menu)
+
+    for i in range(len(mID)) :
+        ordd = OrderDetail(
+            orderno = ord,
+            menuid = menu,
+            price = mPrice[i],
+            qty = mQty[i],
+        )
+        ordd.save()
+    # ---------------------------------
+    return redirect('order')
+
+
+# 샘플CRUD - 입력
+def insertmenu(request):
+    print('*> insertmenu :')
+
+    # Client 값 확인
+    mId = request.POST.get('menuId','0')
+    menuName = request.POST.get('menuName', '0')
+    menuPrice = request.POST.get('menuPrice',0)
+    print('--------------------------------',mId)
+
+>>>>>>> 9c4227476436a3adfdc9a8f2578275946416abe7
 
 
     # mDate = request.POST.get('hdate')
