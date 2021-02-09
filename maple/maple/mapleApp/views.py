@@ -1,9 +1,12 @@
 from django.http import JsonResponse
 from django.shortcuts import render , redirect
-from django.contrib.auth.models import User
-from django.contrib import auth
-from django.core.paginator import *
 from .models import *
+from django.core.paginator import *
+from datetime import datetime
+# ysc  20210208
+from django.db.models import Avg
+from django.db.models import F
+from django.db.models import Sum,Max
 
 
 #----------------------< 공통 : 메뉴이동>--------------------#
@@ -26,11 +29,13 @@ def menu(request):
 
 # staff
 def staff(request):
-    return render(request,'staff.html')
+    staffs = Staff.objects.all()
+    context = {'staffs' : staffs}
+    return render(request, 'staff.html', context)
 
 # salesStatus
 def salesStatus(request):
-    return render(request, 'salesStatus.html')
+    return render(request,'salesStatus.html')
 
 #----------------------< 심영석 >--------------------#
 
@@ -42,7 +47,7 @@ def register(request):
     print('request - register')
     if request.method == 'POST' :
         # s_registerForm에서 넘어온 값들을 새로운 변수에 담고
-        id = request.POST['id'] 
+        id = request.POST['id']
         pwd = request.POST['pwd']
         mail = request.POST['mail']
         # register에 User 클래스를 이용해서 각 객체에 담아서
@@ -75,12 +80,13 @@ def logout(request):
     request.session.modified = True
     return redirect('index')  # render로 주면 logout이라는 주소값이 남아진다. 분기를 위해 redirect를 사용한 것
 
-#----------------------< 김민재 >--------------------#
+
+#----------------------< 김민재 >----------------------#
 
 def order(request):
     # print('*> serchmenu :')
     menus = Menu.objects.all()
-    print('menus', menus)
+    # print('menus', menus)
     context = {'menus': menus}
     print('-------------------------------------')
 
@@ -88,18 +94,15 @@ def order(request):
 
 
 def saveOrder(request) :
-    mID = request.POST.get('menuId')
-    mOrderno = request.POST.get('orderNo')
-    mPrice = request.POST.get('mPrice')
-    mQty = request.POST.get('mValue')
-    print('request  saveOrder- ', mID, mOrderno, mPrice, mQty)
+    mID = request.POST.get('menuId','0')
+    mOrderno = request.POST.get('orderNo', '0')
+    mPrice = request.POST.get('mPrice', 0)
+    mQty = request.POST.get('mValue', 0)
+    print('request  saveOrder- ', mID ,mOrderno, mPrice, mQty)
 
-    # print('-------------------------')
-    menus = Menu.objects.get(menuid=mID)
-    menus.save()
-    print(menus)
-    # 저장했는데 왜 안됨 ㅡㅡ
-
+    print('-------------------------')
+    menu = Menu.objects.get(menuid=mID)
+    print(menu)
     # order = Order.objects.get(orderno=mOrderno)
     # savodd = OrderDetail(
     #     menuid = menu.menuid,
@@ -126,10 +129,14 @@ def saveOrder(request) :
 
     return redirect('order')
 
+
+#----------------------< 최유숙 >----------------------#
+#----------------------< 정연욱 >----------------------#
+# menu page
 def menu(request):
     return redirect('serchmenu')
 
-
+    #
 def serchmenu(request):
     print('*> serchmenu :')
     menus = Menu.objects.all()
@@ -138,24 +145,20 @@ def serchmenu(request):
     # print('*>producs -', type(producs), producs)
     context = {'menus': menus}
 
-    menuName = request.POST.get('menuName', '0')
-    return render(request, 'menu.html', context)
 
+    return render(request, 'menu.html', context)
 
 # 샘플CRUD - 입력
 def insertmenu(request):
     print('*> insertmenu :')
 
     # Client 값 확인
-    mId = request.POST.get('menuId','0')
+    menuId = request.POST.get('menuId','0')
     menuName = request.POST.get('menuName', '0')
     menuPrice = request.POST.get('menuPrice',0)
-    print('--------------------------------',mId)
-
-
-
+    print(menuId, menuName, menuPrice)
     # 데이터 저장
-    pro = Menu(menuid=mId, menuname=menuName, price=menuPrice)
+    pro = Menu(menuid=menuId,menuname=menuName, price=menuPrice)
     pro.save()
 
     return redirect('serchmenu')
@@ -166,7 +169,7 @@ def updatemenu(request):
 
     #id = request.POST['id']
 
-    menuId = request.POST.get('menuId', 0)
+    menuId = request.POST.get('menuId', '0')
     menuName=request.POST.get('menuName', '0')
     menuPrice=request.POST.get('menuPrice', 0 )
 
@@ -183,9 +186,43 @@ def updatemenu(request):
 def deletemenu(request):
     print('*> deleteProduct :')
     # Client 값 확인
-    mId = request.POST.get('mId','0')
-    print('request bbs_remove param - ' , mId)
+    menuId = request.POST.get('menuId','0')
+    print('request bbs_remove param - ' , menuId)
     # 데이터 수정
-    Menu.objects.get(menuid=mId).delete()
+    Menu.objects.get(menuid=menuId).delete()
     #화면이동
     return redirect('serchmenu')
+
+# ----------------------< 오은영 >----------------------#
+def create_staff(request):
+    staffid     = request.POST['staffid']
+    staffname   = request.POST['staffname']
+    jobtitle    = request.POST['jobtitle']
+    startdate   = request.POST['startdate']
+    phone       = request.POST['phone']
+    staffs      = Staff(staffid=staffid, staffname=staffname, jobtitle=jobtitle,
+                        startdate=startdate, phone=phone)
+    staffs.save()
+    return redirect('staff')
+
+def update_staff(request):
+    id = request.POST['id']
+    staffid     = request.POST['staffid']
+    staffname   = request.POST['staffname']
+    jobtitle    = request.POST['jobtitle']
+    startdate   = request.POST['startdate']
+    phone       = request.POST['phone']
+    staffs      = Staff.objects.get(id=id)
+    staffs.staffid  = staffid
+    staffs.staffname    = staffname
+    staffs.jobtitle     = jobtitle
+    staffs.startdate    = startdate
+    staffs.phone        = phone
+    staffs.save()
+    return redirect('staff')
+
+def delete_staff(request):
+    id = request.POST['id']
+    staffs = Staff.objects.get(id=id)
+    staffs.delete()
+    return redirect('staff')

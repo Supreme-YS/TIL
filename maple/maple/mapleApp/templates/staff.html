@@ -80,7 +80,7 @@
 
   <section class="page-section about-heading">
     <div class="container">
-      <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="img/about.jpg" alt="">
+      <img class="static img-fluid rounded about-heading-img mb-3 mb-lg-0" src="static img/about.jpg" alt="">
       <div class="about-heading-content">
         <div class="row">
           <div class="col-xl-9 col-lg-10 mx-auto">
@@ -93,7 +93,7 @@
 
               <h2 class="section-heading mb-4">
                 <img  src="{% static 'img/cafe_icon3.png'%}" width="40" height="40">
-                <span class="text-uppercase text-primary"> SAMPLE : 직원관리 </span>
+                <span class="text-uppercase text-primary"> 직원관리 </span>
               </h2>
 
 
@@ -102,7 +102,7 @@
 <!--                <button type="submit" class="btn btn-primary" id="inputBtn1">입력</button>-->
 <!--                <button type="submit" class="btn btn-primary" id="modiBtn1">수정</button>-->
 <!--                <button type="submit" class="btn btn-primary" id="delBtn1">삭제</button>-->
-                <button type="submit" class="btn btn-primary" id="serchBtn1">조회</button>
+<!--                <button type="submit" class="btn btn-primary" id="serchBtn1">조회</button>-->
 <!--                <button type="submit" class="btn btn-primary" id="saveBtn1">저장</button>-->
               </div>
 
@@ -112,16 +112,19 @@
     <!--  MAPLE: 테이블  START  -->
               <div class="container d-flex justify-content-center mt-50 mb-50">
                 <div class="card w-100">
+
                   <div class="table-responsive">
-                    <div style="width:100%; height:300px; overflow:auto ">
-                    <table class="table table-hover ">
+                    <div style="width:100%; height:400px; overflow:auto ">
+                    <table class="table table-hover " >
     <!-- MAPLE:  테이블 헤더   -->
                       <thead class="thead-light">
                         <tr>
-                          <th> </th>
-                          <th scope="col"></th>
-                          <th scope="col">상품명</th>
-                          <th scope="col">가격</th>
+                          <th scope="col">NO.</th>
+                          <th scope="col">ID</th>
+                          <th scope="col">이름</th>
+                          <th scope="col">직급</th>
+                          <th scope="col">입사일자</th>
+                          <th scope="col">전화번호</th>
                         </tr>
                       </thead>
 
@@ -133,26 +136,17 @@
 
 
 
-                      <tbody>
-                        <tr>
-                          <td> <input  type="radio" name="radioValue" value="{{produc.id}}"> </td>
-                          <td id="pId_1">1</td>
-                          <td id="pName_1" >iPhone</td>
-                          <td id="pPrice_1">1,000,000</td>
-                        </tr>
-                        <tr>
-                          <td> <input  type="radio" name="radioValue" value="{{produc.id}}"> </td>
-                          <td id="pId_2">2</td>
-                          <td id="pName_2" >Samsung</td>
-                          <td id="pPrice_2">2,000,000</td>
-                        </tr>
-                        <tr>
-                          <td> <input  type="radio" name="radioValue" value="{{produc.id}}"> </td>
-                          <td id="pId_3">3</td>
-                          <td id="pName_3" >LG</td>
-                          <td id="pPrice_3">3,000,000</td>
-                        </tr>
-
+                      <tbody id="staff_table">
+                          {% for Staff in staffs %}
+                          <tr>
+                            <td>{{Staff.id}}</td>
+                            <td>{{Staff.staffid}}</td>
+                            <td>{{Staff.staffname}}</a></td>
+                            <td>{{Staff.jobtitle}}</td>
+                            <td>{{Staff.startdate}}</td>
+                            <td>{{Staff.phone}}</td>
+                            </tr>
+                          {% endfor %}
                       </tbody>
                     </table>
                     </div>
@@ -166,8 +160,8 @@
               <br>
               <div class="intro-button" align="right">
                 <button type="submit" class="btn btn-primary" id="inputBtn2">입력</button>
-                <button type="submit" class="btn btn-primary" id="modiBtn2">수정</button>
-                <button type="submit" class="btn btn-primary" id="delBtn2">삭제</button>
+<!--                <button type="submit" class="btn btn-primary" id="modiBtn2">수정</button>-->
+<!--                <button type="submit" class="btn btn-primary" id="delBtn2">삭제</button>-->
 <!--                <button type="submit" class="btn btn-primary" id="serchBtn2">조회</button>-->
 <!--                <button type="submit" class="btn btn-primary" id="saveBtn2">저장</button>-->
               </div>
@@ -181,7 +175,7 @@
 <!--  MAPLE:  TITLE  -->
               <h2 class="section-heading mb-4">
                 <img  src="{% static 'img/cafe_icon3.png'%}" width="40" height="40">
-                <span class="text-uppercase text-primary" > 상품정보 </span>
+                <span class="text-uppercase text-primary" > 직원정보 입력 및 수정 </span>
               </h2>
 
 <!--  MAPLE:  INPUT  -->
@@ -193,30 +187,43 @@
                     <div class="box box-primary">
                     <!-- /.box-header -->
 
-                      <form id="regForm"  method="post" action="{% url 'insertProduct' %}" >
+                      <form id="regForm"  method="post" action="" >
                       {% csrf_token %}
 
                         <div class="box-body">
                           <div class="form-group">
-                            <label for="exampleInputEmail1"> ✔ 상품 아이디 </label>
-                              <input type="text" readonly="readonly"
-                                id='id' class="form-control" placeholder="">
+                            <label for="exampleInputEmail1"> ✔ ID </label>
+                              <input type="text"  name="staffid" readonly
+                                id='staffid' class="form-control" placeholder="">
                           </div>
 
                           <div class="form-group">
-                            <label for="exampleInputEmail1"> ✔ 상품명 </label>
-                              <input type="text" readonly="readonly"
-                                id='pdName' class="form-control" placeholder="">
+                            <label for="exampleInputEmail1"> ✔ 이름 </label>
+                              <input type="text"  name="staffname" readonly
+                                id='staffname' class="form-control" placeholder="">
                           </div>
 
                           <div class="form-group">
-                            <label for="exampleInputEmail1"> ✔ 가격 </label>
-                              <input type="text"  readonly="readonly"
-                                id='pdPrice' class="form-control" placeholder="">
+                            <label for="exampleInputEmail1"> ✔ 직급 </label>
+                              <input type="text"   name="jobtitle" readonly
+                                id='jobtitle' class="form-control" placeholder="">
                           </div>
+
+                          <div class="form-group">
+                            <label for="exampleInputEmail1"> ✔ 입사일자 </label>
+                              <input type="datetime-local"   name="startdate" readonly
+                                id='startdate' class="form-control" placeholder="">
+                          </div>
+
+                           <div class="form-group">
+                            <label for="exampleInputEmail1"> ✔ 전화번호 </label>
+                              <input type="tel"  name="phone" readonly
+                                id='phone' class="form-control" placeholder="010-0000-0000">
+                            </div>
 
                           <!--   업데이트 구분 : ( Y: 수정 , N:신규        -->
                           <input type="hidden" name="updateYn" id="updateYn"  value="N">
+                          <input type="hidden" name="id" id="id" value="">
 
                         </div>
                         <!-- /.box-body -->
@@ -235,10 +242,11 @@
               <br>
               <div class="intro-button" align="right">
 <!--                <button type="submit" class="btn btn-primary" id="inputBtn3">입력</button>-->
-<!--                <button type="submit" class="btn btn-primary" id="modiBtn3">수정</button>-->
-<!--                <button type="submit" class="btn btn-primary" id="delBtn3">삭제</button>-->
+                <button type="submit" class="btn btn-primary" id="modiBtn3">수정</button>
+                <button type="submit" class="btn btn-primary" id="delBtn3">삭제</button>
 <!--                <button type="submit" class="btn btn-primary" id="serchBtn3">조회</button>-->
                 <button type="submit" class="btn btn-primary" id="saveBtn3">저장</button>
+
               </div>
               <br>
 <!-----------------MAPLE : Detail END ----------------->
@@ -258,20 +266,58 @@
 
 <!-- *************************** MAPLE : 화면 END ***************************  -->
 
-
-
-
 <!-- *************************** MAPLE : 공통 (FOOTER) START  ******************  -->
   <footer class="footer text-faded text-center py-5">
     <div class="container">
       <p class="m-0 small">Copyright &copy; Your Website 2021</p>
     </div>
   </footer>
-
+<!-- *************************** MAPLE : 화면 END ***************************  -->
   <!-- Bootstrap core JavaScript -->
   <script src="{% static 'vendor/jquery/jquery.min.js'%}"></script>
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script>
+  $(document).ready(function() {
+    $('#saveBtn3').click(function(){
+        $('#regForm').attr('action' , "{% url 'create_staff' %}").submit() ;
+    })
+    $('#modiBtn3').click(function(){
+        alert($('#staffid').val())
+        alert($('#id').val())
+        $('#regForm').attr('action' , "{% url 'update_staff' %}").submit() ;
+    })
+    $('#delBtn3').click(function(){
+        $('#regForm').attr('action' , "{% url 'delete_staff' %}").submit() ;
+    })
+    $('#inputBtn2').click(function(){
+        $('#staffid').removeAttr('readonly')
+        $('#staffname').removeAttr('readonly')
+        $('#jobtitle').removeAttr('readonly')
+        $('#startdate').removeAttr('readonly')
+        $('#phone').removeAttr('readonly')
+    })
+    $('#staff_table tr').click(function() {
+        var str = ""
+        var tdArr = new Array()
+        var tr = $(this)
+        var td = tr.children()
+        alert(tr.text())
+        td.each(function(i){
+            tdArr.push(td.eq(i).text())
+        })
+        alert(tdArr)
+        $('#id').removeAttr('readonly').val(tdArr[0])
+        $('#staffid').removeAttr('readonly').val(tdArr[1])
+        $('#staffname').removeAttr('readonly').val(tdArr[2])
+        $('#jobtitle').removeAttr('readonly').val(tdArr[3])
+        $('#startdate').removeAttr('readonly').val(tdArr[4])
+        $('#phone').removeAttr('readonly').val(tdArr[5])
 
+    })
+
+  })
+
+  </script>
 </body>
 
 </html>

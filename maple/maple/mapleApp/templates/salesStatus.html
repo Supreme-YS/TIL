@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 {% load static%}
 
+{% load humanize %}
+
 <html lang="en">
 
 <head>
@@ -25,6 +27,56 @@
   <!-- Custom styles for this template -->
   <link href="{% static 'css/business-casual.min.css'  %}" rel="stylesheet">
 
+
+
+
+<!------------------------  차트  START ------------------->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <style>
+    #container {
+        height: 400px;
+    }
+
+    .highcharts-figure, .highcharts-data-table table {
+        min-width: 310px;
+        max-width: 800px;
+        margin: 1em auto;
+    }
+
+    .highcharts-data-table table {
+        font-family: Verdana, sans-serif;
+        border-collapse: collapse;
+        border: 1px solid #EBEBEB;
+        margin: 10px auto;
+        text-align: center;
+        width: 100%;
+        max-width: 500px;
+    }
+    .highcharts-data-table caption {
+        padding: 1em 0;
+        font-size: 1.2em;
+        color: #555;
+    }
+    .highcharts-data-table th {
+        font-weight: 600;
+        padding: 0.5em;
+    }
+    .highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+        padding: 0.5em;
+    }
+    .highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+        background: #f8f8f8;
+    }
+    .highcharts-data-table tr:hover {
+        background: #f1f7ff;
+    }
+    </style>
+
+<!------------------------  차트  END ------------------->
 </head>
 
 <body>
@@ -73,9 +125,6 @@
 <!-- *************************** MAPLE : 공통 (HEADER) END  ******************  -->
 
 
-
-
-
 <!-- *************************** MAPLE : 화면 START *************************  -->
 
   <section class="page-section about-heading">
@@ -88,94 +137,6 @@
 
 
 
-<!-----------------MAPLE : List START ----------------->
-<!--  MAPLE:  TITLE  -->
-
-              <h2 class="section-heading mb-4">
-                <img  src="{% static 'img/cafe_icon3.png'%}" width="40" height="40">
-                <span class="text-uppercase text-primary"> SAMPLE : 매출현황 </span>
-              </h2>
-
-
- <!--  MAPLE: BUTTON  1 -->
-              <div class="intro-button" align="right">
-<!--                <button type="submit" class="btn btn-primary" id="inputBtn1">입력</button>-->
-<!--                <button type="submit" class="btn btn-primary" id="modiBtn1">수정</button>-->
-<!--                <button type="submit" class="btn btn-primary" id="delBtn1">삭제</button>-->
-                <button type="submit" class="btn btn-primary" id="serchBtn1">조회</button>
-<!--                <button type="submit" class="btn btn-primary" id="saveBtn1">저장</button>-->
-              </div>
-
-              <br>
-
-
-    <!--  MAPLE: 테이블  START  -->
-              <div class="container d-flex justify-content-center mt-50 mb-50">
-                <div class="card w-100">
-                  <div class="table-responsive">
-                    <div style="width:100%; height:300px; overflow:auto ">
-                    <table class="table table-hover ">
-    <!-- MAPLE:  테이블 헤더   -->
-                      <thead class="thead-light">
-                        <tr>
-                          <th> </th>
-                          <th scope="col"></th>
-                          <th scope="col">상품명</th>
-                          <th scope="col">가격</th>
-                        </tr>
-                      </thead>
-
-    <!-- MAPLE:  테이블 바디  -->
-
-
-
-
-
-
-
-                      <tbody>
-                        <tr>
-                          <td> <input  type="radio" name="radioValue" value="{{produc.id}}"> </td>
-                          <td id="pId_1">1</td>
-                          <td id="pName_1" >iPhone</td>
-                          <td id="pPrice_1">1,000,000</td>
-                        </tr>
-                        <tr>
-                          <td> <input  type="radio" name="radioValue" value="{{produc.id}}"> </td>
-                          <td id="pId_2">2</td>
-                          <td id="pName_2" >Samsung</td>
-                          <td id="pPrice_2">2,000,000</td>
-                        </tr>
-                        <tr>
-                          <td> <input  type="radio" name="radioValue" value="{{produc.id}}"> </td>
-                          <td id="pId_3">3</td>
-                          <td id="pName_3" >LG</td>
-                          <td id="pPrice_3">3,000,000</td>
-                        </tr>
-
-                      </tbody>
-                    </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-    <!--  MAPLE: 테이블  END -->
-
-
-<!--  MAPLE: BUTTON  2 -->
-              <br>
-              <div class="intro-button" align="right">
-                <button type="submit" class="btn btn-primary" id="inputBtn2">입력</button>
-                <button type="submit" class="btn btn-primary" id="modiBtn2">수정</button>
-                <button type="submit" class="btn btn-primary" id="delBtn2">삭제</button>
-<!--                <button type="submit" class="btn btn-primary" id="serchBtn2">조회</button>-->
-<!--                <button type="submit" class="btn btn-primary" id="saveBtn2">저장</button>-->
-              </div>
-              <br>
-
-
-<!-----------------MAPLE : List END ----------------->
-</br>
 
 <!-----------------MAPLE : Detail START ----------------->
 <!--  MAPLE:  TITLE  -->
@@ -193,32 +154,37 @@
                     <div class="box box-primary">
                     <!-- /.box-header -->
 
-                      <form id="regForm"  method="post" action="{% url 'insertProduct' %}" >
+                      <form id="regForm"  method="post" action="{% url 'serchStatus' %}" >
                       {% csrf_token %}
 
-                        <div class="box-body">
-                          <div class="form-group">
-                            <label for="exampleInputEmail1"> ✔ 상품 아이디 </label>
-                              <input type="text" readonly="readonly"
-                                id='id' class="form-control" placeholder="">
-                          </div>
 
-                          <div class="form-group">
-                            <label for="exampleInputEmail1"> ✔ 상품명 </label>
-                              <input type="text" readonly="readonly"
-                                id='pdName' class="form-control" placeholder="">
-                          </div>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">선 택</label>
+                      </div>
+                      <select class="custom-select" id="report" name="report" >
+                    <!--    <option selected>Choose...</option>-->
+                        <option value="r1" selected >일자별 매출 현황</option>
+                        <option value="r2">메뉴별 매출 현황</option>
+                      </select>
+                    </div>
 
-                          <div class="form-group">
-                            <label for="exampleInputEmail1"> ✔ 가격 </label>
-                              <input type="text"  readonly="readonly"
-                                id='pdPrice' class="form-control" placeholder="">
-                          </div>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">시작일자</label>
+                      </div>
+                              <input type="date"   name="startdate"
+                                id='startdate' class="form-control" placeholder="YYYY-MM-DD" value='{{startdate}}'>
+                     &nbsp;
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">종료일자</label>
+                      </div>
+                              <input type="date"   name="enddate"
+                                id='enddate' class="form-control"  placeholder="YYYY-MM-DD" value='{{enddate}}' >
+                    </div>
 
-                          <!--   업데이트 구분 : ( Y: 수정 , N:신규        -->
-                          <input type="hidden" name="updateYn" id="updateYn"  value="N">
 
-                        </div>
+
                         <!-- /.box-body -->
                       </form>
 
@@ -232,18 +198,94 @@
               </section>
 
 <!--  MAPLE: BUTTON  3 -->
-              <br>
-              <div class="intro-button" align="right">
-<!--                <button type="submit" class="btn btn-primary" id="inputBtn3">입력</button>-->
-<!--                <button type="submit" class="btn btn-primary" id="modiBtn3">수정</button>-->
-<!--                <button type="submit" class="btn btn-primary" id="delBtn3">삭제</button>-->
-<!--                <button type="submit" class="btn btn-primary" id="serchBtn3">조회</button>-->
-                <button type="submit" class="btn btn-primary" id="saveBtn3">저장</button>
-              </div>
-              <br>
 <!-----------------MAPLE : Detail END ----------------->
 
 
+<!-----------------MAPLE : List START ----------------->
+<!--  MAPLE:  TITLE  -->
+
+ <!--  MAPLE: BUTTON  1 -->
+
+              <div class="intro-button" align="right">
+                <button type="submit" class="btn btn-primary" id="serchBtn1">조회</button>
+              </div>
+
+              <p> ✔ 조회기간  : {{startdate}}  ~ {{enddate}}  </p>
+
+{%if orderDetails %}
+    <!--  MAPLE: 테이블  START  -->
+              <div class="container d-flex justify-content-center mt-50 mb-50">
+
+                <div class="card w-100">
+                  <div class="table-responsive">
+                    <div style="width:100%; height:300px; overflow:auto ">
+                    <table class="table table-hover ">
+    <!-- MAPLE:  테이블 헤더   -->
+                      <thead class="thead-light">
+                        <tr>
+                          {% if report == 'r1'%} <th scope="col">날짜</th> {% endif %}
+                          {% if report == 'r2'%} <th scope="col">메뉴</th> {% endif %}
+                          <th scope="col">수량</th>
+                          <th scope="col">매출</th>
+                        </tr>
+                      </thead>
+
+    <!-- MAPLE:  테이블 바디  -->
+
+
+{%  for od in  orderDetails    %}
+                      <tbody>
+                        <tr>
+<!--                          <td>{{od.id}}</td>-->
+<!--                          <td>{{od.orderno.orderdate |date:"Y-m-d" }}</td>-->
+<!--                          <td>{{od.menuid.menuname}}</td>-->
+<!--                          <td align="left">{{od.price |intcomma  }}</td>-->
+<!--                          <td align="left">{{od.sales |intcomma  }}</td>-->
+<!--                          <td align="left">{{od.sales.avg |intcomma     }}</td>-->
+                             {% if report == 'r1' %} <td>{{od.date}}</td>{% endif %}
+                             {% if report == 'r2' %} <td>{{od.menu}}</td>{% endif %}
+                             <td align="left">{{od.total_qty |intcomma  }}</td>
+                             <td align="left">{{od.total_price |intcomma  }}</td>
+
+
+
+                        </tr>
+
+{%    endfor    %}
+
+                      </tbody>
+                    </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    <!--  MAPLE: 테이블  END -->
+
+ {% else %}
+       <p>  데이터가 존재하지 않습니다. </p>
+ {% endif %}
+<!--  MAPLE: BUTTON  2 -->
+
+
+
+<!-----------------MAPLE : List END ----------------->
+
+                <br>
+
+
+<!-- 그래프 -->
+<figure class="highcharts-figure">
+    <div id="container"></div>
+    <p class="highcharts-description">
+        매출그래프
+    </p>
+</figure>
+
+
+
+
+{{ population}}
+<!--<a href="{%url 'line'%}"> Line Chart </a>-->
 
             </div>
           </div>
@@ -256,10 +298,9 @@
 
 
 
+
+
 <!-- *************************** MAPLE : 화면 END ***************************  -->
-
-
-
 
 <!-- *************************** MAPLE : 공통 (FOOTER) START  ******************  -->
   <footer class="footer text-faded text-center py-5">
@@ -272,7 +313,198 @@
   <script src="{% static 'vendor/jquery/jquery.min.js'%}"></script>
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
 
+
 </body>
 
 </html>
 <!-- *************************** MAPLE : 공통 (FOOTER) END  ******************  -->
+
+
+<script>
+	$(document).ready(function(){
+         //----------------------------------
+         // 조회 : 상품등록 정보 조회
+         //----------------------------------
+	     $('#serchBtn1').click(function(){
+             var startdate    = $("#startdate").val();
+             var enddate          = $("#enddate").val();
+             if (startdate== '' || startdate ==null ){
+                 alert('시작일을 입력해주세요')
+                 return
+             }
+             if (enddate== '' || enddate ==null ){
+                 alert('종료일을 입력해주세요')
+                 return
+             }
+			 $('#regForm').submit() ;
+		 })
+
+         var chkValDate = function( date ){
+		    var patt = new RegExp(/\b\d{1,2}[\/-]\d{1,2}[\/-]\d{4}\b/);
+		    return patt.test(date);
+	     }
+
+
+
+
+
+         //----------------------------------
+         // 입력버튼 : 입력 항목 활성화
+         //----------------------------------
+	     $('#inputBtn2').click(function(){
+	         //alert("!입력버튼")
+			 $('#pdName, #pdPrice').attr('readonly', false);
+
+
+		 })
+
+         //----------------------------------
+         // 수정버튼 : 입력 항목 활성화
+         //----------------------------------
+	     $('#modiBtn2').click(function(){
+	         //alert("!수정버튼") ;
+             var checkbox = $("[name=radioValue]:checked");
+			 var ckVal= checkbox.val()
+             //alert( $('#pName_'+ckVal).text() )
+
+
+
+             // 선택된 버튼이 없으면 메세지
+             if (ckVal == null){
+                 alert('! 수정할 항목을 선택해 주세요. ')
+             }else{
+                 // 입력창을 활성화
+                 $('#pdName, #pdPrice').attr('readonly', false);
+
+                 // 선택된 행 정보 셋팅
+                 $('#pdName').val( $('#pName_'+ckVal).text()  ) ;
+                 $('#pdPrice').val( $('#pPrice_'+ckVal).text()  );
+                 $('#id').val( ckVal  );
+                 $('#pID').val( ckVal  );
+                 // 업데이트 구분을 Y로 변경 "id
+                 $('#updateYn').val( "Y" );
+
+             }
+		 })
+
+
+         //----------------------------------
+         // 저장 : 수정/입력 내용저장
+         //----------------------------------
+	     $('#saveBtn3').click(function(){
+
+             var updateYn =$('#updateYn').val()
+
+             // 수정구분이 'Y' : 수정
+             if (updateYn == 'Y'){
+                 $('#regForm').attr('action' , "{% url 'updateProduct' %}")
+                 $('#regForm').submit() ;
+             // 수정구분이 'N' : 입력
+             }else{
+                 $('#regForm').attr('action' , "{% url 'insertProduct' %}")
+                 $('#regForm').submit() ;
+             }
+		 })
+
+         //----------------------------------
+         // 삭제
+         //----------------------------------
+	     $('#delBtn2').click(function(){
+	         //alert("!삭제버튼") ;
+             var checkbox = $("[name=radioValue]:checked");
+			 var ckVal= checkbox.val()
+             //alert( $('#pName_'+ckVal).text() )
+
+             // 선택된 버튼이 없으면 메세지
+             if (ckVal == null){
+                 alert('! 삭제할 항목을 선택해 주세요.  ')
+             }else{
+                 $('#pID').val( ckVal  );
+                 $('#regForm').attr('action' , "{% url 'deleteProduct' %}")
+                 $('#regForm').submit() ;
+
+             }
+		 })
+
+
+	})
+
+</script>
+<!------------------------  그래프 ------------------->
+<script charset="US-ASCII">
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: ' Mape 매출 '
+        },
+        subtitle: {
+            text: 'Source: <a href="http://en.wikipedia.org/wiki/List_of_cities_proper_by_population">Wikipedia</a>'
+        },
+        xAxis: {
+            type: 'category',
+            labels: {
+                rotation: -45,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '판매량'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            pointFormat: '매출 : <b>{point.y:.1f} </b>'
+        },
+        series: [{
+
+            name: 'Population',
+
+<!--             data: {{ population}} ,-->
+
+            data: [
+                ['Shanghai', 24.2],
+                ['Beijing', 20.8],
+                ['Karachi', 14.9],
+                ['Shenzhen', 13.7],
+                ['Guangzhou', 13.1],
+                ['Istanbul', 12.7],
+                ['Mumbai', 12.4],
+                ['Moscow', 12.2],
+                ['São Paulo', 12.0],
+                ['Delhi', 11.7],
+                ['Kinshasa', 11.5],
+                ['Tianjin', 11.2],
+                ['Lahore', 11.1],
+                ['Jakarta', 10.6],
+                ['Dongguan', 10.6],
+                ['Lagos', 10.6],
+                ['Bengaluru', 10.3],
+                ['Seoul', 9.8],
+                ['Foshan', 9.3],
+                ['Tokyo', 9.3]
+            ],
+
+            dataLabels: {
+                enabled: true,
+                rotation: -90,
+                color: '#FFFFFF',
+                align: 'right',
+                format: '{point.y:.1f}', // one decimal
+                y: 10, // 10 pixels down from the top
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        }]
+    });
+</script>

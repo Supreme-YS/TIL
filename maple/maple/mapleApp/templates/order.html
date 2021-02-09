@@ -140,7 +140,7 @@
 
 {%  for menu in  menus   %}
 
-
+                         {% csrf_token %}
                       <tbody>
                         <tr>
                           <td> <input  type="radio" name="radioValue" value="{{menu.menuid}}"> </td>
@@ -167,6 +167,7 @@
  {% else %}
        <p>  데이터가 존재하지 않습니다. </p>
  {% endif %}
+
 <!--  MAPLE: BUTTON  2 -->
               <br>
               <div class="intro-button" align="right">
@@ -224,7 +225,7 @@
                                 </thead>
                                 <tbody id="list-body">
                                     <tr >
-                                        <input type="hidden" name="menuId" id="menuId"  value="5">
+                                        <input type="hidden" name="menuId" id="menuId" value="3"  >
                                         <input type="hidden" name="orderNo" id="orderNo"  value="5">
                                     </tr>
                                 </tbody>
@@ -334,47 +335,43 @@
                 td00.append(input);
                 tr.append(td00);
 
-                var td01 = $('<td></td>');
+                var td01 = $('<input/>');
                 td01.append($('#mName_'+ckVal).text());
                 //td01.attr('id','mName')
                 td01.attr('name','mName')
+                td01.val(td01.text())
                 tr.append(td01);
 
-                var td02 = $('<td></td>');
+
+                var td02 = $('<input/>');
                 td02.append($('#mPrice_'+ckVal).text());
                 //td02.attr('id','mPrice')
                 td02.attr('name','mPrice')
-
+                td02.val(td02.text())
                 tr.append(td02);
 
 
-                var td03 = $('<td></td>');
+                var td03 = $('<input/>');
                 td03.append($('#pValueInput_'+ckVal).val());
                 //td03.attr('id','mValue')
                 td03.attr('name','mValue')
+                td03.val(td03.text())
                 tr.append(td03);
 
 
-                var td04 = $('<td></td>');
+                var td04 = $('<input/>');
                 var amount = parseInt($('#mPrice_'+ckVal).text())*parseInt($('#pValueInput_'+ckVal).val())
                 td04.append(amount);
+                td04.val(td04.text())
                 tr.append(td04);
-                console.log(td04)
                 $('#list-body').append(tr);
 
-                var td05 = $('<td></td>');
-                td05.append($('#mId_'+ckVal).text());
-                //td05.attr('id','mID')
-                td05.attr('name','mID')
-                //$('#menuId').append(td05);
 
 
+                $('#menuId').val($('#mId_'+ckVal).text());
 
-                var td06 = $('<td></td>');
-                td06.append($('#mId_'+ckVal).text());
-                //td06.attr('id','mOrderNo')
-                td06.attr('name','mOrderNo')
-                //$('#orderNo').append(td06);
+
+                $('#orderNo').val('M1000000');
 
 
 
@@ -382,6 +379,7 @@
 
                 $('#amount').text(sum)
            }
+
         });
 
 
@@ -389,20 +387,21 @@
          //----------------------------------
          // 저장
          //----------------------------------
-	     $('#saveBtn3').click(function(){
+        $('#saveBtn3').click(function(){
 
-             var updateYn =$('#updateYn').val()
+            var check = $("[class=btn-chk]:checked");
+            var ckVa = check.val()
 
-             // 수정구분이 'Y' : 수정
-             if (updateYn == 'Y'){
-                 $('#regForm').attr('action' , "{% url 'updatemenu' %}")
-                 $('#regForm').submit() ;
-             // 수정구분이 'N' : 입력
-             }else{
+
+            if (ckVa == null){
+                alert("항목을 선택해라")
+            }else{
+
+
                  $('#regForm').attr('action' , "{% url 'saveOrder' %}")
                  $('#regForm').submit() ;
              }
-		 })
+       })
 
          //----------------------------------
          // 메뉴삭제
