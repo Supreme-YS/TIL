@@ -88,9 +88,6 @@ def saveOrder(request) :
     print('mPrice ', mPrice)
     print('mQty ', mQty)
     print('-------------------------')
-<<<<<<< HEAD
-=======
-
 
     # mDate = request.POST.get('hdate')
     # mTime = request.POST.get('htime')
@@ -130,15 +127,11 @@ def insertmenu(request):
     menuPrice = request.POST.get('menuPrice',0)
     print('--------------------------------',mId)
 
->>>>>>> 9c4227476436a3adfdc9a8f2578275946416abe7
-
-
     # mDate = request.POST.get('hdate')
     # mTime = request.POST.get('htime')
     mPay = request.POST.get('hpay')
     mStat = request.POST.get('hstat')
-    ord = Order(orderno=new_orderno, orderdate=mDate, ordertime=mTime, payment=mPay,
-                               status = mStat)
+    ord = Order(orderno=new_orderno, orderdate=mDate, ordertime=mTime, payment=mPay, status = mStat)
     ord.save()
     print(ord)
 

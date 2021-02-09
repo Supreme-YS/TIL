@@ -2,13 +2,10 @@
 
 <!DOCTYPE html>
 {% load static%}
-
 {% load humanize %}
 
 <html lang="en">
-
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -26,8 +23,6 @@
 
   <!-- Custom styles for this template -->
   <link href="{% static 'css/business-casual.min.css'  %}" rel="stylesheet">
-
-
 
 
 <!------------------------  차트  START ------------------->
@@ -81,9 +76,6 @@
 
 <body>
   <!--------------- MAPLE : 타이틀  --------------->
-    <div class="intro-button mx-auto" align="right">
-      <a class="btn btn-primary btn-xl" href="{% url 'logout' %}" >LOGOUT</a>
-  </div>
 
   <h1 class="site-heading text-center text-white d-none d-lg-block">
     <span class="site-heading-upper text-primary mb-3">The Best Coffee Shop in MultiCampus</span>
@@ -110,7 +102,7 @@
             <a class="nav-link text-uppercase text-expanded" href="../order">주문</a>
           </li>
           <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="../order_list">주문현황</a>
+            <a class="nav-link text-uppercase text-expanded" href="../orderStatus">주문현황</a>
           </li>
           <li class="nav-item px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="../menu">카페메뉴</a>
@@ -132,20 +124,18 @@
 
   <section class="page-section about-heading">
     <div class="container">
-      <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="{% static 'img/about.jpg' %}" alt="">
+      <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="img/about.jpg" alt="">
       <div class="about-heading-content">
         <div class="row">
           <div class="col-xl-9 col-lg-10 mx-auto">
             <div class="bg-faded rounded p-5">
 
 
-
-
 <!-----------------MAPLE : Detail START ----------------->
 <!--  MAPLE:  TITLE  -->
               <h2 class="section-heading mb-4">
                 <img  src="{% static 'img/cafe_icon3.png'%}" width="40" height="40">
-                <span class="text-uppercase text-primary" > 상품정보 </span>
+                <span class="text-uppercase text-primary" > 매출현황 </span>
               </h2>
 
 <!--  MAPLE:  INPUT  -->
@@ -157,41 +147,35 @@
                     <div class="box box-primary">
                     <!-- /.box-header -->
 
-                      <form id="regForm"  method="post" action="{% url 'serchStatus' %}" >
+                    <form id="regForm"  method="post" action="{% url 'serchStatus' %}" >
                       {% csrf_token %}
 
-
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">선 택</label>
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text" for="inputGroupSelect01">선 택</label>
+                        </div>
+                        <select class="custom-select" id="report" name="report" >
+                      <!--    <option selected>Choose...</option>-->
+                          <option value="r_menu" selected>메뉴별 매출 현황</option>
+                          <option value="r_date"  >일자별 매출 현황</option>
+                        </select>
                       </div>
-                      <select class="custom-select" id="report" name="report" >
-                    <!--    <option selected>Choose...</option>-->
-                        <option value="r1" selected >일자별 매출 현황</option>
-                        <option value="r2">메뉴별 매출 현황</option>
-                      </select>
-                    </div>
 
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">시작일자</label>
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text" for="inputGroupSelect01">시작일자</label>
+                        </div>
+                          <input type="date"   name="startdate"
+                           id='startdate' class="form-control" placeholder="YYYY-MM-DD" value='{{startdate}}'>
+                         &nbsp;
+                        <div class="input-group-prepend">
+                          <label class="input-group-text" for="inputGroupSelect01">종료일자</label>
+                        </div>
+                          <input type="date"   name="enddate"
+                                  id='enddate' class="form-control"  placeholder="YYYY-MM-DD" value='{{enddate}}' >
                       </div>
-                              <input type="date"   name="startdate"
-                                id='startdate' class="form-control" placeholder="YYYY-MM-DD" value='{{startdate}}'>
-                     &nbsp;
-                      <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">종료일자</label>
-                      </div>
-                              <input type="date"   name="enddate"
-                                id='enddate' class="form-control"  placeholder="YYYY-MM-DD" value='{{enddate}}' >
-                    </div>
-
-
-
                         <!-- /.box-body -->
-                      </form>
-
-
+                    </form>
                     </div>
                             <!-- /.box -->
                   </div>
@@ -203,7 +187,6 @@
 <!--  MAPLE: BUTTON  3 -->
 <!-----------------MAPLE : Detail END ----------------->
 
-
 <!-----------------MAPLE : List START ----------------->
 <!--  MAPLE:  TITLE  -->
 
@@ -214,11 +197,9 @@
               </div>
 
               <p> ✔ 조회기간  : {{startdate}}  ~ {{enddate}}  </p>
-
 {%if orderDetails %}
     <!--  MAPLE: 테이블  START  -->
               <div class="container d-flex justify-content-center mt-50 mb-50">
-
                 <div class="card w-100">
                   <div class="table-responsive">
                     <div style="width:100%; height:300px; overflow:auto ">
@@ -226,31 +207,22 @@
     <!-- MAPLE:  테이블 헤더   -->
                       <thead class="thead-light">
                         <tr>
-                          {% if report == 'r1'%} <th scope="col">날짜</th> {% endif %}
-                          {% if report == 'r2'%} <th scope="col">메뉴</th> {% endif %}
+                          {% if report == 'r_date'%} <th scope="col">날짜</th> {% endif %}
+                          {% if report == 'r_menu'%} <th scope="col">메뉴</th> {% endif %}
                           <th scope="col">수량</th>
                           <th scope="col">매출</th>
                         </tr>
                       </thead>
 
     <!-- MAPLE:  테이블 바디  -->
-
-
 {%  for od in  orderDetails    %}
                       <tbody>
                         <tr>
-<!--                          <td>{{od.id}}</td>-->
-<!--                          <td>{{od.orderno.orderdate |date:"Y-m-d" }}</td>-->
-<!--                          <td>{{od.menuid.menuname}}</td>-->
-<!--                          <td align="left">{{od.price |intcomma  }}</td>-->
-<!--                          <td align="left">{{od.sales |intcomma  }}</td>-->
-<!--                          <td align="left">{{od.sales.avg |intcomma     }}</td>-->
-                             {% if report == 'r1' %} <td>{{od.date}}</td>{% endif %}
-                             {% if report == 'r2' %} <td>{{od.menu}}</td>{% endif %}
+
+                             {% if report == 'r_date' %} <td>{{od.date}}</td>{% endif %}
+                             {% if report == 'r_menu' %} <td>{{od.menu}}</td>{% endif %}
                              <td align="left">{{od.total_qty |intcomma  }}</td>
                              <td align="left">{{od.total_price |intcomma  }}</td>
-
-
 
                         </tr>
 
@@ -270,25 +242,17 @@
 <!--  MAPLE: BUTTON  2 -->
 
 
-
 <!-----------------MAPLE : List END ----------------->
-
                 <br>
 
-
-<!-- 그래프 -->
-<figure class="highcharts-figure">
-    <div id="container"></div>
-    <p class="highcharts-description">
-        매출그래프
-    </p>
-</figure>
-
-
-
-
-{{ population}}
-<!--<a href="{%url 'line'%}"> Line Chart </a>-->
+<!------------------------  차트  START ------------------->
+                <figure class="highcharts-figure">
+                    <div id="container"></div>
+                    <p class="highcharts-description">
+                        [ 매출그래프 ]
+                    </p>
+                </figure>
+<!------------------------  차트  END ------------------->
 
             </div>
           </div>
@@ -296,10 +260,6 @@
       </div>
     </div>
   </section>
-
-
-
-
 
 
 
@@ -342,108 +302,24 @@
 			 $('#regForm').submit() ;
 		 })
 
-         var chkValDate = function( date ){
-		    var patt = new RegExp(/\b\d{1,2}[\/-]\d{1,2}[\/-]\d{4}\b/);
-		    return patt.test(date);
-	     }
-
-
-
-
-
-         //----------------------------------
-         // 입력버튼 : 입력 항목 활성화
-         //----------------------------------
-	     $('#inputBtn2').click(function(){
-	         //alert("!입력버튼")
-			 $('#pdName, #pdPrice').attr('readonly', false);
-
-
-		 })
-
-         //----------------------------------
-         // 수정버튼 : 입력 항목 활성화
-         //----------------------------------
-	     $('#modiBtn2').click(function(){
-	         //alert("!수정버튼") ;
-             var checkbox = $("[name=radioValue]:checked");
-			 var ckVal= checkbox.val()
-             //alert( $('#pName_'+ckVal).text() )
-
-
-
-             // 선택된 버튼이 없으면 메세지
-             if (ckVal == null){
-                 alert('! 수정할 항목을 선택해 주세요. ')
-             }else{
-                 // 입력창을 활성화
-                 $('#pdName, #pdPrice').attr('readonly', false);
-
-                 // 선택된 행 정보 셋팅
-                 $('#pdName').val( $('#pName_'+ckVal).text()  ) ;
-                 $('#pdPrice').val( $('#pPrice_'+ckVal).text()  );
-                 $('#id').val( ckVal  );
-                 $('#pID').val( ckVal  );
-                 // 업데이트 구분을 Y로 변경 "id
-                 $('#updateYn').val( "Y" );
-
-             }
-		 })
-
-
-         //----------------------------------
-         // 저장 : 수정/입력 내용저장
-         //----------------------------------
-	     $('#saveBtn3').click(function(){
-
-             var updateYn =$('#updateYn').val()
-
-             // 수정구분이 'Y' : 수정
-             if (updateYn == 'Y'){
-                 $('#regForm').attr('action' , "{% url 'updateProduct' %}")
-                 $('#regForm').submit() ;
-             // 수정구분이 'N' : 입력
-             }else{
-                 $('#regForm').attr('action' , "{% url 'insertProduct' %}")
-                 $('#regForm').submit() ;
-             }
-		 })
-
-         //----------------------------------
-         // 삭제
-         //----------------------------------
-	     $('#delBtn2').click(function(){
-	         //alert("!삭제버튼") ;
-             var checkbox = $("[name=radioValue]:checked");
-			 var ckVal= checkbox.val()
-             //alert( $('#pName_'+ckVal).text() )
-
-             // 선택된 버튼이 없으면 메세지
-             if (ckVal == null){
-                 alert('! 삭제할 항목을 선택해 주세요.  ')
-             }else{
-                 $('#pID').val( ckVal  );
-                 $('#regForm').attr('action' , "{% url 'deleteProduct' %}")
-                 $('#regForm').submit() ;
-
-             }
-		 })
-
-
 	})
 
 </script>
-<!------------------------  그래프 ------------------->
+<!------------------------  차트  START ------------------->
 <script charset="utf-8" >
+    var raw = "{{maple_date}}".replace(/&#x27;/g, "\"")
+    var maple_date_raw = JSON.parse(raw)
+    console.log(maple_date_raw)
+
     Highcharts.chart('container', {
         chart: {
             type: 'column'
         },
         title: {
-            text: ' Mape 매출 '
+            text: ' Maple 매출 '
         },
         subtitle: {
-            text: 'Source: <a href="http://en.wikipedia.org/wiki/List_of_cities_proper_by_population">Wikipedia</a>'
+            text: ''
         },
         xAxis: {
             type: 'category',
@@ -458,7 +334,7 @@
         yAxis: {
             min: 0,
             title: {
-                text: '판매량'
+                text: '매출'
             }
         },
         legend: {
@@ -470,33 +346,7 @@
         series: [{
 
             name: 'Population',
-<!--                data: {{ population}} ,-->
-
-
-
-            data: [
-                ['Shanghai', 24.2],
-                ['Beijing', 20.8],
-                ['Karachi', 14.9],
-                ['Shenzhen', 13.7],
-                ['Guangzhou', 13.1],
-                ['Istanbul', 12.7],
-                ['Mumbai', 12.4],
-                ['Moscow', 12.2],
-                ['São Paulo', 12.0],
-                ['Delhi', 11.7],
-                ['Kinshasa', 11.5],
-                ['Tianjin', 11.2],
-                ['Lahore', 11.1],
-                ['Jakarta', 10.6],
-                ['Dongguan', 10.6],
-                ['Lagos', 10.6],
-                ['Bengaluru', 10.3],
-                ['Seoul', 9.8],
-                ['Foshan', 9.3],
-                ['Tokyo', 9.3]
-            ],
-
+            data: maple_date_raw ,
             dataLabels: {
                 enabled: true,
                 rotation: -90,
@@ -512,3 +362,4 @@
         }]
     });
 </script>
+<!------------------------  차트  END ------------------->

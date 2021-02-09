@@ -10,6 +10,7 @@ from django.db.models import Sum,Max
 
 #----------------------< 최유숙 >----------------------#
 # Create your views here.
+# Create your views here.
 def line(request) :
  pass
 
@@ -25,7 +26,7 @@ def serchStatus(request):
     startdate = request.POST.get('startdate','')
     enddate = request.POST.get('enddate','')
 
-    print('report-',report)
+    print('report-', report)
     # 일별 매출 현황
     # if report is 'r1' :
 
@@ -36,17 +37,17 @@ def serchStatus(request):
             'date': F('orderno__orderdate'),
             'menu': Max('menuid'),
             'total_qty': Sum('qty'),
-            'total_price': Sum('price')
+            'total_price': Sum('price'),
         }
         orderDetails = OrderDetail.objects.values('orderno__orderdate').filter(orderno__orderdate__range=[startdate, enddate]).annotate(**query).order_by('orderno__orderdate')
 
-    # 'r1' 메뉴뱔 매출 현황
+    # 'r1' 메뉴별 매출 현황
     if report == 'r2' :
         query = {
             'date': Max('orderno__orderdate'),
             'menu':  F('menuid__menuname'),
             'total_qty': Sum('qty'),
-            'total_price': Sum('price')
+            'total_price': Sum('price'),
         }
         orderDetails = OrderDetail.objects.values('menuid').filter(orderno__orderdate__range=[startdate, enddate]).annotate(**query).order_by('menuid')
 
@@ -97,19 +98,19 @@ def serchStatus(request):
             ['Bengaluru', 10.3],
             ['Seoul', 9.8],
             ['Foshan', 9.3],
-            ['Tokyo', 9.3]
+            ['Tokyo', 9.3],
         ]
 
     print('#>total_price - ', total_price)
     print('#>categories - ', population)
 
-    context = {'orderDetails': orderDetails ,
+    context = {'orderDetails': orderDetails,
                'startdate':startdate,
                'enddate':enddate,
                'report':report ,
                'price': total_price,
-               'population' : population
+               'population' : population,
                }
 
-    print('#>population--',population)
+    print('#>population--', population)
     return render(request, 'salesStatus.html', context)
