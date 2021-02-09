@@ -47,9 +47,9 @@ def register(request):
     print('request - register')
     if request.method == 'POST' :
         # s_registerForm에서 넘어온 값들을 새로운 변수에 담고
-        id = request.POST['id']
-        pwd = request.POST['pwd']
-        mail = request.POST['mail']
+        id = request.POST['new_id']
+        pwd = request.POST['new_pwd']
+        mail = request.POST['new_mail']
         # register에 User 클래스를 이용해서 각 객체에 담아서
         register = User(user_id=id, user_pwd=pwd, user_mail=mail)
         # 저장
@@ -61,8 +61,8 @@ def register(request):
 def login(request):
     print('request login - ')
     if request.method =='POST':
-        id = request.POST['id']
-        pwd = request.POST['pwd']
+        id = request.POST['username']
+        pwd = request.POST['password']
         # User == auth.authenticate(request, username=username, password=password) # 등록된 회원인지 확인
         user = User.objects.get(user_id = id, user_pwd = pwd)
         if user is not None :
@@ -226,3 +226,6 @@ def delete_staff(request):
     staffs = Staff.objects.get(id=id)
     staffs.delete()
     return redirect('staff')
+
+
+# ----------------------< sample >----------------------#

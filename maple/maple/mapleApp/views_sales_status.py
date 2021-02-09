@@ -9,6 +9,44 @@ from django.db.models import F
 from django.db.models import Sum,Max
 
 
+#----------------------< 공통 : 메뉴이동>--------------------#
+
+# landing / login
+def index(request):
+    return render(request,'index.html')
+
+# order
+def order(request):
+    return render(request,'order.html')
+
+# orderStatus
+def orderStatus(request):
+    return render(request,'orderStatus.html')
+
+# menu
+def menu(request):
+    return render(request,'menu.html')
+
+# staff
+def staff(request):
+    staffs = Staff.objects.all()
+    context = {'staffs' : staffs}
+    return render(request, 'staff.html', context)
+
+
+
+# salesStatus
+def salesStatus(request):
+    return render(request,'salesStatus.html')
+
+
+
+#----------------------< 김민재 >----------------------#
+
+
+#----------------------< 최유숙 >----------------------#
+
+
 # Create your views here.
 def line(request) :
  pass
@@ -48,7 +86,7 @@ def serchStatus(request):
             'total_qty': Sum('qty'),
             'total_price': Sum('price')
         }
-    orderDetails = OrderDetail.objects.values('menuid').filter(orderno__orderdate__range=[startdate, enddate]).annotate(**query).order_by('menuid')
+        orderDetails = OrderDetail.objects.values('menuid').filter(orderno__orderdate__range=[startdate, enddate]).annotate(**query).order_by('menuid')
 
     # categories = TB.objects.values('category_seq').annotate(Count('category_seq'))
     # .aggregate(Avg('score'))
@@ -107,7 +145,7 @@ def serchStatus(request):
                'startdate':startdate,
                'enddate':enddate,
                'report':report ,
-               'total_price': total_price,
+               'price': total_price,
                'population' : population
                }
 

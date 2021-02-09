@@ -17,6 +17,7 @@ urlpatterns = [
     path('staff/'        , views.staff          , name='staff'),
     # 매출현황
     path('salesStatus/'  , views.salesStatus    , name='salesStatus'),
+
 #----------------------< 심영석 >----------------------
     path('register/', views.register, name = 'register'),
     path('registerForm/', views.registerForm, name = 'registerForm'),
@@ -36,6 +37,7 @@ urlpatterns = [
     path('serchStatus/', views_sales_status.serchStatus, name='serchStatus'),
     # 그래프 line
     path('line/'       , views_sales_status.line, name='line'),
+
 ]
 
 #----------------------< sample >----------------------#

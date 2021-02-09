@@ -391,39 +391,14 @@
          //----------------------------------
          // 저장 : 수정/입력 내용저장
          //----------------------------------
-	     $('#saveBtn3').click(function(){
 
-             var updateYn =$('#updateYn').val()
-
-             // 수정구분이 'Y' : 수정
-             if (updateYn == 'Y'){
-                 $('#regForm').attr('action' , "{% url 'updateProduct' %}")
-                 $('#regForm').submit() ;
-             // 수정구분이 'N' : 입력
-             }else{
-                 $('#regForm').attr('action' , "{% url 'insertProduct' %}")
-                 $('#regForm').submit() ;
-             }
-		 })
 
          //----------------------------------
          // 삭제
          //----------------------------------
-	     $('#delBtn2').click(function(){
-	         //alert("!삭제버튼") ;
-             var checkbox = $("[name=radioValue]:checked");
-			 var ckVal= checkbox.val()
-             //alert( $('#pName_'+ckVal).text() )
 
-             // 선택된 버튼이 없으면 메세지
-             if (ckVal == null){
-                 alert('! 삭제할 항목을 선택해 주세요.  ')
-             }else{
-                 $('#pID').val( ckVal  );
-                 $('#regForm').attr('action' , "{% url 'deleteProduct' %}")
-                 $('#regForm').submit() ;
 
-             }
+
 		 })
 
 
@@ -431,7 +406,7 @@
 
 </script>
 <!------------------------  그래프 ------------------->
-<script charset="US-ASCII">
+<script charset="utf-8" >
     Highcharts.chart('container', {
         chart: {
             type: 'column'
@@ -467,8 +442,9 @@
         series: [{
 
             name: 'Population',
+<!--                data: {{ population}} ,-->
 
-<!--             data: {{ population}} ,-->
+
 
             data: [
                 ['Shanghai', 24.2],

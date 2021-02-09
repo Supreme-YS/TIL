@@ -1,8 +1,9 @@
 /*데이터 삭제*/
-DELETE FROM mapleApp_orderdetail ; 
-DELETE FROM mapleApp_order ;
-DELETE FROM mapleApp_info ; 
-DELETE FROM mapleApp_menu  ;
-DELETE FROM mapleApp_staff ; 
-DELETE FROM mapleApp_user ; 
-DELETE FROM mapleApp_sampleproduct ;
+DELETE FROM m_orderdetail ; 
+DELETE FROM m_order ;
+DELETE FROM m_info ; 
+DELETE FROM m_menu  ;
+DELETE FROM m_staff ; 
+DELETE FROM m_user ; 
+DELETE FROM m_sampleproduct ;
+
