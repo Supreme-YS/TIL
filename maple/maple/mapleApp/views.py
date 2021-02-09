@@ -47,7 +47,7 @@ def register(request):
         mail = request.POST['mail']
         # register에 User 클래스를 이용해서 각 객체에 담아서
         register = User(user_id=id, user_pwd=pwd, user_mail=mail)
-        # 저장했는데 왜 안됨 ㅡㅡ
+        # 저장
         register.save()
 
     return render(request, 'index.html')
@@ -62,7 +62,7 @@ def login(request):
         user = User.objects.get(user_id = id, user_pwd = pwd)
         if user is not None :
             print('login ok ' , user) # 로그인 됐는지 체크여부
-            return redirect('order') # 나중에 바꿔야 할 부분 -> menu 페이지로 넘어가야함
+            return redirect('order')
         else :
             return render(request, 'index.html', {'error' : 'username or password is incorrect.'})
     else:
