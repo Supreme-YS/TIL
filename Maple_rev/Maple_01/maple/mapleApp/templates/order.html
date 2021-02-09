@@ -24,15 +24,23 @@
 
   <!-- Custom styles for this template -->
   <link href="{% static 'css/business-casual.min.css'  %}" rel="stylesheet">
+    <style>
+        .pValueInput{
+            width : 30px;
+        }
+        .list-table{
+            width : 600px;
+            text-align : center ;
+        }
+    </style>
 
 </head>
 
 <body>
   <!--------------- MAPLE : 타이틀  --------------->
-  <div class="intro-button mx-auto" align="right">
+    <div class="intro-button mx-auto" align="right">
       <a class="btn btn-primary btn-xl" href="{% url 'logout' %}" >LOGOUT</a>
   </div>
-
 
   <h1 class="site-heading text-center text-white d-none d-lg-block">
     <span class="site-heading-upper text-primary mb-3">The Best Coffee Shop in MultiCampus</span>
@@ -59,7 +67,7 @@
             <a class="nav-link text-uppercase text-expanded" href="../order">주문</a>
           </li>
           <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="../orderStatus">주문현황</a>
+            <a class="nav-link text-uppercase text-expanded" href="../order_list">주문현황</a>
           </li>
           <li class="nav-item px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="../menu">카페메뉴</a>
@@ -77,14 +85,11 @@
 <!-- *************************** MAPLE : 공통 (HEADER) END  ******************  -->
 
 
-
-
-
 <!-- *************************** MAPLE : 화면 START *************************  -->
 
   <section class="page-section about-heading">
     <div class="container">
-      <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="img/about.jpg" alt="">
+      <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="{% static 'img/about.jpg' %}" alt="">
       <div class="about-heading-content">
         <div class="row">
           <div class="col-xl-9 col-lg-10 mx-auto">
@@ -97,7 +102,7 @@
 
               <h2 class="section-heading mb-4">
                 <img  src="{% static 'img/cafe_icon3.png'%}" width="40" height="40">
-                <span class="text-uppercase text-primary"> 메뉴 </span>
+                <span class="text-uppercase text-primary"> 주문 </span>
               </h2>
 
 
@@ -106,19 +111,18 @@
 <!--                <button type="submit" class="btn btn-primary" id="inputBtn1">입력</button>-->
 <!--                <button type="submit" class="btn btn-primary" id="modiBtn1">수정</button>-->
 <!--                <button type="submit" class="btn btn-primary" id="delBtn1">삭제</button>-->
-                <button type="submit" class="btn btn-primary" id="serchBtn1">조회</button>
+<!--                <button type="submit" class="btn btn-primary" id="serchBtn1">조회</button>-->
 <!--                <button type="submit" class="btn btn-primary" id="saveBtn1">저장</button>-->
               </div>
 
               <br>
-
 
 {%if menus %}
     <!--  MAPLE: 테이블  START  -->
               <div class="container d-flex justify-content-center mt-50 mb-50">
                 <div class="card w-100">
                   <div class="table-responsive">
-                    <div style="width:100%; height:300px; overflow:auto ">
+                    <div style="width:100%; height:600px; overflow:auto ">
                     <table class="table table-hover ">
     <!-- MAPLE:  테이블 헤더   -->
                       <thead class="thead-light">
@@ -127,6 +131,8 @@
                           <th scope="col"></th>
                           <th scope="col">상품명</th>
                           <th scope="col">가격</th>
+                          <th scope="col">수량</th>
+
                         </tr>
                       </thead>
 
@@ -137,13 +143,18 @@
 
 {%  for menu in  menus   %}
 
-
+                         {% csrf_token %}
                       <tbody>
                         <tr>
                           <td> <input  type="radio" name="radioValue" value="{{menu.menuid}}"> </td>
-                          <td id="mId_{{menu.menuid}}">{{menu.menuid}}</td>
+                          <td id="mId_{{menu.menuid}}" >{{menu.menuid}}</td>
                           <td id="mName_{{menu.menuid}}" >{{menu.menuname}}</td>
                           <td id="mPrice_{{menu.menuid}}">{{menu.price}}</td>
+                          <td class="pValue" id="pValue_{{menu.menuid}}">
+
+                              <input class="pValueInput" id="pValueInput_{{menu.menuid}}" type="text"  placeholder="" />
+
+                          </td>
 
                         </tr>
 {%    endfor    %}
@@ -160,13 +171,12 @@
        <p>  데이터가 존재하지 않습니다. </p>
  {% endif %}
 
-
 <!--  MAPLE: BUTTON  2 -->
               <br>
               <div class="intro-button" align="right">
                 <button type="submit" class="btn btn-primary" id="inputBtn2">입력</button>
-                <button type="submit" class="btn btn-primary" id="modiBtn2">수정</button>
-                <button type="submit" class="btn btn-primary" id="delBtn2">삭제</button>
+<!--                <button type="submit" class="btn btn-primary" id="modiBtn2">수정</button>-->
+<!--                <button type="submit" class="btn btn-primary" id="delBtn2">삭제</button>-->
 <!--                <button type="submit" class="btn btn-primary" id="serchBtn2">조회</button>-->
 <!--                <button type="submit" class="btn btn-primary" id="saveBtn2">저장</button>-->
               </div>
@@ -192,28 +202,49 @@
                     <div class="box box-primary">
                     <!-- /.box-header -->
 
-                      <form id="regForm"  method="post" action="{% url 'insertmenu' %}" >
+                      <form id="regForm"  method="post">
                       {% csrf_token %}
 
                         <div class="box-body">
                           <div class="form-group">
-                            <label for="exampleInputEmail1"> ✔ 상품 아이디 </label>
-                              <input type="text" readonly="readonly"
-                                id='menuId' class="form-control" placeholder="">
+                            <table class="list-table">
+                                <colgroup>
+                                    <col width="5%">
+                                    <col width="40%">
+                                    <col width="15%">
+                                    <col width="15%">
+                                    <col width="25%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>메뉴</th>
+                                        <th>가격</th>
+                                        <th>수량</th>
+                                        <th>금액</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody id="list-body">
+                                    <tr >
+                                        <input type="hidden" name="menuId" id="menuId" value="3"  >
+                                        <input type="hidden" name="orderNo" id="orderNo"  value="5">
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br>
+                            <br>
+                            <div class="amount">
+                                <span>합계</span>
+                                <span id="amount">0</span>
+                            </div>
+                            <div onload="time()">
+                              <span id="now"></span>
+                            </div>
                           </div>
 
-                          <div class="form-group">
-                            <label for="exampleInputEmail1"> ✔ 상품명 </label>
-                              <input type="text" readonly="readonly"
-                                id='menuName' class="form-control" placeholder="">
-                          </div>
 
-                          <div class="form-group">
-                            <label for="exampleInputEmail1"> ✔ 가격 </label>
-                              <input type="text"  readonly="readonly"
-                                id='menuPrice' class="form-control" placeholder="">
-                          </div>
-                          <input type="hidden" name="mId" id="mId"  value="">
                           <!--   업데이트 구분 : ( Y: 수정 , N:신규        -->
                           <input type="hidden" name="updateYn" id="updateYn"  value="N">
 
@@ -237,6 +268,8 @@
 <!--                <button type="submit" class="btn btn-primary" id="modiBtn3">수정</button>-->
 <!--                <button type="submit" class="btn btn-primary" id="delBtn3">삭제</button>-->
 <!--                <button type="submit" class="btn btn-primary" id="serchBtn3">조회</button>-->
+                <button type="submit" class="btn btn-primary" id="modiBtn2">수정</button>
+                <button type="submit" class="btn btn-primary" id="delBtn2">삭제</button>
                 <button type="submit" class="btn btn-primary" id="saveBtn3">저장</button>
               </div>
               <br>
@@ -257,9 +290,6 @@
 
 <!-- *************************** MAPLE : 화면 END ***************************  -->
 
-
-
-
 <!-- *************************** MAPLE : 공통 (FOOTER) START  ******************  -->
   <footer class="footer text-faded text-center py-5">
     <div class="container">
@@ -270,98 +300,149 @@
   <!-- Bootstrap core JavaScript -->
   <script src="{% static 'vendor/jquery/jquery.min.js'%}"></script>
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
-  <script>
-      $(document).ready(function(){
-         //----------------------------------
-         // 조회 : 상품등록 정보 조회
-         //----------------------------------
-	     $('#serchBtn1').click(function(){
-	         //alert("!조회버튼")
-			 location.href='../serchmenu'
-		 })
 
-
-         //----------------------------------
-         // 입력버튼 : 입력 항목 활성화
-         //----------------------------------
-	     $('#inputBtn2').click(function(){
-	         //alert("!입력버튼")
-			 $('#menuName, #menuPrice').attr('readonly', false);
-		 })
-
-         //----------------------------------
-         // 수정버튼 : 입력 항목 활성화
-         //----------------------------------
-	     $('#modiBtn2').click(function(){
-	         //alert("!수정버튼") ;
-             var checkbox = $("[name=radioValue]:checked");
-			 var ckVal= checkbox.val()
-             //alert( $('#mName_'+ckVal).text() )
-
-             // 선택된 버튼이 없으면 메세지
-             if (ckVal == null){
-                 alert('! 수정할 항목을 선택해 주세요. ')
-             }else{
-                 // 입력창을 활성화
-                 $('#menuName, #menuPrice').attr('readonly', false);
-
-                 // 선택된 행 정보 셋팅
-                 $('#menuName').val( $('#mName_'+ckVal).text()  ) ;
-                 $('#menuPrice').val( $('#mPrice_'+ckVal).text()  );
-
-                 $('#mId').val( ckVal  );
-                 // 업데이트 구분을 Y로 변경 "id
-                 $('#updateYn').val( "Y" );
-
-             }
-		 })
-
-
-         //----------------------------------
-         // 저장 : 수정/입력 내용저장
-         //----------------------------------
-	     $('#saveBtn3').click(function(){
-
-             var updateYn =$('#updateYn').val()
-
-             // 수정구분이 'Y' : 수정
-             if (updateYn == 'Y'){
-                 $('#regForm').attr('action' , "{% url 'updatemenu' %}")
-                 $('#regForm').submit() ;
-             // 수정구분이 'N' : 입력
-             }else{
-                 $('#regForm').attr('action' , "{% url 'insertmenu' %}")
-                 $('#regForm').submit() ;
-             }
-		 })
-
-         //----------------------------------
-         // 삭제
-         //----------------------------------
-	     $('#delBtn2').click(function(){
-	         //alert("!삭제버튼") ;
-             var checkbox = $("[name=radioValue]:checked");
-			 var ckVal= checkbox.val()
-             //alert( $('#mName_'+ckVal).text() )
-
-             // 선택된 버튼이 없으면 메세지
-             if (ckVal == null){
-                 alert('! 삭제할 항목을 선택해 주세요.  ')
-             }else{
-                 $('#mId').val( ckVal  );
-                 $('#regForm').attr('action' , "{% url 'deletemenu' %}")
-                 $('#regForm').submit() ;
-
-             }
-		 })
-
-
-	})
-
-
-
-  </script>
 </body>
 
 </html>
 <!-- *************************** MAPLE : 공통 (FOOTER) END  ******************  -->
+
+
+<script>
+    //---------------------시간---------------------
+    function time(){
+      var time= new Date();
+      document.getElementById("now").innerHTML=time.getFullYear()+"-"+time.getMonth()+"-"+time.getDate()+" "+time.getHours()+":"+time.getMinutes()+":00";
+
+      setInterval("time()",1000);
+    }
+    time();
+
+	$(document).ready(function(){
+
+	    var sum = 0
+        $('#inputBtn2').click(function(){
+            var checkbox = $("[name=radioValue]:checked");
+            var ckVal = checkbox.val()
+            var tdArr = new Array()
+
+            if (ckVal == null){
+                alert("항목을 선택해라")
+            }else{
+
+                var tr = $('<tr></tr>')
+                var input = $('<input/>')
+                input.attr('type', 'checkbox')
+
+                input.attr('class', 'btn-chk')
+                var td00 = $('<td></td>');
+                td00.append(input);
+                tr.append(td00);
+
+                var td01 = $('<input/>');
+                td01.append($('#mName_'+ckVal).text());
+                //td01.attr('id','mName')
+                td01.attr('name','mName')
+                td01.val(td01.text())
+                tr.append(td01);
+
+
+                var td02 = $('<input/>');
+                td02.append($('#mPrice_'+ckVal).text());
+                //td02.attr('id','mPrice')
+                td02.attr('name','mPrice')
+                td02.val(td02.text())
+                tr.append(td02);
+
+
+                var td03 = $('<input/>');
+                td03.append($('#pValueInput_'+ckVal).val());
+                //td03.attr('id','mValue')
+                td03.attr('name','mValue')
+                td03.val(td03.text())
+                tr.append(td03);
+
+
+                var td04 = $('<input/>');
+                var amount = parseInt($('#mPrice_'+ckVal).text())*parseInt($('#pValueInput_'+ckVal).val())
+                td04.append(amount);
+                td04.val(td04.text())
+                tr.append(td04);
+                $('#list-body').append(tr);
+
+
+
+                $('#menuId').val($('#mId_'+ckVal).text());
+
+
+                $('#orderNo').val('M1000000');
+
+
+
+                sum += amount
+
+                $('#amount').text(sum)
+           }
+
+        });
+
+
+
+         //----------------------------------
+         // 저장
+         //----------------------------------
+        $('#saveBtn3').click(function(){
+
+            var check = $("[class=btn-chk]:checked");
+            var ckVa = check.val()
+
+
+            if (ckVa == null){
+                alert("항목을 선택해라")
+            }else{
+
+
+                 $('#regForm').attr('action' , "{% url 'saveOrder' %}")
+                 $('#regForm').submit() ;
+             }
+       })
+
+         //----------------------------------
+         // 메뉴삭제
+         //----------------------------------
+<!--	     $('#delBtn2').click(function(){-->
+<!--	         //alert("!삭제버튼") ;-->
+<!--             var checkbox = $("[name=radioValue]:checked");-->
+<!--			 var ckVal= checkbox.val()-->
+<!--             //alert( $('#mName_'+ckVal).text() )-->
+
+<!--             // 선택된 버튼이 없으면 메세지-->
+<!--             if (ckVal == null){-->
+<!--                 alert('! 삭제할 항목을 선택해 주세요.  ')-->
+<!--             }else{-->
+<!--                 $('#mId').val( ckVal  );-->
+<!--                 $('#regForm').attr('action' , "{% url 'deletemenu' %}")-->
+<!--                 $('#regForm').submit() ;-->
+
+<!--             }-->
+<!--		 })-->
+    $('#delBtn2').click(function(){
+        var $obj = $("input[class='btn-chk']")
+
+        var checkCount = $obj.length
+
+        for (var i=0; i<checkCount; i++){
+            if($obj.eq(i).is(":checked")){
+                sum = 0
+                $('#amount').text(sum)
+                console.log($obj.eq(i).children())
+                console.log($obj.eq(i).parent().children())
+                console.log($obj.eq(i))
+
+                $obj.eq(i).parent().parent().remove();
+                   }
+            }
+        })
+
+	})
+
+</script>

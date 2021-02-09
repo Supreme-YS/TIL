@@ -1,0 +1,252 @@
+<!-- *************************** MAPLE : 공통 (HEADER) START  ******************  -->
+{% load static %}
+{% load humanize %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>MAPLE CAFE</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/business-casual.min.css'  %}" rel="stylesheet">
+
+</head>
+
+<body>
+  <!--------------- MAPLE : 타이틀  --------------->
+  <div class="intro-button mx-auto" align="right">
+      <a class="btn btn-primary btn-xl" href="{% url 'logout' %}" >LOGOUT</a>
+  </div>
+
+  <h1 class="site-heading text-center text-white d-none d-lg-block">
+    <span class="site-heading-upper text-primary mb-3">The Best Coffee Shop in MultiCampus</span>
+    <span class="site-heading-lower">MAPLE CAFE</span>
+  </h1>
+
+
+
+  <!--------------- MAPLE : 메뉴  --------------->
+  <nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">MAPLE CAFE</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mx-auto">
+<!--
+          <li class="nav-item active px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="index.html">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+-->
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="../order">주문</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="../order_list">주문현황</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="../menu">카페메뉴</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="../staff">직원관리</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="../salesStatus">매출현황</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<!-- *************************** MAPLE : 공통 (HEADER) END  ******************  -->
+
+
+
+
+
+<!-- *************************** MAPLE : 화면 START *************************  -->
+
+  <section class="page-section about-heading ">
+    <div class="container mt-3">
+      <!-- <img class="rounded about-heading-img mb-3 mb-lg-0" src="{% static 'img/about.jpg' %}" alt=""> -->
+      <div class="about-heading-content">
+        <div class="row">
+          <div class="col-xl-9 col-lg-10 mx-auto">
+            <div class="bg-faded rounded p-0">
+
+<!-- *************************** ORDER LIST  START  ****************** -->
+      			  <div class='card'>
+				        <div class="card-header">
+					        <h3 class="card-title" style="height: 15px;">주문 현황</h3>
+				        </div>
+				        <div class='card-body d-flex p-1'>
+                  <form action="{% url 'order_search' %}" method="GET" >
+                    <div class="input-field">
+                      <select id="select_type" name="s_type" style="height:6vh;width: 100px;" >
+                        <option value="id">주문번호</option>
+                        <option value="content">주문내용</option>
+                        <option value="status">상    황</option>
+                      </select>
+                      <span id="select_option">
+                        <input  class="p-md-1" id='SearchKeyword' type="text" name="s_keyword" value="{{ request.GET.s_keyword }}" style="width:150px;height:6vh;" placeholder="검색 키워드...">
+                      </span>
+                      &nbsp;&nbsp;&nbsp;
+                      <button  class="btn btn-outline-primary" style="height:6vh;"="submit" name="action">검 색</button>
+                    </div>
+                  </form>
+                  &nbsp;&nbsp;&nbsp;
+					        <button  id='newBtn' class="btn btn-outline-secondary" style='height:6vh'>주문 생성</button>
+				        </div>
+			        </div>
+
+			        <div class="container mt-50 mb-50 p-lg-1">
+                <div class="card w-100">
+                  <div>
+                    <div style="width:100%; height:400px; overflow-y:hidden;">
+
+                      <table class="table table-bordered" style="text-align: center;line-height: 0.8em;">
+                        <thead style="font-size:14px">
+                            <th style="width:10%">주문번호</th>
+                            <th style="width:40%">메뉴명</th>
+                            <th style="width:10%">가격</th>
+                            <th style="width:10%">결제</th>
+                            <th style="width:10%">수량</th>
+                            <th style="width:10%">시간</th>
+                            <th style="width:10%">상황</th>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                            <tr style="font-size:12px;vertical-align:middle">
+                                <td>{{ order.orderno }}</td>
+                                <td style="text-align:left;">{{ order.menuname }}</td>
+                                <td style="text-align:right">{{ order.total_price | intcomma }}</td>
+                                {% if order.payment == 'cash' %}
+                                <td>현금</td>
+                                {% else %}
+                                <td>카드</td>
+                                {% endif %}
+                                <!-- <td>{{ order.payment }}</td> -->
+                                <td>{{ order.total_qty }}</td>
+                                <td>{{ order.time }}</td>
+                                {% if order.status == 'ord' %}
+                                <td>주문</td>
+                                {% elif order.status == 'prep' %}
+                                <td>준비중</td>
+                                {% else %}
+                                <td>완료</td>
+                                {% endif %}
+                                <!-- <td>{{ order.get_status_display }}</td> -->
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <!--Pagination-->
+                    <div class="pagination justify-content-center">
+                      <span class="step-links">
+                          {% if orders.has_previous %}
+
+                              {% if s_type and s_keyword %}
+                                <a href="?page=1&s_type={{ s_type}}&s_keyword={{ s_keyword}}">&laquo; &nbsp;</a>
+                                <a href="?page={{ orders.previous_page_number }}&s_type={{ s_type}}&s_keyword={{ s_keyword }}">&lt;</a>
+                              {% elif s_type and s_option %}
+                                <a href="?page=1&s_type={{ s_type}}&s_option={{ s_option}}">&laquo; &nbsp</a>
+                                <a href="?page={{ orders.previous_page_number }}&s_type={{ s_type}}&s_option={{ s_option }}">&lt;</a>
+                              {% else %}
+                                <a href="?page=1">&laquo; &nbsp;</a>
+                                <a href="?page={{ orders.previous_page_number }}">&lt; &nbsp;</a>
+                              {% endif %}
+                          {% endif %}
+
+                          <span class="current">
+                              Page {{ orders.number }} of {{ orders.paginator.num_pages }}.
+                          </span>
+
+                          {% if orders.has_next %}
+                            {% if s_type and s_keyword  %}
+                              <a href="?page={{ orders.next_page_number }}&s_type={{ s_type}}&s_keyword={{ s_keyword}}">&gt;&nbsp</a>
+                              <a href="?page={{ orders.paginator.num_pages }}&s_type={{ s_type}}&s_keyword={{ s_keyword}}"> &raquo;</a>
+                            {% elif s_type and s_option %}
+                              <a href="?page={{ orders.next_page_number }}&s_type={{ s_type}}&s_option={{ s_option }}">&gt;&nbsp</a>
+                              <a href="?page={{ orders.paginator.num_pages }}&s_type={{ s_type}}&s_option={{ s_option }}">&raquo;</a>
+                            {% else %}
+                            <a href="?page={{ orders.next_page_number }}">&gt;&nbsp</a>
+                            <a href="?page={{ orders.paginator.num_pages }}">&raquo;</a>
+                            {% endif %}
+                          {% endif %}
+                      </span>
+                  </div>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+<!-- *************************** ORDER LIST  END  ******************-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- *************************** MAPLE : 화면 END ***************************  -->
+
+<!-- *************************** MAPLE : 공통 (FOOTER) START  ******************  -->
+  <footer class="footer text-faded text-center py-5">
+    <div class="container">
+      <p class="m-0 small">Copyright &copy; Your Website 2021</p>
+    </div>
+  </footer>
+
+  <!-- ORDER LIST SCRIPT -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js'%}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script>
+    $(document).ready(function(){
+
+      $('#select_type').change(function(){
+        select_type = $(this).val();
+        if (select_type == 'status') {
+          txt = "<select name='s_option' style='width:150px;height:6vh;'><option value='ord'>주문</option><option value='prep'>준비중</option>" +
+                "<option value='done'>완료</option></select>"
+          $('#select_option').empty().html(txt)
+        }
+        else {
+          txt = "<input class='p-md-1' id='SearchKeyword' type='text' name='s_keyword' value='{{ request.GET.s_keyword }}' style='width:150px' placeholder='검색 키워드'>"
+          $('#select_option').empty().html(txt)
+        }
+      })
+
+      $('#newBtn').click(function(){
+        alert('newBtn clicked')
+        location.href = '../order'
+      })
+    })
+  </script>
+
+</body>
+
+</html>
+<!-- *************************** MAPLE : 공통 (FOOTER) END  ******************  -->

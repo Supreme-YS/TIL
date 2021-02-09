@@ -29,6 +29,9 @@
 
 <body>
   <!--------------- MAPLE : 타이틀  --------------->
+    <div class="intro-button mx-auto" align="right">
+      <a class="btn btn-primary btn-xl" href="{% url 'logout' %}" >LOGOUT</a>
+  </div>
 
   <h1 class="site-heading text-center text-white d-none d-lg-block">
     <span class="site-heading-upper text-primary mb-3">The Best Coffee Shop in MultiCampus</span>
@@ -55,7 +58,7 @@
             <a class="nav-link text-uppercase text-expanded" href="../order">주문</a>
           </li>
           <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="../orderStatus">주문현황</a>
+            <a class="nav-link text-uppercase text-expanded" href="../order_list">주문현황</a>
           </li>
           <li class="nav-item px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="../menu">카페메뉴</a>
@@ -77,10 +80,9 @@
 
 
 <!-- *************************** MAPLE : 화면 START *************************  -->
-
   <section class="page-section about-heading">
     <div class="container">
-      <img class="static img-fluid rounded about-heading-img mb-3 mb-lg-0" src="static img/about.jpg" alt="">
+      <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="{% static 'img/about.jpg' %}" alt="">
       <div class="about-heading-content">
         <div class="row">
           <div class="col-xl-9 col-lg-10 mx-auto">

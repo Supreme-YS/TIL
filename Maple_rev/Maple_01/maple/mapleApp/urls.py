@@ -11,7 +11,7 @@ urlpatterns = [
     # 주문
     path('order/', views.order, name='order'),
     # 주문현황
-    path('orderStatus/', views.orderStatus, name='orderStatus'),
+    # path('orderStatus/', views.orderStatus, name='orderStatus'),
     # 주문
     path('menu/', views.menu, name='menu'),
     # 직원관리
@@ -31,6 +31,10 @@ urlpatterns = [
     path('login/', views.login, name = 'login'),
     path('logout/', views.logout, name='logout'),
     # ----------------------< 박우환 >----------------------#
+    # 주문현황 view
+    path('order_list/', views.order_list, name='order_list'),
+    # 주문 검색
+    path('order_search/', views.order_search, name='order_search'),
     # ----------------------< 오은영 >----------------------#
     path('create_staff/', views.create_staff, name='create_staff'),
     path('update_staff/', views.update_staff, name='update_staff'),
