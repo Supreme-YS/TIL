@@ -38,9 +38,6 @@
 
 <body>
   <!--------------- MAPLE : 타이틀  --------------->
-    <div class="intro-button mx-auto" align="right">
-      <a class="btn btn-primary btn-xl" href="{% url 'logout' %}" >LOGOUT</a>
-  </div>
 
   <h1 class="site-heading text-center text-white d-none d-lg-block">
     <span class="site-heading-upper text-primary mb-3">The Best Coffee Shop in MultiCampus</span>
@@ -67,7 +64,7 @@
             <a class="nav-link text-uppercase text-expanded" href="../order">주문</a>
           </li>
           <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="../order_list">주문현황</a>
+            <a class="nav-link text-uppercase text-expanded" href="../orderStatus">주문현황</a>
           </li>
           <li class="nav-item px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="../menu">카페메뉴</a>
@@ -338,28 +335,33 @@
                 td00.append(input);
                 tr.append(td00);
 
-                var td01 = $('<input/>');
-                td01.append($('#mName_'+ckVal).text());
-                //td01.attr('id','mName')
-                td01.attr('name','mName')
-                td01.val(td01.text())
-                tr.append(td01);
 
+                <!--  hidden 추가 (메뉴아이디)               -->
+                var hdMid = $('<input/>')
 
-                var td02 = $('<input/>');
-                td02.append($('#mPrice_'+ckVal).text());
-                //td02.attr('id','mPrice')
-                td02.attr('name','mPrice')
-                td02.val(td02.text())
-                tr.append(td02);
+                hdMid.attr('name', 'hmid[]')
+                hdMid.attr('value',$('#mId_'+ckVal).text() )
+                tr.append(hdMid)
 
+                <!--  hidden 추가 (메뉴이름)               -->
+                var hdName = $('<input/>')
 
-                var td03 = $('<input/>');
-                td03.append($('#pValueInput_'+ckVal).val());
-                //td03.attr('id','mValue')
-                td03.attr('name','mValue')
-                td03.val(td03.text())
-                tr.append(td03);
+                hdName.attr('name', 'hname[]')
+                hdName.attr('value',$('#mName_'+ckVal).text() )
+                tr.append(hdName)
+
+                <!--  hidden 추가 (가격)               -->
+                var hdPrice = $('<input/>')
+                hdPrice.attr('name', 'hprice[]')
+                hdPrice.attr('value',$('#mPrice_'+ckVal).text() )
+                tr.append(hdPrice)
+
+                <!--  hidden 추가 (수량)               -->
+                var hdQty = $('<input/>')
+
+                hdQty.attr('name', 'hqty[]')
+                hdQty.attr('value',$('#pValueInput_'+ckVal).val() )
+                tr.append(hdQty)
 
 
                 var td04 = $('<input/>');
@@ -368,6 +370,34 @@
                 td04.val(td04.text())
                 tr.append(td04);
                 $('#list-body').append(tr);
+
+                 <!--  hidden 주문번호                -->
+                var hdOrdno = $('<input/>')
+                hdOrdno.attr('type','hidden')
+                hdOrdno.attr('name', 'hordno[]')
+                hdOrdno.attr('value','R2021020900013')
+                tr.append(hdOrdno)
+
+                 <!--  hidden 주문일자                -->
+                var hdDate = $('<input/>')
+                hdDate.attr('type','hidden')
+                hdDate.attr('name', 'hdate[]')
+                hdDate.attr('value','2021-02-09 16:40:00')
+                tr.append(hdDate)
+
+                 <!--  hidden 결제방법                -->
+                var hdPay = $('<input/>')
+                hdPay.attr('type','hidden')
+                hdPay.attr('name', 'hpay[]')
+                hdPay.attr('value','card')
+                tr.append(hdPay)
+
+                 <!--  hidden 주문상태               -->
+                var hdStat = $('<input/>')
+                hdStat.attr('type','hidden')
+                hdStat.attr('name', 'hstat[]')
+                hdStat.attr('value','done')
+                tr.append(hdStat)
 
 
 
