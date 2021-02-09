@@ -29,9 +29,40 @@
             width : 30px;
         }
         .list-table{
-            width : 600px;
+            width : 800px;
             text-align : center ;
-        }
+            }
+
+        .list-body{
+            width : 1000px;
+            text-align : center;
+            }
+
+            #hname{
+                background-color : blue;
+                width : 40%;
+                text-align : center ;
+            }
+            #hprice{
+                background-color : red;
+                width : 20%;
+                text-align : center ;
+            }
+            #hqty{
+                background-color : green;
+                width : 20%;
+                text-align : center ;
+            }
+            #hamount{
+                background-color : yellow;
+                width : 20%;
+                text-align : center ;
+            }
+
+
+
+
+
     </style>
 
 </head>
@@ -207,8 +238,8 @@
                             <table class="list-table">
                                 <colgroup>
                                     <col width="5%">
-                                    <col width="40%">
-                                    <col width="15%">
+                                    <col width="35%">
+                                    <col width="20%">
                                     <col width="15%">
                                     <col width="25%">
                                 </colgroup>
@@ -219,13 +250,11 @@
                                         <th>가격</th>
                                         <th>수량</th>
                                         <th>금액</th>
-
-
                                     </tr>
                                 </thead>
                                 <tbody id="list-body">
-                                    <tr >
-                                        <input type="hidden" name="menuId" id="menuId" value="3"  >
+                                    <tr>
+                                        <input type="hidden" name="menuId" id="menuId" value="3">
                                         <input type="hidden" name="orderNo" id="orderNo" value="5">
                                     </tr>
                                 </tbody>
@@ -338,27 +367,28 @@
 
                 <!--  hidden 추가 (메뉴아이디)               -->
                 var hdMid = $('<input/>')
-
+                hdMid.attr('type', 'hidden')
                 hdMid.attr('name', 'hmid[]')
                 hdMid.attr('value',$('#mId_'+ckVal).text() )
                 tr.append(hdMid)
 
                 <!--  hidden 추가 (메뉴이름)               -->
                 var hdName = $('<input/>')
-
+                hdName.attr('id', 'hname')
                 hdName.attr('name', 'hname[]')
                 hdName.attr('value',$('#mName_'+ckVal).text() )
                 tr.append(hdName)
 
                 <!--  hidden 추가 (가격)               -->
                 var hdPrice = $('<input/>')
+                hdPrice.attr('id', 'hprice')
                 hdPrice.attr('name', 'hprice[]')
                 hdPrice.attr('value',$('#mPrice_'+ckVal).text() )
                 tr.append(hdPrice)
 
                 <!--  hidden 추가 (수량)               -->
                 var hdQty = $('<input/>')
-
+                hdQty.attr('id', 'hqty')
                 hdQty.attr('name', 'hqty[]')
                 hdQty.attr('value',$('#pValueInput_'+ckVal).val() )
                 tr.append(hdQty)
@@ -366,6 +396,7 @@
 
                 var td04 = $('<input/>');
                 var amount = parseInt($('#mPrice_'+ckVal).text())*parseInt($('#pValueInput_'+ckVal).val())
+                td04.attr('id', 'hamount')
                 td04.append(amount);
                 td04.val(td04.text())
                 tr.append(td04);
