@@ -182,8 +182,10 @@ def login(request):
         if user is not None :
             print('login ok ' , user) # 로그인 됐는지 체크여부
             return redirect('order')
+        elif user is None :
+            return render(request, 'form_errors.html')
         else :
-            return render(request, 'index.html', {'error' : 'username or password is incorrect.'})
+            return redirect('index')
     else:
         return render(request, 'index.html')
 
