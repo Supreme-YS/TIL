@@ -153,14 +153,13 @@ def insertmenu(request):
     # ---------------------------------
     return redirect('order')
 
-# ----------------------< 심영석 >----------------------#
-
+# ----------------------< 심영석 >---------------------- #
+# ----------------------< 회원가입 페이지 START >-------------------- #
 def registerForm(request):
-    print('request - registerForm')
-    return render(request, 's_registerForm.html')
-
+    return render(request, 'registerForm.html')
+# ----------------------< 회원가입 페이지 END >---------------------- #
+# ----------------------< 회원등록 기능 START >-------------------- #
 def register(request):
-    print('request - register')
     if request.method == 'POST' :
         # s_registerForm에서 넘어온 값들을 새로운 변수에 담고
         id = request.POST['new_id']
@@ -170,31 +169,28 @@ def register(request):
         register = User(user_id=id, user_pwd=pwd, user_mail=mail)
         # 저장
         register.save()
-
     return render(request, 'index.html')
-
-
+# ----------------------< 회원등록 기능 END >-------------------- #
+# ----------------------< 로그인 기능 START >-------------------- #
 def login(request):
-    print('request login - ')
     if request.method =='POST':
         id = request.POST['username']
         pwd = request.POST['password']
-        # User == auth.authenticate(request, username=username, password=password) # 등록된 회원인지 확인
         user = User.objects.get(user_id = id, user_pwd = pwd)
         if user is not None :
-            print('login ok ' , user) # 로그인 됐는지 체크여부
-            return redirect('order')
+            return redirect('order')  # 로그인 후 주문 페이지로 분기
         else :
             return render(request, 'index.html', {'error' : 'username or password is incorrect.'})
     else:
         return render(request, 'index.html')
-
-
+# ----------------------< 로그인 기능 END >-------------------- #
+# ----------------------< 로그아웃 기능 START >-------------------- #
 def logout(request):
     request.session['user_name'] = {}
     request.session['user_id'] = {}
     request.session.modified = True
     return redirect('index')
+# ----------------------< 로그아웃 기능 END >-------------------- #
 # ----------------------< 박우환 >----------------------#
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
