@@ -74,8 +74,8 @@ class Staff(models.Model):
 #----------------------< 주문 >----------------------#
 class Order(models.Model):
     orderno = models.CharField(max_length=20, primary_key=True)      #주문번호
-    orderdate = models.CharField(max_length=10,default='')                      #주문일자('YYYY-MM-DD')
-    ordertime = models.CharField(max_length=10,default='')                      #주문시간('HH:MM:SS')
+    orderdate = models.CharField(max_length=10,default='')           #주문일자('YYYY-MM-DD')
+    ordertime = models.CharField(max_length=10,default='')           #주문시간('HH:MM:SS')
     payment = models.CharField(max_length=20, choices=pay_choice)    #결제구분
     status = models.CharField(max_length=20, choices=status_choice)  #완료여부
 
@@ -89,7 +89,8 @@ class Order(models.Model):
         return self.status
 
     def __str__(self):
-        return self.orderno + ' , ' + self.orderdate + ' , ' + self.ordertime + self.payment + ' , ' + self.status
+        return self.orderno + ' , ' + self.orderdate + ' , ' +self.ordertime + ' , '+self.payment + ' , ' + self.status
+
 
 #----------------------< 주문상세 >----------------------#
 class OrderDetail(models.Model):
@@ -105,6 +106,7 @@ class OrderDetail(models.Model):
 
     def __str__(self):
         return str(self.orderno) + ' , ' + str(self.menuid) + ' , ' + str(self.price)+ ' , ' + str(self.qty)
+
 
 #----------------------< User >----------------------#
 class User(models.Model) :
@@ -135,3 +137,4 @@ class SampleProduct(models.Model):
 
     def __str__(self):
         return self.pd_name+" , "+str(self.pd_price)
+

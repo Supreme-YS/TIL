@@ -1,123 +1,24 @@
 <!-- *************************** MAPLE : 공통 (HEADER) START  ******************  -->
-
-<!DOCTYPE html>
+{% include 'header.html' %}
 {% load static%}
+{% load humanize %}
 
-<html lang="en">
+<!-- *************************** MAPLE : 공통 (HEADER) END  ******************  -->
 
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>MAPLE CAFE</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
-
-
-  <!-- Custom fonts for this template -->
-  <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="{% static 'css/business-casual.min.css'  %}" rel="stylesheet">
     <style>
         .pValueInput{
             width : 30px;
         }
         .list-table{
-            width : 800px;
+            width : 600px;
             text-align : center ;
-            }
-
-        .list-body{
-            width : 1000px;
-            text-align : center;
-            }
-
-            #hname{
-                background-color : blue;
-                width : 40%;
-                text-align : center ;
-            }
-            #hprice{
-                background-color : red;
-                width : 20%;
-                text-align : center ;
-            }
-            #hqty{
-                background-color : green;
-                width : 20%;
-                text-align : center ;
-            }
-            #hamount{
-                background-color : yellow;
-                width : 20%;
-                text-align : center ;
-            }
-
-
-
-
-
+        }
     </style>
-
-</head>
-
-<body>
-  <!--------------- MAPLE : 타이틀  --------------->
-
-  <h1 class="site-heading text-center text-white d-none d-lg-block">
-    <span class="site-heading-upper text-primary mb-3">The Best Coffee Shop in MultiCampus</span>
-    <span class="site-heading-lower">MAPLE CAFE</span>
-  </h1>
-  <!--------------- MAPLE : 메뉴  --------------->
-  <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">MAPLE CAFE</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav mx-auto">
-<!--
-          <li class="nav-item active px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="index.html">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
--->
-          <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="../order">주문</a>
-          </li>
-          <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="../orderStatus">주문현황</a>
-          </li>
-          <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="../menu">카페메뉴</a>
-          </li>
-          <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="../staff">직원관리</a>
-          </li>
-          <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="../salesStatus">매출현황</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-<!-- *************************** MAPLE : 공통 (HEADER) END  ******************  -->
-
-
 <!-- *************************** MAPLE : 화면 START *************************  -->
 
   <section class="page-section about-heading">
     <div class="container">
-      <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="{% static 'img/about.jpg' %}" alt="">
+<!--      <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="{% static 'img/about.jpg' %}" alt="">-->
       <div class="about-heading-content">
         <div class="row">
           <div class="col-xl-9 col-lg-10 mx-auto">
@@ -238,8 +139,8 @@
                             <table class="list-table">
                                 <colgroup>
                                     <col width="5%">
-                                    <col width="35%">
-                                    <col width="20%">
+                                    <col width="40%">
+                                    <col width="15%">
                                     <col width="15%">
                                     <col width="25%">
                                 </colgroup>
@@ -250,12 +151,14 @@
                                         <th>가격</th>
                                         <th>수량</th>
                                         <th>금액</th>
+
+
                                     </tr>
                                 </thead>
                                 <tbody id="list-body">
-                                    <tr>
-                                        <input type="hidden" name="menuId" id="menuId" value="3">
-                                        <input type="hidden" name="orderNo" id="orderNo" value="5">
+                                    <tr >
+                                        <input type="hidden" name="menuId" id="menuId" value="3"  >
+                                        <input type="hidden" name="orderNo" id="orderNo"  value="5">
                                     </tr>
                                 </tbody>
                             </table>
@@ -317,19 +220,7 @@
 <!-- *************************** MAPLE : 화면 END ***************************  -->
 
 <!-- *************************** MAPLE : 공통 (FOOTER) START  ******************  -->
-  <footer class="footer text-faded text-center py-5">
-    <div class="container">
-      <p class="m-0 small">Copyright &copy; Your Website 2021</p>
-    </div>
-  </footer>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="{% static 'vendor/jquery/jquery.min.js'%}"></script>
-  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
-
-</body>
-
-</html>
+{% include 'footer.html' %}
 <!-- *************************** MAPLE : 공통 (FOOTER) END  ******************  -->
 
 
@@ -367,28 +258,27 @@
 
                 <!--  hidden 추가 (메뉴아이디)               -->
                 var hdMid = $('<input/>')
-                hdMid.attr('type', 'hidden')
+
                 hdMid.attr('name', 'hmid[]')
                 hdMid.attr('value',$('#mId_'+ckVal).text() )
                 tr.append(hdMid)
 
                 <!--  hidden 추가 (메뉴이름)               -->
                 var hdName = $('<input/>')
-                hdName.attr('id', 'hname')
+
                 hdName.attr('name', 'hname[]')
                 hdName.attr('value',$('#mName_'+ckVal).text() )
                 tr.append(hdName)
 
                 <!--  hidden 추가 (가격)               -->
                 var hdPrice = $('<input/>')
-                hdPrice.attr('id', 'hprice')
                 hdPrice.attr('name', 'hprice[]')
                 hdPrice.attr('value',$('#mPrice_'+ckVal).text() )
                 tr.append(hdPrice)
 
                 <!--  hidden 추가 (수량)               -->
                 var hdQty = $('<input/>')
-                hdQty.attr('id', 'hqty')
+
                 hdQty.attr('name', 'hqty[]')
                 hdQty.attr('value',$('#pValueInput_'+ckVal).val() )
                 tr.append(hdQty)
@@ -396,7 +286,6 @@
 
                 var td04 = $('<input/>');
                 var amount = parseInt($('#mPrice_'+ckVal).text())*parseInt($('#pValueInput_'+ckVal).val())
-                td04.attr('id', 'hamount')
                 td04.append(amount);
                 td04.val(td04.text())
                 tr.append(td04);
@@ -409,24 +298,32 @@
                 hdOrdno.attr('value','R2021020900013')
                 tr.append(hdOrdno)
 
-                 <!--  hidden 주문일자                -->
+                 <!--  hidden 주문날짜               -->
                 var hdDate = $('<input/>')
                 hdDate.attr('type','hidden')
-                hdDate.attr('name', 'hdate[]')
-                hdDate.attr('value','2021-02-09 16:40:00')
+                hdDate.attr('name', 'hdate')
+                hdDate.attr('value','2021-02-09')
                 tr.append(hdDate)
+
+                 <!--  hidden 주문시간               -->
+                var hdTime = $('<input/>')
+                hdTime.attr('type','hidden')
+                hdTime.attr('name', 'htime')
+                hdTime.attr('value','16:40:00')
+                tr.append(hdTime)
+
 
                  <!--  hidden 결제방법                -->
                 var hdPay = $('<input/>')
                 hdPay.attr('type','hidden')
-                hdPay.attr('name', 'hpay[]')
+                hdPay.attr('name', 'hpay')
                 hdPay.attr('value','card')
                 tr.append(hdPay)
 
                  <!--  hidden 주문상태               -->
                 var hdStat = $('<input/>')
                 hdStat.attr('type','hidden')
-                hdStat.attr('name', 'hstat[]')
+                hdStat.attr('name', 'hstat')
                 hdStat.attr('value','done')
                 tr.append(hdStat)
 

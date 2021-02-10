@@ -1,64 +1,59 @@
 from django.contrib import admin
-from django.urls import path, include
-from mapleApp import views
+from django.urls   import path, include
+from mapleApp  import  views
+from mapleApp  import  views_login
 from mapleApp  import  views_sales_status
-
+from mapleApp  import  views_staff
+from mapleApp  import  views_menu
+from mapleApp  import  views_order_list
+from mapleApp  import  views_order
 
 urlpatterns = [
-    # ----------------------< 공통 :기본 메뉴이동 >----------------------
+#----------------------< 공통 :기본 메뉴이동 >----------------------
     # index  / login
-    path('index/', views.index, name='index'),
+    path('index/'        ,views.index             ,name='index'),
     # 주문
-    path('order/', views.order, name='order'),
+    path('order/'        ,views_order.order             ,name='order'),
     # 주문현황
-    # path('orderStatus/', views.orderStatus, name='orderStatus'),
+    path('orderStatus/'  ,views.orderStatus       ,name='orderStatus'),
     # 주문
-    path('menu/', views.menu, name='menu'),
+    path('menu/'         ,views.menu              ,name='menu'),
     # 직원관리
-    path('staff/', views.staff, name='staff'),
+    path('staff/'        ,views.staff             ,name='staff'),
     # 매출현황
-    path('salesStatus/', views.salesStatus, name='salesStatus'),
+    path('salesStatus/'  ,views.salesStatus       ,name='salesStatus'),
 
-    # ----------------------< 김민재 >----------------------#
-    path('serchmenu/'    , views.serchmenu      ,name='serchmenu'),
-    path('insertmenu/'    , views.insertmenu      ,name='insertmenu'),
-    path('deletemenu/'    , views.deletemenu      ,name='deletemenu'),
-    path('updatemenu/'    , views.updatemenu      ,name='updatemenu'),
-    path('saveOrder/'    , views.saveOrder      ,name='saveOrder'),
-    # ----------------------< 심영석 >----------------------#
-    path('register/', views.register, name = 'register'),
-    path('registerForm/', views.registerForm, name = 'registerForm'),
-    path('login/', views.login, name = 'login'),
-    path('logout/', views.logout, name='logout'),
-    # ----------------------< 박우환 >----------------------#
-    # 주문현황 view
-    path('order_list/', views.order_list, name='order_list'),
+#----------------------< 김민재 : 주문 >----------------------------#
+    path('saveOrder/'    , views_order.saveOrder      ,name='saveOrder'),
+#----------------------< 심영석 : 로그인, 그래프>----------------------#
+    path('register/', views_login.register, name = 'register'),
+    path('registerForm/', views_login.registerForm, name = 'registerForm'),
+    path('login/', views_login.login, name = 'login'),
+    path('logout/', views_login.logout, name='logout'),
+    path('graph/', views_login.graph, name='graph'),
+#----------------------< 박우환 : 주문현황  >-------------------------#
+     # 주문현황 view
+    path('order_list/', views_order_list.order_list, name='order_list'),
     # 주문 검색
-    path('order_search/', views.order_search, name='order_search'),
-    # ----------------------< 오은영 >----------------------#
-    path('create_staff/', views.create_staff, name='create_staff'),
-    path('update_staff/', views.update_staff, name='update_staff'),
-    path('delete_staff/', views.delete_staff, name='delete_staff'),
-    # ----------------------< 정연욱 >----------------------#
-    # ----------------------< 최유숙 >----------------------#
-    path('serchStatus/', views_sales_status.serchStatus, name='serchStatus'),
-    # 그래프 line
-    path('line/', views_sales_status.line, name='line'),
+    path('order_search/', views_order_list.order_search, name='order_search'),
+#----------------------< 오은영 >----------------------#
+    path('create_staff/'  ,views_staff.create_staff ,name='create_staff'),
+    path('update_staff/'  ,views_staff.update_staff ,name='update_staff'),
+    path('delete_staff/'  ,views_staff.delete_staff ,name='delete_staff'),
+#----------------------< 정연욱 >----------------------#
+    path('serchmenu/', views_menu.serchmenu, name='serchmenu'),
+    path('insertmenu/', views_menu.insertmenu, name='insertmenu'),
+    path('deletemenu/', views_menu.deletemenu, name='deletemenu'),
+    path('updatemenu/', views_menu.updatemenu, name='updatemenu'),
+#----------------------< 최유숙 >----------------------#
+    #매출 현황 조회
+    path('serchStatus/'   ,views_sales_status.serchStatus , name='serchStatus'),
 #----------------------< sample >----------------------#
     # sample
-    path('sampleUi/'    , views.sampleUi      ,name='sampleUi'),
-    path('sampleCrud/'  , views.sampleCrud    ,name='sampleCrud'),
-
-    #상품조회
-    path('serchProduct/', views.serchProduct  ,name='serchProduct'),
-
-    #상품등록
-    path('insertProduct/', views.insertProduct, name='insertProduct'),
-
-    # 상품수정
-    path('updateProduct/', views.updateProduct, name='updateProduct'),
-
-    # 상품삭제
-    path('deleteProduct/', views.deleteProduct, name='deleteProduct'),
+    path('sampleCrud/'    ,views.sampleCrud                ,name='sampleCrud'),
+    path('serchProduct/'  ,views.serchProduct              ,name='serchProduct'),
+    path('insertProduct/' ,views.insertProduct             ,name='insertProduct'),
+    path('updateProduct/' ,views.updateProduct             ,name='updateProduct'),
+    path('deleteProduct/' ,views.deleteProduct             ,name='deleteProduct'),
 
 ]
