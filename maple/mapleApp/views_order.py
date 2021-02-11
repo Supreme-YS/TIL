@@ -29,7 +29,6 @@ def saveOrder(request) :
     print('mPrice ', mPrice)
     print('mQty ', mQty)
     print('mAmount',mAmount)
-
     print('mPay ', mPay )
     print('mStat ', mStat)
 
