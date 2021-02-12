@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f545c06e-f137-4cde-a37e-1650afcad60a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/templates/sales_status.html" beforeDir="false" afterPath="$PROJECT_DIR$/mapleApp/templates/sales_status.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/views_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/mapleApp/views_order.py" afterDir="false" />
-    </list>
+    <list default="true" id="f545c06e-f137-4cde-a37e-1650afcad60a" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,6 +46,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
