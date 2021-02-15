@@ -65,18 +65,22 @@ def login(request):
         pwd = request.POST['password']
         # User == auth.authenticate(request, username=username, password=password) # 등록된 회원인지 확인
         user = User.objects.get(user_id = id, user_pwd = pwd)
+
+        context = {}
+
         if user is not None :
-            print('login ok ' , user) # 로그인 됐는지 체크여부
-            return redirect('order')
-        else :
-            return render(request, 'index.html', {'error' : 'username or password is incorrect.'})
-    else:
-        return render(request, 'index.html')
+            request.session['username'] = user.user_id
+            request.session['password'] = user.user_pwd
+            context['id'] = request.session['username']
+            context['pwd'] = request.session['password']
+            return render(request, 'index.html', context)
+        else:
+            return redirect('index')
 
 
 def logout(request):
-    request.session['user_name'] = {}
-    request.session['user_id'] = {}
+    request.session['username'] = {}
+    request.session['userid'] = {}
     request.session.modified = True
     return redirect('index')  # render로 주면 logout이라는 주소값이 남아진다. 분기를 위해 redirect를 사용한 것
 
