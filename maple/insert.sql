@@ -24,30 +24,31 @@ INSERT INTO m_user(user_id,user_pwd,user_mail) values ('admin'  ,'1234','admin@m
 
 
 /*공통정보  */
-INSERT INTO m_Info(type,code,name,odno) values ('pay_choice','card','카드',0);
-INSERT INTO m_Info(type,code,name,odno) values ('pay_choice','cash','현금',0);
-INSERT INTO m_Info(type,code,name,odno) values ('status_choice','done','완료',3);
-INSERT INTO m_Info(type,code,name,odno) values ('status_choice','prep','준비중',2);
-INSERT INTO m_Info(type,code,name,odno) values ('status_choice','ord','주문',1);
-INSERT INTO m_Info(type,code,name,odno) values ('job_title','J10','CEO',0);
-INSERT INTO m_Info(type,code,name,odno) values ('job_title','J20','메니저',0);
-INSERT INTO m_Info(type,code,name,odno) values ('job_title','J30','사원',0);
-INSERT INTO m_Info(type,code,name,odno) values ('job_title','J40','부장',0);
-INSERT INTO m_Info(type,code,name,odno) values ('job_title','J50','인턴',0);
-INSERT INTO m_Info(type,code,name,odno) values ('job_title','J60','아르바이트',0);
+INSERT INTO m_Info(type,code,name) values ('pay_choice','card','카드');
+INSERT INTO m_Info(type,code,name) values ('pay_choice','cash','현금');
+INSERT INTO m_Info(type,code,name) values ('status_choice','done','완료');
+INSERT INTO m_Info(type,code,name) values ('status_choice','prep','준비중');
+INSERT INTO m_Info(type,code,name) values ('status_choice','ord','주문');
+INSERT INTO m_Info(type,code,name) values ('job_title','J10','CEO');
+INSERT INTO m_Info(type,code,name) values ('job_title','J20','메니저');
+INSERT INTO m_Info(type,code,name) values ('job_title','J30','사원');
+INSERT INTO m_Info(type,code,name) values ('job_title','J40','부장');
+INSERT INTO m_Info(type,code,name) values ('job_title','J50','인턴');
+INSERT INTO m_Info(type,code,name) values ('job_title','J60','아르바이트');
 
 
 
 /*메뉴 data  */
-INSERT INTO m_menu(menuid,menuname,price) values ('M000001','프라푸치노(Frappuccino)',6100);
+INSERT INTO m_menu(menuid,menuname,price) values ('M000001','콜드브루(Cold Brew)',4500);
 INSERT INTO m_menu(menuid,menuname,price) values ('M000002','아이스티(Iced Tea)',5200);
-INSERT INTO m_menu(menuid,menuname,price) values ('M000003','카페모카(Caffe Moca)',5500);
-INSERT INTO m_menu(menuid,menuname,price) values ('M000004','카페모카(Caffe Moca)',6100);
+INSERT INTO m_menu(menuid,menuname,price) values ('M000003','카페모카(Caffe Mocha)',5500);
+INSERT INTO m_menu(menuid,menuname,price) values ('M000004','오렌지비앙코(Orange Bianco)',6100);
 INSERT INTO m_menu(menuid,menuname,price) values ('M000005','아메리카노(Americano)',4100);
 INSERT INTO m_menu(menuid,menuname,price) values ('M000006','카푸치노(Cappuccino)',4600);
 INSERT INTO m_menu(menuid,menuname,price) values ('M000007','카라멜 마키아또(Caramel Macchiato)',5600);
-INSERT INTO m_menu(menuid,menuname,price) values ('M000008','에스프레소(Espresso)',3600);
-INSERT INTO m_menu(menuid,menuname,price) values ('M000009','콜드브루(Cold Brew)',4500);
+INSERT INTO m_menu(menuid,menuname,price) values ('M000008','프라푸치노(Frappuccino)',6100);
+INSERT INTO m_menu(menuid,menuname,price) values ('M000009','에스프레소(Espresso)',3600);
+
 
 /*직원  데이터 */
 INSERT INTO m_staff(staffid,staffname,jobtitle,startdate,phone) values ('S000001', 'Anthony','J10','2010-01-01','010-4567-1245');

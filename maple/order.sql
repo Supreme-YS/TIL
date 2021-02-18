@@ -780,6 +780,62 @@ INSERT INTO m_orderdetail(orderno_id,menuid_id,price,qty,sales) values ('R202102
 INSERT INTO m_orderdetail(orderno_id,menuid_id,price,qty,sales) values ('R2021021400002', 'M000003',5500,9,0 );
 
 
+/*<20210215>---------------------------------------------------------------------------------------------------------*/
+/*주문 정보*/
+INSERT INTO m_order(orderno,orderdate,ordertime,payment,status) values ('R2021021500001', '2021-02-15', '10:01:00','card','done');
+INSERT INTO m_order(orderno,orderdate,ordertime,payment,status) values ('R2021021500002', '2021-02-15', '10:02:00','cash','done');
+
+/*주문상세  */
+INSERT INTO m_orderdetail(orderno_id,menuid_id,price,qty,sales) values ('R2021021500001', 'M000003',5500,9,0 );
+INSERT INTO m_orderdetail(orderno_id,menuid_id,price,qty,sales) values ('R2021021500001', 'M000006',4600,3,0);
+INSERT INTO m_orderdetail(orderno_id,menuid_id,price,qty,sales) values ('R2021021500002', 'M000009',4500,1,0 );
+
+/*<20210216>---------------------------------------------------------------------------------------------------------*/
+/*주문 정보*/
+INSERT INTO m_order(orderno,orderdate,ordertime,payment,status) values ('R2021021600001', '2021-02-16', '10:01:00','card','done');
+INSERT INTO m_order(orderno,orderdate,ordertime,payment,status) values ('R2021021600002', '2021-02-16', '10:02:00','cash','done');
+
+/*주문상세  */
+INSERT INTO m_orderdetail(orderno_id,menuid_id,price,qty,sales) values ('R2021021600001', 'M000003',5500,4,0 );
+INSERT INTO m_orderdetail(orderno_id,menuid_id,price,qty,sales) values ('R2021021600001', 'M000006',4600,5,0);
+INSERT INTO m_orderdetail(orderno_id,menuid_id,price,qty,sales) values ('R2021021600002', 'M000009',4500,7,0 );
+
+/*<20210217>---------------------------------------------------------------------------------------------------------*/
+/*주문 정보*/
+INSERT INTO m_order(orderno,orderdate,ordertime,payment,status) values ('R2021021700001', '2021-02-17', '10:01:00','card','done');
+INSERT INTO m_order(orderno,orderdate,ordertime,payment,status) values ('R2021021700002', '2021-02-17', '10:02:00','cash','done');
+
+/*주문상세  */
+INSERT INTO m_orderdetail(orderno_id,menuid_id,price,qty,sales) values ('R2021021700001', 'M000009',4500,6,0 );
+INSERT INTO m_orderdetail(orderno_id,menuid_id,price,qty,sales) values ('R2021021700001', 'M000001',6100,2,0);
+INSERT INTO m_orderdetail(orderno_id,menuid_id,price,qty,sales) values ('R2021021700002', 'M000002',5200,9,0 );
+
+/*<20210218>---------------------------------------------------------------------------------------------------------*/
+/*주문 정보*/
+INSERT INTO m_order(orderno,orderdate,ordertime,payment,status) values ('R2021021800001', '2021-02-18', '10:01:00','card','done');
+INSERT INTO m_order(orderno,orderdate,ordertime,payment,status) values ('R2021021800002', '2021-02-18', '10:02:00','cash','done');
+
+/*주문상세  */
+INSERT INTO m_orderdetail(orderno_id,menuid_id,price,qty,sales) values ('R2021021800001', 'M000006',4600,1,0 );
+INSERT INTO m_orderdetail(orderno_id,menuid_id,price,qty,sales) values ('R2021021800001', 'M000007',5600,9,0);
+INSERT INTO m_orderdetail(orderno_id,menuid_id,price,qty,sales) values ('R2021021800002', 'M000008',3600,2,0 );
+
+/*<20210219>---------------------------------------------------------------------------------------------------------*/
+/*주문 정보*/
+INSERT INTO m_order(orderno,orderdate,ordertime,payment,status) values ('R2021021900001', '2021-02-19', '10:01:00','card','done');
+INSERT INTO m_order(orderno,orderdate,ordertime,payment,status) values ('R2021021900002', '2021-02-19', '10:02:00','cash','done');
+INSERT INTO m_order(orderno,orderdate,ordertime,payment,status) values ('R2021021900003', '2021-02-19', '10:01:00','card','done');
+INSERT INTO m_order(orderno,orderdate,ordertime,payment,status) values ('R2021021900004', '2021-02-19', '10:02:00','cash','done');
+INSERT INTO m_order(orderno,orderdate,ordertime,payment,status) values ('R2021021900005', '2021-02-19', '10:02:00','cash','done');
+/*주문상세  */
+INSERT INTO m_orderdetail(orderno_id,menuid_id,price,qty,sales) values ('R2021021900001', 'M000001',5500,9,0 );
+INSERT INTO m_orderdetail(orderno_id,menuid_id,price,qty,sales) values ('R2021021900002', 'M000002',6100,5,0);
+INSERT INTO m_orderdetail(orderno_id,menuid_id,price,qty,sales) values ('R2021021900002', 'M000003',4100,2,0 );
+INSERT INTO m_orderdetail(orderno_id,menuid_id,price,qty,sales) values ('R2021021900003', 'M000004',6100,4,0 );
+INSERT INTO m_orderdetail(orderno_id,menuid_id,price,qty,sales) values ('R2021021900003', 'M000005',5200,8,0);
+INSERT INTO m_orderdetail(orderno_id,menuid_id,price,qty,sales) values ('R2021021900004', 'M000006',5500,9,0 );
+INSERT INTO m_orderdetail(orderno_id,menuid_id,price,qty,sales) values ('R2021021900005', 'M000007',5500,9,0 );
+INSERT INTO m_orderdetail(orderno_id,menuid_id,price,qty,sales) values ('R2021021900005', 'M000008',5500,9,0 );
 
 
 UPDATE m_orderdetail SET  sales = price *  qty  ; 

@@ -7,12 +7,22 @@
 .mytable tr td {
   vertical-align:middle;
   padding: 5px;
-  font-size: 14px
+
+  font-weight : bold;
+  font-family: Lora;
+  color : #495057 ;
+}
+.align-items-center{
+    padding-left : 4px;
 }
 
-#card-header-color {
-  background-color:#e0e0e0
+
+thead{
+    background-color : #e9ecef;
 }
+
+
+
 
 </style>
 <!-- *************************** MAPLE : 화면 START *************************  -->
@@ -23,17 +33,18 @@
       <div class="about-heading-content">
         <div class="row">
           <div class="col-xs-12 col-sm-8 col-lg-8 mx-auto">
-            <div class="bg-faded rounded p-0">
+            <div class="bg-faded rounded p-4">
 
 <!-- *************************** ORDER LIST  START  ****************** -->
-      			  <div class='card'>
-				        <div id="card-header-color" class="card-header d-flex align-items-center" style="height: 50px;">
+      			  <div >
+				        <div class="d-flex align-items-center" style="height: 40px;">
                   <img  src="{% static 'img/cafe_icon3.png'%}" width="40" height="40">
-					        <div  style="font-size: 1.6rem;margin-left: 15px;">주문 현황</div>
+					        <div  style="font-size: 2rem;margin-left: 15px; color:#e6a756!important;">주문 현황</div>
 				        </div>
-				        <div class='card-body p-1'>
+				        <div class='card-body p-0'>
+                            <br>
                   <form action="{% url 'order_search' %}" method="GET" >
-                    <div class="input-field d-flex align-items-center" style="vertical-align:middle;">
+                    <div class=" align-items-center" style="vertical-align:middle;">
                       <select id="select_type" name="s_type" style="width: 100px;height:32px;" >
                         <option value="id">주문번호</option>
                         <option value="content">주문내용</option>
@@ -61,11 +72,11 @@
                       <table class="table table-bordered mytable" style="text-align: center;">
                         <thead >
                             <th style="width:10%">주문번호</th>
-                            <th style="width:37.5%">메뉴명</th>
+                            <th style="width:35%">메뉴명</th>
                             <th style="width:7.5%">가격</th>
                             <th style="width:7.5%">결제</th>
                             <th style="width:7.5%">수량</th>
-                            <th style="width:10%">날짜</th>
+                            <th style="width:12.5%">날짜</th>
                             <th style="width:10%">시간</th>
                             <th style="width:10%">상황</th>
                         </thead>

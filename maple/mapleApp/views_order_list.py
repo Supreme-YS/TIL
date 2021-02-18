@@ -123,9 +123,7 @@ def order_link(request,orderno):
     paginator = Paginator(order_list, 7)  # Show 7 contacts per page
     page = request.GET.get('page')
     orders = paginator.get_page(page)
-    context = {'orders': orders,
-               # 'status_info': status_info
-               }  # 20210210 ysc 상태정보 추가
+    context = {'orders': orders,}
     return render(request, 'order_list.html', context)
 
 #-----------------------------------
@@ -134,7 +132,7 @@ def order_link(request,orderno):
 #20210215 ysc 주문번호로 주문내역조회 추가
 def change_status(request):
     orderno = request.POST.get('orderno', '')
-    print('#>change_status ,orderno:',orderno)
+    # print('#>change_status ,orderno:',orderno)
     od = Order.objects.get(orderno=orderno)
     od.status = 'done'
     od.save()

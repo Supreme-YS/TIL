@@ -11,7 +11,7 @@ from django.db.models import Sum,Max
 #-----------------------------------
 # 매출 현황 조회
 #-----------------------------------
-def serchStatus(request):
+def searchStatus(request):
     print('#>serchStatus:')
     # 파라미터
     report = request.POST.get('report','')

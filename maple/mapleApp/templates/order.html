@@ -61,7 +61,9 @@
             color : #495057 ;
         }
         #hprice{
-            width : 100%;
+            width : 100%;font-weight : bold;
+            font-family: Lora;
+            color : #495057 ;
             text-align : center;
             font-weight : bold;
             font-family: Lora;
@@ -70,9 +72,7 @@
         #hqty{
             width: 100%;
             text-align : center;
-            font-weight : bold;
-            font-family: Lora;
-            color : #495057 ;
+
 
         }
         #hamount{
@@ -96,7 +96,11 @@
             font-family: Lora;
             color : #495057 ;
         }
+        tbody{
+            font-weight : bold;
 
+            color : #495057 ;
+        }
 
 
 
@@ -261,8 +265,6 @@
                                     <span id="amount"></span>
                                 </div>
                             </div>
-
-
                           </div>
 
 
@@ -306,19 +308,13 @@
   </section>
 
 
-
-
-
 <!-- *************************** MAPLE : 화면 END ***************************  -->
 
-
-
-
 {% include 'footer.html' %}
-<script>
 
-     <!--    콤마 제거 후 int 변환하는 함수
-    // 이게 없으면 콤마형식의 가격과 수량의 연산x, price값이 서버로 안 넘어감(number로 지정됨)  -->
+<script>
+     <!--     콤마 제거 후 int 변환하는 함수     -->
+    // 이게 없으면 콤마형식의 가격과 수량의 연산x, price값이 서버로 안 넘어감(number로 지정됨)
     function removeComma(str){
         n = parseInt(str.replace(/,/g,""));
         return n;
@@ -327,27 +323,27 @@
 	$(document).ready(function(){
 	    var sum = 0
         $('#inputBtn2').click(function(){
-            var checkbox = $("[name=radioValue]:checked");
-            var ckVal = checkbox.val()
-            var tdArr = new Array()
+            var checkbox = $("[name=radioValue]:checked");  //radioValue가 체크되어 있는 행 선택
+            var ckVal = checkbox.val();                     // 체크박스 행마다 다른 id값을 가지고 있어야해서 ckVal이라는 변수를 주어 아이디를 생성
+
 
             if (ckVal == null){
                 alert("항목을 선택하시오")
             }else{
                 <!--         체크박스               -->
-                var tr = $('<tr></tr>')
-                var input = $('<input/>')
-                input.attr('type', 'checkbox')
-                input.attr('name', 'btn-chk')
-                input.attr('value',$('#mId_'+ckVal).text())
-                var td00 = $('<td></td>');
-                td00.append(input);
-                tr.append(td00);
+                var tr = $('<tr></tr>')                     // tr태그 생성 -> html의 태그를 생성할 때 이러한 방식을 사용함
+                var input = $('<input/>')                   // input이라는 이름의 input 태그 생성
+                input.attr('type', 'checkbox')              // input이라는 태그의 type을 chckbox로
+                input.attr('name', 'btn-chk')               // input 태그의 name을 btn-chk로 -> 서버로 값을 넘기기 위해서는 name이 반드시 필요
+                input.attr('value',$('#mId_'+ckVal).text()) // 각 형별로 고유의 id를 부여해서 각각의 다른 id를 만들었기에 value도 같은 방식으로 가져와야함
+                var td00 = $('<td></td>');                  // td태그 생성
+                td00.append(input);                         // td태그에 input태그를 담음
+                tr.append(td00);                            // tr태그에 td태그를 담음 -> td라는 태그를 만들어서 tr태그에 담아야 공간 활용이 제대로 적용됨(css 배열 측면)
 
                 <!--  hidden 추가 (메뉴아이디)        -->
                 var hdMid = $('<input/>')
                 hdMid.attr('type', 'hidden')
-                hdMid.attr('name', 'hmid[]')
+                hdMid.attr('name', 'hmid[]')                // []를 붙인 이유는 views에서 getlist형식으로 받을 것이기에 편의상 붙임
                 hdMid.attr('value',$('#mId_'+ckVal).text() )
                 tr.append(hdMid)
 
@@ -356,7 +352,7 @@
                 var hdName = $('<input/>')
                 hdName.attr('id', 'hname')
                 hdName.attr('name', 'hname[]')
-
+                hdName.attr('readonly','true')
                 hdName.attr('value',$('#mName_'+ckVal).text() )
                 td01.append(hdName);
                 tr.append(td01)
@@ -366,6 +362,7 @@
                 var td02 = $('<td></td>');
                 hdPrice.attr('id', 'hprice')
                 hdPrice.attr('name', 'hprice[]')
+                hdPrice.attr('readonly','true')
                 hdPrice.attr('value',removeComma($('#mPrice_'+ckVal).text()) )
                 td02.append(hdPrice);
                 tr.append(td02)
@@ -376,6 +373,7 @@
                 td03.append(hdQty);
                 hdQty.attr('id', 'hqty')
                 hdQty.attr('name', 'hqty[]')
+                hdQty.attr('readonly','true')
                 hdQty.attr('value',$('#pValueInput_'+ckVal).val() )
                 tr.append(td03)
 
@@ -385,29 +383,24 @@
                 td04.append(hdAmount);
                 hdAmount.attr('id','hamount')
                 hdAmount.attr('name','hamount[]')
+                hdAmount.attr('readonly','true')
+
                 var amount = removeComma($('#mPrice_'+ckVal).text())*parseInt($('#pValueInput_'+ckVal).val())
                 hdAmount.append(amount);
-
                 hdAmount.val(amount)
                 tr.append(td04);
-                $('#list-body').append(tr);
+                $('#list-body').append(tr);                  // list-body는 주문내역 테이블의 id임, 여기에 위에 만들어놓은 tr 추가
 
                 <!--    합계누적               -->
-                sum += amount
-                $('#amount').text(sum)
-
-<!--                $('#amount').attr('name','amount[]')-->
-<!--                $('#amount').attr('value','sum)-->
+                sum += amount                                // 위에서 만든 금액(amount)의 누적을 sum이라는 변수에 담음
+                $('#amount').text(sum)                       // 합계 박스에 sum의 텍스트를 표시
 
                  <!--  hidden 결제방법         -->
                 var hdSum = $('<input/>')
                 hdSum.attr('type','hidden')
                 hdSum.attr('name','hsum[]')
-                console.log($('#amount').text())
                 hdSum.attr('value',$('#amount').text())
-
                 tr.append(hdSum)
-
 
                  <!--  hidden 결제방법         -->
                 var hdPay = $('<input/>')
@@ -421,10 +414,6 @@
                 hdStat.attr('name', 'hstat')
                 hdStat.attr('value','done')
                 tr.append(hdStat)
-
-                $('#td01').attr("readonly",true)
-
-
            }
         });
 
@@ -435,30 +424,30 @@
         var check = $("[name=btn-chk]:checked");
         var ckVa = check.val()
 
-        if (ckVa == null){
-            alert("항목을 선택하시오")
-        }else{
-             $('#regForm').attr('action' , "{% url 'saveOrder' %}")
+
+             $('#regForm').attr('action' , "{% url 'saveOrder' %}")     // 저장 버튼을 누르면 saveOrder 페이지로 이동(views단)
              $('#regForm').submit() ;
-         }
+
    })
 
     <!--	주문내역 삭제	 -->
     $('#delBtn2').click(function(){
         var $obj = $("input[name='btn-chk']")
         var check = $("[name=btn-chk]:checked");
-        var ckVa = check.val()
+        var ckVa = check.val()              // 위에 만든 ckVal과 같은 원리, 주문내역 테이블의 각 체크박스 행의 고유 아이디로 보면 됨
         var checkCount = $obj.length
 
         for (var i=0; i<checkCount; i++){
-            if($obj.eq(i).is(":checked")){
+            if($obj.eq(i).is(":checked")){                  // eq는 변수i를 감싸주는 함수로 생각하면 됨
                 amount_a = removeComma($('#mPrice_'+ckVa).text())*parseInt($('#pValueInput_'+ckVa).val())
-                console.log(amount_a)
+                //console.log(amount_a)
                 sum-= amount_a
-                console.log(sum)
                 $('#amount').text(sum)
-                $obj.eq(i).parent().parent().remove();
-                }
+                $obj.eq(i).parent().parent().remove();      // 하나의 값이 아닌 전체 행(row)을 삭제해야기 때문에 최종 부모노드로 이동하여 제거해야함
+                }else{
+                    alert("삭제할 항목을 선택해주세요")
+               }
+
             }
         })
 	})

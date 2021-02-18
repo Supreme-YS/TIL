@@ -1,7 +1,13 @@
 {% include 'header.html' %}
 {% load static%}
 {% load humanize %}
-
+<style>
+    tbody{
+        font-weight : bold;
+        font-family: Lora;
+        color : #495057 ;
+    }
+</style>
 <!-- *************************** MAPLE : 화면 START *************************  -->
   <section class="page-section about-heading">
     <div class="container">
@@ -14,10 +20,10 @@
 
 <!-----------------MAPLE : Detail START ----------------->
 <!--  MAPLE:  TITLE  -->
-              <h2 class="section-heading mb-1">
-                <img  src="{% static 'img/cafe_icon3.png'%}" width="40" height="40">
+              <h3 class="section-heading mb-1">
+                <img  src="{% static 'img/cafe_icon3.png'%}" width="30" height="30">
                 <span class="text-uppercase text-primary" > 직원관리 </span>
-              </h2>
+              </h3>
 
 
  <!--  MAPLE: BUTTON  1 -->
@@ -29,20 +35,18 @@
 <!--                <button type="submit" class="btn btn-primary" id="saveBtn1">저장</button>-->
               </div>
 
-              <br>
 
 
     <!--  MAPLE: 테이블  START  -->
-              <div class="container d-flex justify-content-center mt-50 mb-50">
+              <div class="container d-flex justify-content-center mt-10 mb-10">
                 <div class="card w-100">
 
                   <div class="table-responsive">
-                    <div style="width:100%; height:350px; overflow:auto ">
+                    <div style="width:100%; height:260px; overflow:auto ">
                     <table class="table table-hover " >
     <!-- MAPLE:  테이블 헤더   -->
                       <thead class="thead-light">
                         <tr>
-
                           <th scope="col">NO.</th>
                           <th scope="col">ID</th>
                           <th scope="col">이름</th>
@@ -54,16 +58,9 @@
 
     <!-- MAPLE:  테이블 바디  -->
 
-
-
-
-
-
-
                       <tbody id="staff_table">
                           {% for Staff in staffs %}
                           <tr>
-
                             <td>{{Staff.id}}</td>
                             <td>{{Staff.staffid}}</td>
                             <td>{{Staff.staffname}}</a></td>
@@ -84,24 +81,21 @@
 <!--  MAPLE: BUTTON  2 -->
               <br>
               <div class="intro-button" align="right">
-                <button type="submit" class="btn btn-primary" id="inputBtn2">추가</button>
-                <button type="submit" class="btn btn-primary" id="saveBtn2">저장</button>
+                <button type="submit" class="btn btn-primary" id="inputBtn2">직원등록</button>
+<!--                <button type="submit" class="btn btn-primary" id="saveBtn2">저장</button>-->
                 <button type="submit" class="btn btn-primary" id="delBtn2">삭제</button>
 <!--                <button type="submit" class="btn btn-primary" id="modiBtn2">수정</button>-->
 <!--                <button type="submit" class="btn btn-primary" id="serchBtn2">조회</button>-->
               </div>
-              <br>
-
 
 <!-----------------MAPLE : List END ----------------->
-</br>
 
 <!-----------------MAPLE : Detail START ----------------->
 <!--  MAPLE:  TITLE  -->
-              <h2 class="section-heading mb-4">
-                <img  src="{% static 'img/cafe_icon3.png'%}" width="40" height="40">
+              <h3 class="section-heading mb-1">
+                <img  src="{% static 'img/cafe_icon3.png'%}" width="30" height="30">
                 <span class="text-uppercase text-primary" > 직원정보 입력 및 수정 </span>
-              </h2>
+              </h3>
 
 <!--  MAPLE:  INPUT  -->
               <section class="content">
@@ -164,16 +158,15 @@
               </section>
 
 <!--  MAPLE: BUTTON  3 -->
-              <br>
               <div class="intro-button" align="right">
 <!--                <button type="submit" class="btn btn-primary" id="inputBtn3">입력</button>-->
+                <button type="submit" class="btn btn-primary" id="saveBtn3">저장</button>
                 <button type="submit" class="btn btn-primary" id="modiBtn3">수정완료</button>
 <!--                <button type="submit" class="btn btn-primary" id="delBtn3">삭제</button>-->
 <!--                <button type="submit" class="btn btn-primary" id="serchBtn3">조회</button>-->
-<!--                <button type="submit" class="btn btn-primary" id="saveBtn3">저장</button>-->
+
 
               </div>
-              <br>
 <!-----------------MAPLE : Detail END ----------------->
 
 
@@ -197,17 +190,20 @@
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
   <script>
   $(document).ready(function() {
-    $('#saveBtn2').click(function(){
+    $('#saveBtn3').click(function(){
         $('#regForm').attr('action' , "{% url 'create_staff' %}").submit() ;
     })
+
     $('#modiBtn3').click(function(){
 <!--        alert($('#staffid').val())-->
 <!--        alert($('#id').val())-->
         $('#regForm').attr('action' , "{% url 'update_staff' %}").submit() ;
     })
+
     $('#delBtn2').click(function(){
         $('#regForm').attr('action' , "{% url 'delete_staff' %}").submit() ;
     })
+
     $('#inputBtn2').click(function(){
         $('#staffid').removeAttr('readonly')
         $('#staffname').removeAttr('readonly')

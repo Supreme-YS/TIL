@@ -21,6 +21,8 @@ urlpatterns = [
     path('login/', views_login.login, name='login'),
     # 로그아웃
     path('logout/', views_login.logout, name='logout'),
+    #20210217 ysc 로그인 체크
+    path('loginCheck/', views_login.loginCheck, name='loginCheck'),
 #----------------------< 김민재 : 주문 >----------------------------#
     # 주문
     path('order/', views.order, name='order'),
@@ -43,7 +45,7 @@ urlpatterns = [
     # 매출현황
     path('salesStatus/', views.salesStatus, name='salesStatus'),
     #매출 현황 조회
-    path('serchStatus/'   ,views_sales_status.serchStatus , name='serchStatus'),
+    path('searchStatus/'   ,views_sales_status.searchStatus , name='searchStatus'),
 
 #----------------------< 정연욱 >----------------------#
     # 카페 메뉴

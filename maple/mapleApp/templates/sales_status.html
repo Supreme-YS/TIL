@@ -2,6 +2,13 @@
 {% include 'header.html' %}
 {% load static%}
 {% load humanize %}
+<style>
+    tbody{
+        font-weight : bold;
+        font-family: Lora;
+        color : #495057 ;
+    }
+</style>
 
 <!-- *************************** MAPLE : 화면 START *************************  -->
 
@@ -10,8 +17,9 @@
 <!--      -->
       <div class="about-heading-content">
         <div class="row">
-          <div class="col-xl-9 col-lg-10 mx-auto">
-            <div class="bg-faded rounded p-4">
+          <div class="col-xl-12 col-lg-8 mx-auto">
+            <div class="bg-faded rounded p-4" >
+
 
 
 <!-----------------MAPLE : Detail START ----------------->
@@ -23,48 +31,48 @@
 
 <!--  MAPLE:  INPUT  -->
               <section class="content">
+              <form id="regForm"  method="post" action="{% url 'searchStatus' %}" >
+              {% csrf_token %}
                 <div class="row">
                 <!-- left column -->
-                  <div class="col-md-10">
+                  <div class="col-md-12">
                   <!-- general form elements -->
                     <div class="box box-primary">
                     <!-- /.box-header -->
-
-                    <form id="regForm"  method="post" action="{% url 'serchStatus' %}" >
-                      {% csrf_token %}
-
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <label class="input-group-text" for="inputGroupSelect01">선 택</label>
+                      <div class="input-group mb-12 ">
+                        <div class="input-group-prepend mr-5 ">
+                          <label class="input-group-text" for="inputGroupSelect01">선택</label>
+                          <select class="custom-select" id="report" name="report" >
+                            <option value="r_menu" selected>메뉴별 매출 현황</option>
+                            <option value="r_date"  >일자별 매출 현황</option>
+                          </select>
                         </div>
-                        <select class="custom-select" id="report" name="report" >
-                      <!--    <option selected>Choose...</option>-->
-                          <option value="r_menu" selected>메뉴별 매출 현황</option>
-                          <option value="r_date"  >일자별 매출 현황</option>
-                        </select>
-                      </div>
 
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend">
+                        <div class="input-group-prepend mr-1">
                           <label class="input-group-text" for="inputGroupSelect01">시작일자</label>
-                        </div>
                           <input type="date"   name="startdate"
                            id='startdate' class="form-control" placeholder="YYYY-MM-DD" value='{{startdate}}'>
-                         &nbsp;
+                        </div>
+
                         <div class="input-group-prepend">
                           <label class="input-group-text" for="inputGroupSelect01">종료일자</label>
-                        </div>
                           <input type="date"   name="enddate"
-                                  id='enddate' class="form-control"  placeholder="YYYY-MM-DD" value='{{enddate}}' >
+                          id='enddate' class="form-control"  placeholder="YYYY-MM-DD" value='{{enddate}}' >
+                        </div>
                       </div>
+
                         <!-- /.box-body -->
-                    </form>
                     </div>
+                    <div   align="right">
+                       <button type="submit" class="btn btn-primary " id="serchBtn1"  align>조회</button>
+                    </div>
+                   <br>
                             <!-- /.box -->
                   </div>
                         <!--/.col (left) -->
                 </div>
                     <!-- /.row -->
+              </form>
               </section>
 
 <!--  MAPLE: BUTTON  3 -->
@@ -75,17 +83,14 @@
 
  <!--  MAPLE: BUTTON  1 -->
 
-              <div class="intro-button" align="right">
-                <button type="submit" class="btn btn-primary" id="serchBtn1">조회</button>
-              </div>
 
-              <p> ✔ 조회기간  : {{startdate}}  ~ {{enddate}}  </p>
+
 {%if orderDetails %}
     <!--  MAPLE: 테이블  START  -->
-              <div class="container d-flex justify-content-center mt-50 mb-50">
-                <div class="card w-100">
-                  <div class="table-responsive">
-                    <div style="width:100%; height:250px; overflow:auto ">
+              <div class="container d-flex justify-content-center">
+                <div class="card mr-5 ">
+                  <div class="table-responsive-md">
+                    <div style=" height:400px;   overflow:auto ">
                     <table class="table table-hover ">
     <!-- MAPLE:  테이블 헤더   -->
                       <thead class="thead-light">
@@ -96,10 +101,9 @@
                           <th scope="col">매출</th>
                         </tr>
                       </thead>
-
+                      <tbody>
     <!-- MAPLE:  테이블 바디  -->
 {%  for od in  orderDetails    %}
-                      <tbody>
                         <tr>
 
                              {% if report == 'r_date' %} <td>{{od.date}}</td>{% endif %}
@@ -108,7 +112,6 @@
                              <td align="left">{{od.total_price |intcomma  }}</td>
 
                         </tr>
-
 {%    endfor    %}
 
                       </tbody>
@@ -116,28 +119,27 @@
                     </div>
                   </div>
                 </div>
+
+<!------------------------  차트  START ------------------->
+               <div class="card">
+                 <div class="table-responsive-md">
+                   <figure class="highcharts-figure">
+                    <div id="container"></div>
+                    <p class="highcharts-description"></p>
+                   </figure>
+                 </div>
+               </div>
+<!------------------------  차트  END ------------------->
               </div>
     <!--  MAPLE: 테이블  END -->
 
  {% else %}
+   <div class="container d-flex justify-content-center">
+
        <p>  데이터가 존재하지 않습니다. </p>
+   </div>
  {% endif %}
 <!--  MAPLE: BUTTON  2 -->
-
-
-<!-----------------MAPLE : List END ----------------->
-                <br>
-
-<!------------------------  차트  START ------------------->
-
-                <figure class="highcharts-figure">
-                    <div id="container"></div>
-                    <p class="highcharts-description">
-                        [ 매출그래프 ]
-                    </p>
-                </figure>
-
-<!------------------------  차트  END ------------------->
 
             </div>
           </div>
@@ -151,10 +153,6 @@
 
 {% include 'footer.html' %}
 
-<script>
-  document.getElementById('startdate').value = new Date().toISOString().substring(0, 10);;
-  document.getElementById('enddate').value = new Date().toISOString().substring(0, 10);;
-</script>
 
 <script>
 	$(document).ready(function(){
@@ -188,12 +186,12 @@
 
     <style>
     #container {
-        height: 400px;
+        height: 350px;
     }
 
     .highcharts-figure, .highcharts-data-table table {
-        min-width: 310px;
-        max-width: 800px;
+        min-width: 500px;
+        max-width: 500px;
         margin: 1em auto;
     }
 
@@ -248,7 +246,7 @@
             labels: {
                 rotation: -45,
                 style: {
-                    fontSize: '13px',
+                    fontSize: '11px',
                     fontFamily: 'Verdana, sans-serif'
                 }
             }
@@ -267,7 +265,7 @@
         },
         series: [{
 
-            name: 'Population',
+            name: 'maple_data',
             data: maple_data_raw ,
             dataLabels: {
                 enabled: true,

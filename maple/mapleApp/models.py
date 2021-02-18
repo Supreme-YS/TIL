@@ -26,7 +26,6 @@ class Info(models.Model):
     type = models.CharField(max_length=20 ,verbose_name='타입')
     code = models.CharField(max_length=100,verbose_name='코드')
     name = models.CharField(max_length=100,verbose_name='코드명')
-    odno = models.IntegerField(verbose_name='정열순서')
 
     class Meta:
         db_table = 'm_info'  #테이블명

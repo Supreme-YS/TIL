@@ -48,14 +48,14 @@
             </div>
             <div class="form-group has-feedback">
               <!-- password라는 변수로 password 값 받기 -->
-              <input type="password" name="password" class="form-control" placeholder="Password"/>
+              <input type="password" name="password"  id="password" class="form-control" placeholder="Password"/>
             </div>
           </form>
           </h2>
-          <div class="intro-button mx-auto" align="center">
-            <a class="btn btn-primary btn-xl" id="loginBtn">로그인</a>
+          <div class="intro-button mx-auto d-flex justify-content-end" style="top: 11rem">
+            <a class="btn btn-primary" id="loginBtn" style="padding-top:10px;width:100px;height:50px">로그인</a>
 
-            <a class="btn btn-primary btn-xl" href="../registerForm" >회원가입</a>
+            <a class="btn btn-primary" style="padding-top:10px;width:100px;height:50px;margin-left:10px;margin-right:20px;" href="../registerForm" >회원가입</a>
           </div>
           </div>
         </div>
@@ -70,8 +70,36 @@
 <!-- ***********버튼 동작에 따른 데이터 submit 영역 START *********** -->
   <script>
     $(document).ready(function() {
+      $("#password").keydown(function(key) {
+        if (key.keyCode == 13) {
+         $("#loginBtn").click()
+        }
+      });
+
       $("#loginBtn").click(function() {
-        $("#loginFrm").attr('action' , '{% url 'login' %}').submit()
+<!--        $("#loginFrm").attr('action' , '{% url 'login' %}').submit()-->
+        var formData = $('#loginFrm').serialize();
+        $.ajax({
+            cache : false,
+            url : "{% url 'loginCheck' %}" ,
+            type : 'POST',
+            data : formData,
+            success : function(data){
+                var result = data['result']
+                var login = data['login']
+                if (login=='Y') {
+                   $("#loginFrm").attr('action' , '{% url 'order' %}').submit()
+                }else{
+                   alert(result);
+                }
+            },
+            error : function(xhr,status,)
+            {
+                alert("통신 실패");
+            },
+        });
+
+
       })
     })
   </script>
