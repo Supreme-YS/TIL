@@ -4,11 +4,7 @@
     <list default="true" id="00434f1d-8599-4d7b-b043-4fe386ce3e4a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/templates/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/mapleApp/templates/menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/templates/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/mapleApp/templates/order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/views_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/mapleApp/views_order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../semi-project/MapleCafe.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/../semi-project/MapleCafe.pptx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../semi-project/script.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../semi-project/script.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapleApp/templates/sales_status.html" beforeDir="false" afterPath="$PROJECT_DIR$/mapleApp/templates/sales_status.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

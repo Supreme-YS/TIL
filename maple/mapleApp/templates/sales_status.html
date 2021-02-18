@@ -42,9 +42,9 @@
                       <div class="input-group mb-12 ">
                         <div class="input-group-prepend mr-5 ">
                           <label class="input-group-text" for="inputGroupSelect01">선택</label>
-                          <select class="custom-select" id="report" name="report" >
-                            <option value="r_menu" selected>메뉴별 매출 현황</option>
-                            <option value="r_date"  >일자별 매출 현황</option>
+                          <select class="custom-select" id="report" name="report">
+                            <option value='r_menu' selected>메뉴별 매출현황</option>
+                            <option value='r_date'>일자별 매출현황</option>
                           </select>
                         </div>
 
@@ -106,10 +106,10 @@
 {%  for od in  orderDetails    %}
                         <tr>
 
-                             {% if report == 'r_date' %} <td>{{od.date}}</td>{% endif %}
-                             {% if report == 'r_menu' %} <td>{{od.menu}}</td>{% endif %}
-                             <td align="left">{{od.total_qty |intcomma  }}</td>
-                             <td align="left">{{od.total_price |intcomma  }}</td>
+                          {% if report == 'r_date' %} <td>{{od.date}}</td>{% endif %}
+                          {% if report == 'r_menu' %} <td>{{od.menu}}</td>{% endif %}
+                          <td align="left">{{od.total_qty |intcomma  }}</td>
+                          <td align="left">{{od.total_price |intcomma  }}</td>
 
                         </tr>
 {%    endfor    %}
@@ -155,6 +155,7 @@
 
 
 <script>
+
 	$(document).ready(function(){
          //----------------------------------
          // 조회 : 상품등록 정보 조회
