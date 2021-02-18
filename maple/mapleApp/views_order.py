@@ -89,7 +89,7 @@ def saveOrder(request) :
             menuid = menuList[i],
             price = mPrice[i],
             qty = mQty[i],
-            sales = mAmount[-1],
+            sales = int(mPrice[i]) * int(mQty[i]),
         )
         ordd.save()
         print(ordd)
