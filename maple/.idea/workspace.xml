@@ -3,134 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="00434f1d-8599-4d7b-b043-4fe386ce3e4a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/insert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/insert.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/db.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/delete.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/insert.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/insert.sql.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/m.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/manage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/maple/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/maple/asgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/maple/settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/maple/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/maple/wsgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/migrations/0002_auto_20210212_1204.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/migrations/0003_auto_20210215_1343.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/migrations/0004_auto_20210215_1343.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/.browserslistrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/about.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/css/business-casual.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/css/business-casual.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/gulpfile.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/img/about.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/img/bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/img/cafe_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/img/cafe_icon2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/img/cafe_icon3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/img/cafe_icon4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/img/coffee-beans.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/img/intro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/img/products-01.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/img/products-02.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/img/products-03.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/products.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/scss/_about.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/scss/_bootstrap-overrides.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/scss/_buttons.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/scss/_cta.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/scss/_footer.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/scss/_global.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/scss/_intro.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/scss/_mixins.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/scss/_navbar.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/scss/_products.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/scss/_store.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/scss/_variables.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/scss/business-casual.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/store.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/bootstrap/css/bootstrap-grid.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/bootstrap/css/bootstrap-grid.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/bootstrap/css/bootstrap-grid.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/bootstrap/css/bootstrap-grid.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/bootstrap/css/bootstrap-reboot.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/bootstrap/css/bootstrap-reboot.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/bootstrap/css/bootstrap-reboot.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/bootstrap/css/bootstrap-reboot.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/bootstrap/css/bootstrap.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/bootstrap/css/bootstrap.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/bootstrap/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/bootstrap/css/bootstrap.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/bootstrap/js/bootstrap.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/bootstrap/js/bootstrap.bundle.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/bootstrap/js/bootstrap.bundle.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/bootstrap/js/bootstrap.bundle.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/bootstrap/js/bootstrap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/bootstrap/js/bootstrap.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/bootstrap/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/bootstrap/js/bootstrap.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/jquery/jquery.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/jquery/jquery.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/jquery/jquery.min.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/jquery/jquery.slim.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/jquery/jquery.slim.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/static/vendor/jquery/jquery.slim.min.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/templates/footer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/templates/header.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/templates/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/templates/menu.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/templates/order.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/templates/order_list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/templates/registerForm.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/templates/sales_status.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/templates/staff.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/views_login.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/views_menu.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/views_order.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/views_order_list.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/views_sales_status.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/mapleApp/views_staff.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/order.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maple/s.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/migrations/0002_auto_20210212_1204.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/migrations/0003_auto_20210215_1347.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/migrations/0004_auto_20210215_1348.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mapleApp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/templates/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/mapleApp/templates/footer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/mapleApp/templates/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/mapleApp/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/templates/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/mapleApp/templates/menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/templates/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/mapleApp/templates/order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/templates/order_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/mapleApp/templates/order_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/templates/sales_status.html" beforeDir="false" afterPath="$PROJECT_DIR$/mapleApp/templates/sales_status.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/templates/staff.html" beforeDir="false" afterPath="$PROJECT_DIR$/mapleApp/templates/staff.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mapleApp/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mapleApp/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/views_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/mapleApp/views_login.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/views_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/mapleApp/views_order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/views_order_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/mapleApp/views_order_list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapleApp/views_sales_status.py" beforeDir="false" afterPath="$PROJECT_DIR$/mapleApp/views_sales_status.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order.sql" beforeDir="false" afterPath="$PROJECT_DIR$/order.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,5 +45,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
