@@ -1,7 +1,12 @@
 robo 3T 명령어
 
+데몬 연결 : mongod --dbpath c:\mongo\data\db
+
+
+
 -show dbs
 -user db_name
+
 - show collections
 - db.collections_name
 
