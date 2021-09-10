@@ -55,4 +55,8 @@ DB-MySQL
 - `UPDATE [table name] SET [column new value] WHERE [column condition];` : column condition 조건에 해당하는  값을 찾아 column new value로 값을 치환한다.
 - ![image-20210910141253613](/Users/supreme-ys/Library/Application Support/typora-user-images/image-20210910141253613.png)
 - Topic테이블에서 id 값이 4인 행을 찾아 title과 description을 내용과 같이 수정한다. 라는 뜻
-- 
+
+#### MySQL의 DELETE 구문
+
+- `DELETE FROM [table name] WHERE [column condition];` : table name의 테이블 명에서 column condition에 해당하는 값을 찾아 행을 삭제한다.
+- 삭제 시, `DELETE FROM [table name];` 으로만 명령을 끝내버리면 인생이 바뀐다. 조심하자.
