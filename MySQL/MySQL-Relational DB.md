@@ -14,3 +14,8 @@
   - DB Client : `mysql -uroot -p` 명령어 기반의 프로그램 -> MySQL Monitor가 DB Client중의 하나였다. Bundle로써 제공하는 것. 추가로 MySQL Workbench가 있다.
   - DB Server : 데이터를 저장하고, 사용하기 위해서 이용되는  즉, 데이터베이스 서버를 사용함으로써 데이터 관리가 용이해짐
 
+#### MySQL Workbench
+
+- DB client 중 하나이다.
+- 맥북 프로 M1은 이슈 문제로 Workbench를 2021.09.09 현재 지원하지 않는다. 
+- 따라서, DBeaver 사용 중! Test Connection 완료 
