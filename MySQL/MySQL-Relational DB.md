@@ -1,6 +1,11 @@
 #### 관계형 데이터베이스
 
 - 관계형 데이터베이스의 기본 언어는 SQL.
+- Index : 색인, 데이터의 빠른 탐색을 도와줌.
+- Modeling : 데이터가 많아짐에 따라 정규화, 역정규화 등을 통한 모델링이 필요하다.
+- backup : 데이터를 복제하여 보관하는 것. 이기종간 지역 독립적이면 더욱 좋다. Mysqldump, binary log 등의 키워드 참고
+- cloud : 원격 저장공간을 임대하여 사용하는 것. AWS RDS, Google Cloud SQL for MySQL, AZURE Database for MySQL 등의 키워드 참고
+- programming : 프로그래밍언어로 데이터베이스 서버의 SQL을 전송할 수 있는 방법 숙지가 필요. Python mysql api, PHP mysql api, Java mysql api 등의 키워드 참고
 
 #### JOIN
 
