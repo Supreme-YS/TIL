@@ -1,5 +1,3 @@
-DB-MySQL
-
 #### MySQL Introduction
 
 * MySQL Community Edition 다운로드
