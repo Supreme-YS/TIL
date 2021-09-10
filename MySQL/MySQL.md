@@ -19,3 +19,9 @@ DB-MySQL
 - `DROP DATABASE (DBname);` : DBname의 데이터베이스를 삭제 
 - `SHOW DATABASES;` : 시스템내에 생성되어 있는 데이터베이스 리스트 확인
 - `USE (DBname);` : DBname에 해당하는 데이터베이스를 사용하겠다 선언
+
+#### SQL과 테이블 구조
+
+- SQL : Structured Query Language, 관계형 데이터베이스가 표의 형태로 정보를 정리정돈. 데이터베이스에게 요청하고 질의
+- 특징 : 어떤 프로그래밍 언어보다 쉽고, 표준화되어 있기 때문에 중요하다.
+- Table (표) : x축 : row/record/행(데이터 하나하나, 데이터 자체), column/열(데이터 타입, 데이터 구조)
