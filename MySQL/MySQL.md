@@ -10,4 +10,12 @@ DB-MySQL
 #### MySQL Server Connection
 
 - 여러 유저들에게 차등적인 권한을 줄 수 있다. 
-- `mysql -uroot -p` : 관리자 권한으로 실행, 비밀번호가 설정되어 있지 않으면 -p 생략. 하지만 보안이 취약해진다. 
+- `mysql -uroot -p` : 관리자 권한으로 실행, 비밀번호가 설정되어 있지 않으면 -p 생략. 하지만 보안이 취약해진다.
+
+#### MySQL Schema
+
+- ![image-20210910123803505](/Users/supreme-ys/Library/Application Support/typora-user-images/image-20210910123803505.png)
+- `CREATE DATABASE (DBname);` : DBname으로 데이터베이스를 생성
+- `DROP DATABASE (DBname);` : DBname의 데이터베이스를 삭제 
+- `SHOW DATABASES;` : 시스템내에 생성되어 있는 데이터베이스 리스트 확인
+- `USE (DBname);` : DBname에 해당하는 데이터베이스를 사용하겠다 선언
