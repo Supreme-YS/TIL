@@ -37,3 +37,22 @@ DB-MySQL
 - `VARCHAR` : 가변 문자열형
 - `DATETIME` : 시간
 - `PRIMARY KEY()` : 기본키(key) 값
+
+#### MySQL의 INSERT 구문
+
+- `DESC [table name];` : table name 테이블의 칼럼정보를 가져온다.
+- `INSERT INTO [table name] VALUES [info];` : 테이블에 테이블 칼럼에  해당하는 데이터를 삽입한다.
+- `SELECT * FROM [table name];` : 테이블에서 모든 데이터를 가져온다.
+
+#### MySQL의 SELECT 구문
+
+- `SELECT [column name] FROM [table name];` : table name의 테이블에서 column name에 해당하는 칼럼의 행들을 조회한다.
+- `SELECT [column name] FROM [table name] WHERE [column name] = [column value];` : 특정 조건에 부합하는 데이터 행을 조회한다.
+- `ORDER BY [DESC | ASC]; `: 정렬 DESC-내림차순, ASC-오름차순(default값)
+
+#### MySQL의 UPDATE 구문
+
+- `UPDATE [table name] SET [column new value] WHERE [column condition];` : column condition 조건에 해당하는  값을 찾아 column new value로 값을 치환한다.
+- ![image-20210910141253613](/Users/supreme-ys/Library/Application Support/typora-user-images/image-20210910141253613.png)
+- Topic테이블에서 id 값이 4인 행을 찾아 title과 description을 내용과 같이 수정한다. 라는 뜻
+- 
