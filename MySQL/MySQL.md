@@ -25,3 +25,15 @@ DB-MySQL
 - SQL : Structured Query Language, 관계형 데이터베이스가 표의 형태로 정보를 정리정돈. 데이터베이스에게 요청하고 질의
 - 특징 : 어떤 프로그래밍 언어보다 쉽고, 표준화되어 있기 때문에 중요하다.
 - Table (표) : x축 : row/record/행(데이터 하나하나, 데이터 자체), column/열(데이터 타입, 데이터 구조)
+
+#### MySQL 테이블의 생성
+
+- MySQL CHEAT SHEET 참조
+- ![image-20210910133037928](/Users/supreme-ys/Library/Application Support/typora-user-images/image-20210910133037928.png)
+
+- `NOT NULL` : NULL 값을 허용하지 않는다.
+- `NULL` : NULL 값을 허용
+- `AUTO_INCREMENT` : 행이 증가하면 자동으로 숫자가 증가
+- `VARCHAR` : 가변 문자열형
+- `DATETIME` : 시간
+- `PRIMARY KEY()` : 기본키(key) 값
