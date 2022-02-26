@@ -1,9 +1,5 @@
 # CPU Scheduler, Scheduling Algorithm
 
-담당자: 심영석
-상태: 운영체제
-속성: 2022년 2월 25일 오후 3:02
-
 - CPU Scheduling
     - 단기 스케쥴링이라고도 한다.
     - 단기 스케쥴러(CPU Scheduling)을 리마인드 해보자
