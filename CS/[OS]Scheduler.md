@@ -29,7 +29,7 @@
         - *degree of multiprogramming 제어
         - 여유 공간을 마련하기 위해 프로세스를 통째로 메모리에서 디스크로 날려버리는(Swap) 역할(Swap in, Swap out)
 
-그림 추가 예정!
+![IMG_CED2DA0DC446-1.jpeg](img/img_1.jpeg)
 
 - 스케쥴링 성능 척도
     - 처리량(Throughput) : 시간당 몇 개의 작업을 처리하는가
