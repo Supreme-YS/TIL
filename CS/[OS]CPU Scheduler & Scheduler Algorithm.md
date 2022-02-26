@@ -13,6 +13,8 @@
     - 선점 (Preemptive) : 자리 뺏기 가능, 누가 앉아서 먼저 자리에 앉아서 작업하고 있는데 그게 끝나든 안끝나든 상관없이 자리를 뺏어서 내 작업 실행하기 즉, 새치기 가능한 방식
     - 비선점 (Non-Preemptive) : 절대 안뺏기는 방식 즉, 새치기 절대 불가능
     
+    ![Untitled](img/img_2.png)
+    
 - CPU Scheduing Algorithm
     - First-Come, First-Served (FCFS)
         - 먼저 온 놈 먼저 처리
