@@ -59,7 +59,7 @@
         - 입출력 연산은 cpu 명령 수행 속도보다 느리기 때문에 인터럽트를 사용
         - 인터럽트 과정
             
-            ![Untitled](img/img_4.pngimg/img_6.png)
+            ![Untitled](img/img_6.png)
             
             - A 프로세스가 system call을 통해 인터럽트를 발생시킨다.
             - cpu는 현재 상태를 A 프로세스의 PCB에 저장한다.
