@@ -4,10 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>JSP로 구현한 웹 페이지</title>
 </head>
 <body>
 
-	Hello World~JSP는 신기하네요 ...
+	Hello World~
+	Hello JSP!
+	Hello Java Server Page!	
 </body>
 </html>
