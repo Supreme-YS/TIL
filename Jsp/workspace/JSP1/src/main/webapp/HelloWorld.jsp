@@ -8,6 +8,6 @@
 </head>
 <body>
 
-	Hello World~JSP는 신기하
+	Hello World~JSP는 신기하네요 ...
 </body>
 </html>
