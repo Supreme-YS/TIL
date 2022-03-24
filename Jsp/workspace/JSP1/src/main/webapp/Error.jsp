@@ -9,5 +9,6 @@
 <body>
 
 	에러 페이지 입니다. 
+	<a href="PageDirective.jsp">이전 페이지</a>
 </body>
 </html>
