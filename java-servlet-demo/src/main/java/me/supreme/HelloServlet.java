@@ -18,10 +18,16 @@ public class HelloServlet extends HttpServlet {
         resp.getWriter().println("<html>");
         resp.getWriter().println("<head>");
         resp.getWriter().println("<body>");
-        resp.getWriter().println("<h1>Hello Servlet</h1>");
+//        resp.getWriter().println("<h1>Hello Servlet</h1>");
+        resp.getWriter().println("<h1> Hello," + getName());
         resp.getWriter().println("</body>");
         resp.getWriter().println("</head>");
         resp.getWriter().println("</html>");
+    }
+
+    // Object 타입이니까 뭐, toString을 호출해서 값을 잘 꺼낸다.
+    private Object getName() {
+        return getServletContext().getAttribute("name");
     }
 
     @Override

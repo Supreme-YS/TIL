@@ -4,7 +4,11 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-  
+<!--  Listener 등록 -->
+  <listener>
+    <listener-class>me.supreme.MyListener</listener-class>
+  </listener>
+
   <servlet>
     <servlet-name>hello</servlet-name>
     <servlet-class>me.supreme.HelloServlet</servlet-class>
